@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
+             xmlns:resx="clr-namespace:EcoRoot.Resources"
+             x:Class="EcoRoot.Views.CloudSyncPage"
+             x:DataType="viewmodels:CloudSyncViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Label Text="{x:Static resx:Strings.CloudSyncTitle}"
+                   Style="{StaticResource TitleLarge}"
+                   SemanticProperties.HeadingLevel="Level1" />
+            <Label Text="{Binding IntroText}" Style="{StaticResource BodyMedium}" />
+
+            <Border Style="{StaticResource CardBorder}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{x:Static resx:Strings.CloudSyncStatusTitle}" Style="{StaticResource SectionTitle}" />
+                    <Label Text="{Binding StatusMessage}" Style="{StaticResource BodyMuted}" />
+                        <Switch IsToggled="{Binding IsSyncEnabled}"
+                            SemanticProperties.Hint="{x:Static resx:Strings.CloudSyncToggleHint}" />
+                    <Label Text="{x:Static resx:Strings.CloudSyncLastSyncTitle}" Style="{StaticResource BodyMedium}" />
+                    <Label Text="{Binding LastSyncText}" Style="{StaticResource BodyMuted}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource CardBorder}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding DataTitle}" Style="{StaticResource SectionTitle}" />
+                    <CollectionView ItemsSource="{Binding DataItems}"
+                                    SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="• {Binding .}" Style="{StaticResource BodyMedium}" />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Style="{StaticResource CardBorder}" IsVisible="{Binding IsConsentRequired}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{x:Static resx:Strings.CloudSyncConsentRequired}" Style="{StaticResource BodyMedium}" />
+                    <Button Text="{x:Static resx:Strings.CloudSyncProvideConsent}"
+                            Style="{StaticResource SecondaryButton}"
+                            SemanticProperties.Hint="{x:Static resx:Strings.CloudSyncConsentHint}"
+                            Command="{Binding ProvideConsentCommand}" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

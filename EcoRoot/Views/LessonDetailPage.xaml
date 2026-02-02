@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
+             xmlns:models="clr-namespace:EcoRoot.Models"
+             xmlns:resx="clr-namespace:EcoRoot.Resources"
+             x:Class="EcoRoot.Views.LessonDetailPage"
+             x:DataType="viewmodels:LessonDetailViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Label Text="{Binding ModuleTitle}" Style="{StaticResource BodyMuted}" />
+            <Label Text="{Binding Lesson.Title}"
+                   Style="{StaticResource TitleLarge}"
+                   SemanticProperties.HeadingLevel="Level1" />
+            <Label Text="{Binding Lesson.Summary}" Style="{StaticResource BodyMedium}" />
+
+            <Border Style="{StaticResource PillBorder}">
+                <Label Text="{Binding CompletionStatus}" Style="{StaticResource BodyMuted}" />
+            </Border>
+
+            <Label Text="{x:Static resx:Strings.LessonSectionsTitle}" Style="{StaticResource SectionTitle}" />
+            <CollectionView ItemsSource="{Binding Sections}"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:LessonSection">
+                        <Border Style="{StaticResource CardBorder}" Margin="0,0,0,12">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="{Binding Heading}" Style="{StaticResource SectionTitle}" />
+                                <Label Text="{Binding Body}" Style="{StaticResource BodyMedium}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+                <Button Text="{x:Static resx:Strings.QuizCheckUnderstandingTitle}"
+                    IsEnabled="{Binding HasQuiz}"
+                        SemanticProperties.Hint="{x:Static resx:Strings.HintStartQuiz}"
+                    Command="{Binding StartQuizCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

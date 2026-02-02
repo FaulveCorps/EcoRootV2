@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
+             xmlns:resx="clr-namespace:EcoRoot.Resources"
+             x:Class="EcoRoot.Views.GlossaryPage"
+             x:DataType="viewmodels:GlossaryViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+             <Label Text="{x:Static resx:Strings.GlossaryTitle}"
+                 Style="{StaticResource TitleLarge}"
+                 SemanticProperties.HeadingLevel="Level1" />
+            <Label Text="{Binding IntroText}" Style="{StaticResource BodyMedium}" />
+
+             <Label Text="{x:Static resx:Strings.GlossaryEmpty}"
+                 Style="{StaticResource BodyMuted}"
+                 IsVisible="{Binding IsTermsEmpty}" />
+
+            <CollectionView ItemsSource="{Binding Terms}"
+                    SelectionMode="None"
+                    IsVisible="{Binding HasTerms}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource PillBorder}" Margin="0,0,0,8">
+                            <Label Text="{Binding .}" Style="{StaticResource BodyMedium}" />
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

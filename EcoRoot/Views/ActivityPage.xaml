@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
+             xmlns:models="clr-namespace:EcoRoot.Models"
+             xmlns:resx="clr-namespace:EcoRoot.Resources"
+             x:Class="EcoRoot.Views.ActivityPage"
+             x:Name="RootPage"
+             x:DataType="viewmodels:ActivityViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Label Text="{x:Static resx:Strings.ActivityTitle}"
+                   Style="{StaticResource TitleLarge}"
+                   SemanticProperties.HeadingLevel="Level1" />
+            <Label Text="{x:Static resx:Strings.ActivitySubtitle}" Style="{StaticResource BodyMedium}" />
+
+            <Border Style="{StaticResource CardBorder}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{Binding CurrentScenario.Title}" Style="{StaticResource SectionTitle}" />
+                    <Label Text="{Binding CurrentScenario.Prompt}" Style="{StaticResource BodyMedium}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <CollectionView ItemsSource="{Binding CurrentScenario.Options}"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ActivityOption">
+                        <Border Style="{StaticResource CardBorder}" Margin="0,0,0,10">
+                            <Button Text="{Binding Text}"
+                                    SemanticProperties.Hint="{x:Static resx:Strings.SelectOptionHint}"
+                                    Command="{Binding BindingContext.SelectOptionCommand, Source={x:Reference RootPage}}"
+                                    CommandParameter="{Binding .}" />
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Border Style="{StaticResource PillBorder}" IsVisible="{Binding HasFeedback}">
+                <Label Text="{Binding FeedbackMessage}" Style="{StaticResource BodyMedium}" />
+            </Border>
+
+            <Button Text="{x:Static resx:Strings.ActivityNextScenario}"
+                    Style="{StaticResource SecondaryButton}"
+                    SemanticProperties.Hint="{x:Static resx:Strings.ActivityNextScenarioHint}"
+                    Command="{Binding NextScenarioCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

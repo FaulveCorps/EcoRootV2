@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppTitle" xml:space="preserve">
+    <value>EcoRoot</value>
+  </data>
+  <data name="HomeTitle" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="HomeHeadline" xml:space="preserve">
+    <value>Soil Pollution, Made Clear</value>
+  </data>
+  <data name="HomeSubtitle" xml:space="preserve">
+    <value>Bite-sized lessons that explain how soil pollution starts, spreads, and how to prevent it.</value>
+  </data>
+  <data name="HomeFocusTitle" xml:space="preserve">
+    <value>Today's Focus</value>
+  </data>
+  <data name="HomeFocusDescription" xml:space="preserve">
+    <value>Foundations: what soil is, why it matters, and how contamination happens.</value>
+  </data>
+  <data name="HintOpenFoundations" xml:space="preserve">
+    <value>Opens the Foundations module</value>
+  </data>
+  <data name="HomeProgressTitle" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="HomePillarsTitle" xml:space="preserve">
+    <value>Learning Pillars</value>
+  </data>
+  <data name="HomeTeacherCornerTitle" xml:space="preserve">
+    <value>Teacher Corner</value>
+  </data>
+  <data name="HomeTeacherCornerBody" xml:space="preserve">
+    <value>Classroom-ready prompts and activities.</value>
+  </data>
+  <data name="HintOpenTeacherResources" xml:space="preserve">
+    <value>Opens the teacher resources</value>
+  </data>
+  <data name="HomePrimaryAction" xml:space="preserve">
+    <value>Start Foundations</value>
+  </data>
+  <data name="HomeSecondaryAction" xml:space="preserve">
+    <value>Browse Glossary</value>
+  </data>
+  <data name="HintOpenGlossary" xml:space="preserve">
+    <value>Opens the glossary</value>
+  </data>
+  <data name="HomeTeacherResourcesAction" xml:space="preserve">
+    <value>Teacher Resources</value>
+  </data>
+  <data name="HomeProgressEmpty" xml:space="preserve">
+    <value>No lessons available yet.</value>
+  </data>
+  <data name="HomeProgressFormat" xml:space="preserve">
+    <value>{0}/{1} lessons completed</value>
+  </data>
+  <data name="ModulesTitle" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="ModulesHeading" xml:space="preserve">
+    <value>Explore Modules</value>
+  </data>
+  <data name="ModulesSubtitle" xml:space="preserve">
+    <value>Choose a module to start learning.</value>
+  </data>
+  <data name="ModulesEmpty" xml:space="preserve">
+    <value>No modules available yet.</value>
+  </data>
+  <data name="ModulesViewLessons" xml:space="preserve">
+    <value>View lessons</value>
+  </data>
+  <data name="HintOpenModuleLessons" xml:space="preserve">
+    <value>Opens the lessons for this module</value>
+  </data>
+  <data name="LessonsTitle" xml:space="preserve">
+    <value>Lessons</value>
+  </data>
+  <data name="LessonsEmpty" xml:space="preserve">
+    <value>No lessons available yet.</value>
+  </data>
+  <data name="OpenLesson" xml:space="preserve">
+    <value>Open lesson</value>
+  </data>
+  <data name="HintOpenLessonDetails" xml:space="preserve">
+    <value>Opens the lesson details</value>
+  </data>
+  <data name="LessonSectionsTitle" xml:space="preserve">
+    <value>Lesson Sections</value>
+  </data>
+  <data name="QuizCheckUnderstandingTitle" xml:space="preserve">
+    <value>Check Understanding</value>
+  </data>
+  <data name="HintStartQuiz" xml:space="preserve">
+    <value>Starts the quiz for this lesson</value>
+  </data>
+  <data name="QuizCheckAnswer" xml:space="preserve">
+    <value>Check answer</value>
+  </data>
+  <data name="QuizCheckAnswerHint" xml:space="preserve">
+    <value>Checks the selected answer</value>
+  </data>
+  <data name="QuizNextQuestion" xml:space="preserve">
+    <value>Next question</value>
+  </data>
+  <data name="QuizNextQuestionHint" xml:space="preserve">
+    <value>Moves to the next question</value>
+  </data>
+  <data name="QuizFinish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="GlossaryTitle" xml:space="preserve">
+    <value>Glossary</value>
+  </data>
+  <data name="GlossaryIntro" xml:space="preserve">
+    <value>Browse key terms used across lessons.</value>
+  </data>
+  <data name="GlossaryEmpty" xml:space="preserve">
+    <value>No glossary terms yet.</value>
+  </data>
+  <data name="GlossaryTermSoilContamination" xml:space="preserve">
+    <value>Soil contamination</value>
+  </data>
+  <data name="GlossaryTermHeavyMetals" xml:space="preserve">
+    <value>Heavy metals</value>
+  </data>
+  <data name="GlossaryTermPesticideResidue" xml:space="preserve">
+    <value>Pesticide residue</value>
+  </data>
+  <data name="GlossaryTermLeaching" xml:space="preserve">
+    <value>Leaching</value>
+  </data>
+  <data name="GlossaryTermRemediation" xml:space="preserve">
+    <value>Remediation</value>
+  </data>
+  <data name="GlossaryTermBioaccumulation" xml:space="preserve">
+    <value>Bioaccumulation</value>
+  </data>
+  <data name="ActivityTitle" xml:space="preserve">
+    <value>Scenario Lab</value>
+  </data>
+  <data name="ActivitySubtitle" xml:space="preserve">
+    <value>Practice decisions with short real-world scenarios.</value>
+  </data>
+  <data name="ActivityAction" xml:space="preserve">
+    <value>Try a scenario</value>
+  </data>
+  <data name="ActivityHint" xml:space="preserve">
+    <value>Opens the scenario activity</value>
+  </data>
+  <data name="ActivityNextScenario" xml:space="preserve">
+    <value>Next scenario</value>
+  </data>
+  <data name="ActivityNextScenarioHint" xml:space="preserve">
+    <value>Loads a new scenario</value>
+  </data>
+  <data name="SelectOptionHint" xml:space="preserve">
+    <value>Selects this option</value>
+  </data>
+  <data name="ActivityEmpty" xml:space="preserve">
+    <value>No scenarios available yet.</value>
+  </data>
+  <data name="ActivityScenarioTitle1" xml:space="preserve">
+    <value>Improper Disposal</value>
+  </data>
+  <data name="ActivityScenarioPrompt1" xml:space="preserve">
+    <value>A neighborhood store is dumping used motor oil behind the building. What should happen first?</value>
+  </data>
+  <data name="ActivityScenarioOption1A" xml:space="preserve">
+    <value>Report it and suggest safe disposal options</value>
+  </data>
+  <data name="ActivityScenarioOption1B" xml:space="preserve">
+    <value>Ignore it because it is not on your land</value>
+  </data>
+  <data name="ActivityScenarioOption1C" xml:space="preserve">
+    <value>Pour water to dilute the oil</value>
+  </data>
+  <data name="ActivityScenarioFeedback1A" xml:space="preserve">
+    <value>Correct. Reporting and safer disposal stop pollution at the source.</value>
+  </data>
+  <data name="ActivityScenarioFeedback1B" xml:space="preserve">
+    <value>Not quite. Ignoring leaks allows contamination to spread.</value>
+  </data>
+  <data name="ActivityScenarioFeedback1C" xml:space="preserve">
+    <value>Not quite. Diluting can spread pollutants further.</value>
+  </data>
+  <data name="ActivityScenarioTitle2" xml:space="preserve">
+    <value>Pesticide Runoff</value>
+  </data>
+  <data name="ActivityScenarioPrompt2" xml:space="preserve">
+    <value>A farm sprays pesticides before a heavy rain. What is the best next step?</value>
+  </data>
+  <data name="ActivityScenarioOption2A" xml:space="preserve">
+    <value>Delay spraying and check the weather forecast</value>
+  </data>
+  <data name="ActivityScenarioOption2B" xml:space="preserve">
+    <value>Spray more to make it last longer</value>
+  </data>
+  <data name="ActivityScenarioOption2C" xml:space="preserve">
+    <value>Wash pesticides into nearby drains</value>
+  </data>
+  <data name="ActivityScenarioFeedback2A" xml:space="preserve">
+    <value>Correct. Timing and weather checks reduce runoff risk.</value>
+  </data>
+  <data name="ActivityScenarioFeedback2B" xml:space="preserve">
+    <value>Not quite. Overuse increases pollution and waste.</value>
+  </data>
+  <data name="ActivityScenarioFeedback2C" xml:space="preserve">
+    <value>Not quite. Washing chemicals into drains spreads pollution.</value>
+  </data>
+  <data name="ActivityScenarioTitle3" xml:space="preserve">
+    <value>Construction Debris</value>
+  </data>
+  <data name="ActivityScenarioPrompt3" xml:space="preserve">
+    <value>A construction site leaves debris on bare soil. What is the safest practice?</value>
+  </data>
+  <data name="ActivityScenarioOption3A" xml:space="preserve">
+    <value>Cover soil and remove waste to approved sites</value>
+  </data>
+  <data name="ActivityScenarioOption3B" xml:space="preserve">
+    <value>Leave debris to mix with the soil</value>
+  </data>
+  <data name="ActivityScenarioOption3C" xml:space="preserve">
+    <value>Burn debris on-site</value>
+  </data>
+  <data name="ActivityScenarioFeedback3A" xml:space="preserve">
+    <value>Correct. Covering soil and proper disposal prevent contamination.</value>
+  </data>
+  <data name="ActivityScenarioFeedback3B" xml:space="preserve">
+    <value>Not quite. Debris can introduce contaminants into soil.</value>
+  </data>
+  <data name="ActivityScenarioFeedback3C" xml:space="preserve">
+    <value>Not quite. Burning can release toxins and ash into soil.</value>
+  </data>
+  <data name="ProgressTitle" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="ProgressHeadline" xml:space="preserve">
+    <value>Your Learning Journey</value>
+  </data>
+  <data name="ProgressBody" xml:space="preserve">
+    <value>See how far you’ve come in each module.</value>
+  </data>
+  <data name="ProgressBadgesTitle" xml:space="preserve">
+    <value>Badges</value>
+  </data>
+  <data name="ProgressQuizAttemptsTitle" xml:space="preserve">
+    <value>Quiz Attempts</value>
+  </data>
+  <data name="ProgressQuizEmpty" xml:space="preserve">
+    <value>No quiz attempts yet.</value>
+  </data>
+  <data name="CloudSyncCardTitle" xml:space="preserve">
+    <value>Keep progress across devices</value>
+  </data>
+  <data name="CloudSyncCardBody" xml:space="preserve">
+    <value>Turn on cloud sync to back up lessons and quiz results.</value>
+  </data>
+  <data name="CloudSyncOpenAction" xml:space="preserve">
+    <value>Open Cloud Sync</value>
+  </data>
+  <data name="CloudSyncHint" xml:space="preserve">
+    <value>Opens the cloud sync settings</value>
+  </data>
+  <data name="CloudSyncTitle" xml:space="preserve">
+    <value>Cloud Sync</value>
+  </data>
+  <data name="CloudSyncIntro" xml:space="preserve">
+    <value>Sync your learning progress across devices when you opt in. This is optional and can be turned off anytime.</value>
+  </data>
+  <data name="CloudSyncStatusTitle" xml:space="preserve">
+    <value>Sync Status</value>
+  </data>
+  <data name="CloudSyncToggleHint" xml:space="preserve">
+    <value>Toggles cloud sync on or off</value>
+  </data>
+  <data name="CloudSyncLastSyncTitle" xml:space="preserve">
+    <value>Last sync</value>
+  </data>
+  <data name="CloudSyncLastSyncEmpty" xml:space="preserve">
+    <value>Not synced yet.</value>
+  </data>
+  <data name="CloudSyncLastSyncFormat" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="CloudSyncEnabled" xml:space="preserve">
+    <value>Cloud sync is on.</value>
+  </data>
+  <data name="CloudSyncDisabled" xml:space="preserve">
+    <value>Cloud sync is off.</value>
+  </data>
+  <data name="CloudSyncDataTitle" xml:space="preserve">
+    <value>Data synced</value>
+  </data>
+  <data name="CloudSyncDataItemProgress" xml:space="preserve">
+    <value>Lesson completion and module progress</value>
+  </data>
+  <data name="CloudSyncDataItemQuizAttempts" xml:space="preserve">
+    <value>Quiz attempts and scores</value>
+  </data>
+  <data name="CloudSyncDataItemLastSync" xml:space="preserve">
+    <value>Last sync time (when available)</value>
+  </data>
+  <data name="CloudSyncConsentRequired" xml:space="preserve">
+    <value>Consent is required to enable cloud sync.</value>
+  </data>
+  <data name="CloudSyncConsentHint" xml:space="preserve">
+    <value>Provides consent to enable cloud sync</value>
+  </data>
+  <data name="CloudSyncProvideConsent" xml:space="preserve">
+    <value>Provide consent</value>
+  </data>
+  <data name="TeacherResourcesTitle" xml:space="preserve">
+    <value>Teacher Resources</value>
+  </data>
+  <data name="TeacherResourcesIntro" xml:space="preserve">
+    <value>Classroom-ready prompts, activities, and assessment ideas to deepen learning.</value>
+  </data>
+  <data name="TeacherResourcesCopyButton" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="TeacherResourcesCopyHint" xml:space="preserve">
+    <value>Copies this resource to the clipboard</value>
+  </data>
+  <data name="TeacherResourcesCopied" xml:space="preserve">
+    <value>Copied to clipboard.</value>
+  </data>
+  <data name="TeacherResourcesCopyFailed" xml:space="preserve">
+    <value>Unable to copy right now.</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="NotCompleted" xml:space="preserve">
+    <value>Not completed</value>
+  </data>
+  <data name="BadgeUnlocked" xml:space="preserve">
+    <value>Unlocked</value>
+  </data>
+  <data name="BadgeLocked" xml:space="preserve">
+    <value>Locked</value>
+  </data>
+  <data name="ModuleProgressSummaryFormat" xml:space="preserve">
+    <value>{0}/{1} lessons completed</value>
+  </data>
+  <data name="QuizSummaryEmpty" xml:space="preserve">
+    <value>No quizzes completed yet.</value>
+  </data>
+  <data name="QuizSummaryFormat" xml:space="preserve">
+    <value>{0} quiz attempt(s), {1}/{2} correct overall</value>
+  </data>
+  <data name="QuizScoreEmpty" xml:space="preserve">
+    <value>No score</value>
+  </data>
+  <data name="QuizScoreFormat" xml:space="preserve">
+    <value>{0}/{1} correct</value>
+  </data>
+  <data name="BadgeFirstLessonTitle" xml:space="preserve">
+    <value>First Lesson</value>
+  </data>
+  <data name="BadgeFirstLessonDesc" xml:space="preserve">
+    <value>Complete your first lesson.</value>
+  </data>
+  <data name="BadgeQuizStarterTitle" xml:space="preserve">
+    <value>Quiz Starter</value>
+  </data>
+  <data name="BadgeQuizStarterDesc" xml:space="preserve">
+    <value>Finish your first quiz attempt.</value>
+  </data>
+  <data name="BadgeModuleFinisherTitle" xml:space="preserve">
+    <value>Module Finisher</value>
+  </data>
+  <data name="BadgeModuleFinisherDesc" xml:space="preserve">
+    <value>Complete all lessons in a module.</value>
+  </data>
+  <data name="BadgeQuizExplorerTitle" xml:space="preserve">
+    <value>Quiz Explorer</value>
+  </data>
+  <data name="BadgeQuizExplorerDesc" xml:space="preserve">
+    <value>Complete three quiz attempts.</value>
+  </data>
+  <data name="BadgeSoilChampionTitle" xml:space="preserve">
+    <value>Soil Champion</value>
+  </data>
+  <data name="BadgeSoilChampionDesc" xml:space="preserve">
+    <value>Complete every lesson in the app.</value>
+  </data>
+</root>
