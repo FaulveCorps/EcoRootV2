@@ -6,18 +6,27 @@
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
-    <Color x:Key="Primary">#512BD4</Color>
-    <Color x:Key="PrimaryDark">#ac99ea</Color>
-    <Color x:Key="PrimaryDarkText">#242424</Color>
-    <Color x:Key="Secondary">#DFD8F7</Color>
-    <Color x:Key="SecondaryDarkText">#9880e5</Color>
-    <Color x:Key="Tertiary">#2B0B98</Color>
+    <Color x:Key="Primary">#2E7D32</Color> <!-- EcoGreen -->
+    <Color x:Key="PrimaryDark">#1B5E20</Color>
+    <Color x:Key="PrimaryDarkText">#FFFFFF</Color>
+    <Color x:Key="Secondary">#FBC02D</Color> <!-- SunYellow -->
+    <Color x:Key="SunYellow">#FBC02D</Color>
+    <Color x:Key="SecondaryDarkText">#3E2723</Color>
+    <Color x:Key="Tertiary">#6D4C41</Color> <!-- SoilBrown -->
 
     <Color x:Key="EcoGreen">#2E7D32</Color>
     <Color x:Key="EcoGreenDark">#1B5E20</Color>
     <Color x:Key="SoilBrown">#6D4C41</Color>
-    <Color x:Key="Sand">#F4EFE6</Color>
+    <Color x:Key="Sand">#FFF8E1</Color> <!-- Lighter yellow background -->
+    <AppThemeColor x:Key="PageBackground" Light="{StaticResource Sand}" Dark="#1f1f1f" />
     <Color x:Key="RiverBlue">#2A9D8F</Color>
+
+    <Color x:Key="EcoGreenLight">#E8F5E9</Color>
+    <Color x:Key="SunYellowLight">#FFFDE7</Color>
+    <Color x:Key="OffWhite">#FAFAFA</Color>
+    
+    <AppThemeColor x:Key="TextColor" Light="#212121" Dark="#F5F5F5" />
+    <AppThemeColor x:Key="TextColorMuted" Light="#757575" Dark="#CFCFCF" />
 
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
@@ -54,4 +63,9 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+
+    <LinearGradientBrush x:Key="PrimaryGradient" EndPoint="1,0">
+        <GradientStop Color="{StaticResource EcoGreen}" Offset="0.1"/>
+        <GradientStop Color="#43A047" Offset="1.0"/>
+    </LinearGradientBrush>
 </ResourceDictionary>

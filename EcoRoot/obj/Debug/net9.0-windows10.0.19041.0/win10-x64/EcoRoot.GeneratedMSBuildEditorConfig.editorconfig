@@ -36,6 +36,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = EcoRoot.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[C:/Users/jpfau/Desktop/Project/EcoRoot/EcoRoot/Controls/CircularProgressBar.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EcoRoot.Controls.CircularProgressBar.xaml
+build_metadata.AdditionalFiles.TargetPath = Controls\CircularProgressBar.xaml
+build_metadata.AdditionalFiles.RelativePath = Controls\CircularProgressBar.xaml
+
 [C:/Users/jpfau/Desktop/Project/EcoRoot/EcoRoot/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = EcoRoot.MainPage.xaml
@@ -53,6 +59,12 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = EcoRoot.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/jpfau/Desktop/Project/EcoRoot/EcoRoot/Resources/Styles/Vectors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EcoRoot.Resources.Styles.Vectors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Vectors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Vectors.xaml
 
 [C:/Users/jpfau/Desktop/Project/EcoRoot/EcoRoot/Views/ActivityPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml

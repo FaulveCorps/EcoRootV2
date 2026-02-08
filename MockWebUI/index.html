@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoRoot - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Start your soil journey</h1>
+            <p>Learn about soil pollution and how you can help.</p>
+        </div>
+
+        <div class="content" style="margin-top: -30px;">
+            <!-- Progress Card -->
+            <div class="card">
+                <h3>Your Progress</h3>
+                <div style="display: flex; justify-content: space-between;">
+                    <span id="progress-text" class="text-muted">Loading...</span>
+                    <span id="progress-percent" class="text-eco">0%</span>
+                </div>
+                <div class="progress-container">
+                    <div id="progress-bar-fill" class="progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- Focus Card -->
+            <div class="card">
+                <h3>Start Learning</h3>
+                <p>Begin with the basics of soil health.</p>
+                <button class="btn btn-primary" onclick="window.location.href='modules.html'">Open Foundations</button>
+            </div>
+
+            <!-- Pillars -->
+            <h3 style="margin-top: 24px;">Learning Pillars</h3>
+            <div class="pill-container">
+                <div class="pill">Foundations</div>
+                <div class="pill">Pollution Sources</div>
+                <div class="pill">Impacts</div>
+                <div class="pill">Solutions</div>
+                <div class="pill">Local Context</div>
+            </div>
+
+            <!-- Quick Links -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="card" onclick="window.location.href='resources.html'">
+                    <h3>Teacher Resources 🍎</h3>
+                    <p class="text-muted" style="font-size: 12px">Access guides & plans.</p>
+                </div>
+                <div class="card">
+                    <h3>Activity 🧩</h3>
+                    <p class="text-muted" style="font-size: 12px">Take a quick quiz.</p>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary" onclick="window.location.href='glossary.html'" style="border:none">View Glossary</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        renderNav('home');
+        
+        // Init Page
+        const stats = calculateProgress();
+        document.getElementById('progress-text').textContent = stats.total === 0 ? "No lessons yet" : `${stats.completed}/${stats.total} Lessons`;
+        document.getElementById('progress-percent').textContent = `${Math.round(stats.ratio * 100)}%`;
+        document.getElementById('progress-bar-fill').style.width = `${stats.ratio * 100}%`;
+    </script>
+</body>
+</html>

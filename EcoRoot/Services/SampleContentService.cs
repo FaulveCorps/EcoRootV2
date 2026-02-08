@@ -22,6 +22,7 @@ public sealed class SampleContentService : IContentService
                         "f-1",
                         "What is Soil?",
                         "Soil is a mix of minerals, organic matter, water, and air.",
+                        "5 min read",
                         new[]
                         {
                             new LessonSection("Definition", "Soil is a living system that supports plants and ecosystems."),
@@ -55,6 +56,7 @@ public sealed class SampleContentService : IContentService
                         "s-1",
                         "Industrial Waste",
                         "Factories and spills can release harmful chemicals into soil.",
+                        "4 min read",
                         new[]
                         {
                             new LessonSection("Key Sources", "Leaks, improper storage, and dumping are common causes."),
@@ -82,6 +84,7 @@ public sealed class SampleContentService : IContentService
                         "i-1",
                         "Health Impacts",
                         "Polluted soil can lead to unsafe food and water.",
+                        "6 min read",
                         new[]
                         {
                             new LessonSection("Human Health", "Contaminants can enter the food chain and harm people."),
@@ -109,6 +112,7 @@ public sealed class SampleContentService : IContentService
                         "so-1",
                         "Prevention First",
                         "Reducing pollution at the source is the most effective solution.",
+                        "3 min read",
                         new[]
                         {
                             new LessonSection("Reduce at the Source", "Proper waste handling and safer chemicals reduce contamination risks."),
@@ -128,6 +132,7 @@ public sealed class SampleContentService : IContentService
                         "so-2",
                         "Cleaning Contaminated Soil",
                         "Remediation methods help restore polluted areas.",
+                        "5 min read",
                         new[]
                         {
                             new LessonSection("Bioremediation", "Plants and microbes can break down or absorb pollutants."),
@@ -147,6 +152,7 @@ public sealed class SampleContentService : IContentService
                         "so-3",
                         "Policy and Community Action",
                         "Rules, monitoring, and community efforts keep soil safer.",
+                        "4 min read",
                         new[]
                         {
                             new LessonSection("Regulations", "Policies limit dumping and require safe waste handling."),

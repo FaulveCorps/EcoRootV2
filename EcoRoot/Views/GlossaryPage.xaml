@@ -5,31 +5,41 @@
              xmlns:resx="clr-namespace:EcoRoot.Resources"
              x:Class="EcoRoot.Views.GlossaryPage"
              x:DataType="viewmodels:GlossaryViewModel"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackground}">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="24" Spacing="16">
-             <Label Text="{x:Static resx:Strings.GlossaryTitle}"
-                 Style="{StaticResource TitleLarge}"
-                 SemanticProperties.HeadingLevel="Level1" />
-            <Label Text="{Binding IntroText}" Style="{StaticResource BodyMedium}" />
+    <ScrollView x:Name="MainContent">
+        <VerticalStackLayout Padding="24" Spacing="24">
+            
+            <VerticalStackLayout Spacing="8">
+                 <Label Text="{x:Static resx:Strings.GlossaryTitle}"
+                     Style="{StaticResource TitleLarge}"
+                     SemanticProperties.HeadingLevel="Level1" />
+                <Label Text="{Binding IntroText}" Style="{StaticResource BodyMedium}" />
+            </VerticalStackLayout>
 
              <Label Text="{x:Static resx:Strings.GlossaryEmpty}"
                  Style="{StaticResource BodyMuted}"
+                 HorizontalOptions="Center"
                  IsVisible="{Binding IsTermsEmpty}" />
 
             <CollectionView ItemsSource="{Binding Terms}"
                     SelectionMode="None"
                     IsVisible="{Binding HasTerms}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="12" />
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border Style="{StaticResource PillBorder}" Margin="0,0,0,8">
-                            <Label Text="{Binding .}" Style="{StaticResource BodyMedium}" />
+                    <DataTemplate x:DataType="x:String">
+                        <Border Style="{StaticResource AppCard}" Padding="16" BackgroundColor="White">
+                            <Grid ColumnDefinitions="Auto, *">
+                                <Label Text="📖" FontSize="20" Margin="0,0,12,0" VerticalOptions="Start"/>
+                                <Label Text="{Binding .}" Style="{StaticResource BodyMedium}" Grid.Column="1" />
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

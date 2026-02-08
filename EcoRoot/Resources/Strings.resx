@@ -243,6 +243,9 @@
   <data name="ActivityScenarioFeedback3C" xml:space="preserve">
     <value>Not quite. Burning can release toxins and ash into soil.</value>
   </data>
+  <data name="ProgressStatsTitle" xml:space="preserve">
+    <value>Module Progress</value>
+  </data>
   <data name="ProgressTitle" xml:space="preserve">
     <value>Progress</value>
   </data>

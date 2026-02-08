@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:EcoRoot.Controls"
+             x:Class="EcoRoot.Controls.CircularProgressBar"
+             x:DataType="controls:CircularProgressBar"
+             WidthRequest="120" HeightRequest="120">
+    <Grid WidthRequest="120" HeightRequest="120">
+        <!-- Background Ring -->
+        <Ellipse x:Name="BackgroundRing"
+                 Stroke="{StaticResource Gray100}"
+                 StrokeThickness="10"
+                 WidthRequest="100"
+                 HeightRequest="100"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center" />
+
+        <!-- Progress Ring -->
+        <Ellipse x:Name="ProgressRing"
+                 Stroke="{StaticResource EcoGreen}"
+                 StrokeThickness="10"
+                 StrokeLineCap="Round"
+                 WidthRequest="100"
+                 HeightRequest="100"
+                 Rotation="-90"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center" />
+
+        <!-- Percentage Text -->
+        <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
+            <Label Text="{Binding ProgressRatio, StringFormat='{0:P0}'}"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource EcoGreenDark}"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" />
+            <Label Text="Done"
+                   FontSize="12"
+                   TextColor="{StaticResource Gray500}"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentView>

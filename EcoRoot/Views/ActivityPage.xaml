@@ -4,47 +4,96 @@
              xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
              xmlns:models="clr-namespace:EcoRoot.Models"
              xmlns:resx="clr-namespace:EcoRoot.Resources"
+             xmlns:shapes="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:views="clr-namespace:EcoRoot.Views"
              x:Class="EcoRoot.Views.ActivityPage"
              x:Name="RootPage"
              x:DataType="viewmodels:ActivityViewModel"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackground}">
 
     <ScrollView>
-        <VerticalStackLayout Padding="24" Spacing="16">
-            <Label Text="{x:Static resx:Strings.ActivityTitle}"
-                   Style="{StaticResource TitleLarge}"
-                   SemanticProperties.HeadingLevel="Level1" />
-            <Label Text="{x:Static resx:Strings.ActivitySubtitle}" Style="{StaticResource BodyMedium}" />
+        <VerticalStackLayout x:Name="ContentLayout" Padding="24" Spacing="24">
+            
+            <VerticalStackLayout Spacing="8">
+                <Label Text="{x:Static resx:Strings.ActivityTitle}"
+                       Style="{StaticResource TitleLarge}"
+                       SemanticProperties.HeadingLevel="Level1" />
+                <Label Text="{x:Static resx:Strings.ActivitySubtitle}" Style="{StaticResource BodyMedium}" />
+            </VerticalStackLayout>
 
-            <Border Style="{StaticResource CardBorder}">
-                <VerticalStackLayout Spacing="10">
-                    <Label Text="{Binding CurrentScenario.Title}" Style="{StaticResource SectionTitle}" />
-                    <Label Text="{Binding CurrentScenario.Prompt}" Style="{StaticResource BodyMedium}" />
+            <!-- Scenario Visualization -->
+            <Border Style="{StaticResource AppCard}" HeightRequest="160" Padding="0" Margin="0,8">
+                <Grid IsClippedToBounds="True">
+                    <!-- Sky Gradient -->
+                    <BoxView Color="#E3F2FD" VerticalOptions="Fill" />
+                    
+                    <!-- Sun -->
+                    <Ellipse x:Name="SunVisual" 
+                             WidthRequest="60" HeightRequest="60" 
+                             Fill="{StaticResource SunYellow}"
+                             HorizontalOptions="End" VerticalOptions="Start"
+                             Margin="24" />
+                    
+                    <!-- Ground -->
+                    <BoxView x:Name="GroundVisual"
+                             Color="{StaticResource EcoGreenLight}" 
+                             HeightRequest="60" 
+                             VerticalOptions="End" />
+
+                    <!-- Abstract Elements (Trees/Buildings) -->
+                    <HorizontalStackLayout x:Name="ElementsVisual" Spacing="16" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,20">
+                        <BoxView Color="{StaticResource EcoGreen}" WidthRequest="24" HeightRequest="50" CornerRadius="12,12,0,0" />
+                        <BoxView Color="{StaticResource SoilBrown}" WidthRequest="32" HeightRequest="70" CornerRadius="4,4,0,0" />
+                        <BoxView Color="{StaticResource EcoGreen}" WidthRequest="28" HeightRequest="40" CornerRadius="14,14,0,0" />
+                    </HorizontalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource AppCard}" x:Name="ScenarioCard" Padding="20">
+                <VerticalStackLayout Spacing="12">
+                     <Label Text="🧐" FontSize="32" HorizontalOptions="Center" />
+                    <Label Text="{Binding CurrentScenario.Title}" Style="{StaticResource CardTitle}" HorizontalOptions="Center" />
+                    <Label Text="{Binding CurrentScenario.Prompt}" Style="{StaticResource BodyLarge}" HorizontalTextAlignment="Center" />
                 </VerticalStackLayout>
             </Border>
 
-            <CollectionView ItemsSource="{Binding CurrentScenario.Options}"
+            <CollectionView x:Name="OptionsList" 
+                            ItemsSource="{Binding CurrentScenario.Options}"
                             SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:ActivityOption">
-                        <Border Style="{StaticResource CardBorder}" Margin="0,0,0,10">
+                         <Border Style="{StaticResource AppCard}" Margin="0,0,0,12" BackgroundColor="{StaticResource OffWhite}" StrokeThickness="0">
+                            <Border.Shadow>
+                                <Shadow Brush="Black" Offset="0,2" Radius="3" Opacity="0.1" />
+                            </Border.Shadow>
                             <Button Text="{Binding Text}"
+                                    Style="{StaticResource ActionButton}"
+                                    TextColor="{StaticResource TextColor}"
+                                    BackgroundColor="Transparent"
+                                    BorderWidth="0"
                                     SemanticProperties.Hint="{x:Static resx:Strings.SelectOptionHint}"
-                                    Command="{Binding BindingContext.SelectOptionCommand, Source={x:Reference RootPage}}"
-                                    CommandParameter="{Binding .}" />
+                                    CommandParameter="{Binding .}">
+                                <Button.Command>
+                                    <Binding Path="SelectOptionCommand"
+                                             Source="{RelativeSource AncestorType={x:Type views:ActivityPage}}"
+                                             x:DataType="views:ActivityPage" />
+                                </Button.Command>
+                            </Button>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Border Style="{StaticResource PillBorder}" IsVisible="{Binding HasFeedback}">
-                <Label Text="{Binding FeedbackMessage}" Style="{StaticResource BodyMedium}" />
+            <Border x:Name="FeedbackVisual" Style="{StaticResource HighlightPill}" IsVisible="{Binding HasFeedback}" Opacity="0" HorizontalOptions="Center">
+                <Label Text="{Binding FeedbackMessage}" Style="{StaticResource BodyBold}" TextColor="{StaticResource SoilBrown}" />
             </Border>
 
             <Button Text="{x:Static resx:Strings.ActivityNextScenario}"
-                    Style="{StaticResource SecondaryButton}"
+                    Style="{StaticResource PrimaryButton}"
                     SemanticProperties.Hint="{x:Static resx:Strings.ActivityNextScenarioHint}"
-                    Command="{Binding NextScenarioCommand}" />
+                    Command="{Binding NextScenarioCommand}"
+                    Margin="0,24,0,0"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

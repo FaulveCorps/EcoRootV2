@@ -28,12 +28,13 @@ public sealed class ModuleProgressItem
 
 public sealed class LessonProgressItem
 {
-    public LessonProgressItem(string moduleId, string lessonId, string title, string summary, bool isCompleted)
+    public LessonProgressItem(string moduleId, string lessonId, string title, string summary, string? timeEstimate, bool isCompleted)
     {
         ModuleId = moduleId;
         LessonId = lessonId;
         Title = title;
         Summary = summary;
+        TimeEstimate = timeEstimate;
         IsCompleted = isCompleted;
     }
 
@@ -44,6 +45,8 @@ public sealed class LessonProgressItem
     public string Title { get; }
 
     public string Summary { get; }
+
+    public string? TimeEstimate { get; }
 
     public bool IsCompleted { get; }
 

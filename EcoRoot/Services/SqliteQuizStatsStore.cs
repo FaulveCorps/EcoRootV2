@@ -91,6 +91,12 @@ public sealed class SqliteQuizStatsStore : IQuizStatsStore
                 return;
             }
 
+            var dir = Path.GetDirectoryName(dbPath);
+            if (!string.IsNullOrEmpty(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
             connection = new SQLiteConnection(dbPath);
             connection.CreateTable<QuizAttemptEntity>();
             isInitialized = true;

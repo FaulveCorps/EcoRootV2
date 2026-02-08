@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EcoRoot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+9358e0b3129482cc0c6ac66e90e311f3e7227c89")]
 [assembly: System.Reflection.AssemblyProductAttribute("EcoRoot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EcoRoot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

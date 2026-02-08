@@ -107,6 +107,7 @@ public static class Strings
     public static string ActivityScenarioFeedback3B => Get("ActivityScenarioFeedback3B");
     public static string ActivityScenarioFeedback3C => Get("ActivityScenarioFeedback3C");
     public static string ProgressTitle => Get("ProgressTitle");
+    public static string ProgressStatsTitle => Get("ProgressStatsTitle");
     public static string ProgressHeadline => Get("ProgressHeadline");
     public static string ProgressBody => Get("ProgressBody");
     public static string ProgressBadgesTitle => Get("ProgressBadgesTitle");

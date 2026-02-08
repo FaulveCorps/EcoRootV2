@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoRoot - Lesson</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <button onclick="window.history.back()" style="border:none; background:none; color: var(--text-muted); margin-bottom: 20px;">
+                ← Back
+            </button>
+
+            <div id="module-view">
+                <h1 id="mod-title">Loading...</h1>
+                <p id="mod-summary" class="text-muted"></p>
+                
+                <h3>Lessons</h3>
+                <div id="lesson-list" class="card"></div>
+            </div>
+
+            <div id="lesson-view" class="hidden">
+                 <h2 id="lesson-title"></h2>
+                 <div id="lesson-content"></div>
+
+                 <div class="card" style="margin-top: 24px; border: 1px solid var(--eco-green);">
+                     <h3 style="color: var(--eco-green);">Quiz</h3>
+                     <div id="quiz-container"></div>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        renderNav('modules');
+
+        const params = new URLSearchParams(window.location.search);
+        const modId = params.get('id');
+        const lessonIndex = params.get('lesson'); // Optional, switch view if present
+
+        const module = appData.modules.find(m => m.id === modId);
+
+        if (!module) {
+            document.querySelector('.content').innerHTML = "<p>Module not found.</p>";
+        } else {
+            // Module View
+            if (lessonIndex === null) {
+                document.getElementById('mod-title').textContent = module.title;
+                document.getElementById('mod-summary').textContent = module.summary;
+
+                const list = document.getElementById('lesson-list');
+                module.lessons.forEach((l, idx) => {
+                    const isDone = isLessonComplete(`${module.id}.${l.id}`);
+                    const div = document.createElement('div');
+                    div.className = 'lesson-item';
+                    div.innerHTML = `
+                        <div style="display:flex; justify-content:space-between;">
+                            <b>${idx + 1}. ${l.title}</b>
+                            ${isDone ? '✅' : '○'}
+                        </div>
+                        <p class="text-muted" style="margin: 4px 0; font-size: 14px;">${l.summary}</p>
+                    `;
+                    div.onclick = () => {
+                        window.location.href = `module-detail.html?id=${modId}&lesson=${idx}`;
+                    };
+                    list.appendChild(div);
+                });
+            } 
+            // Lesson View
+            else {
+                document.getElementById('module-view').classList.add('hidden');
+                document.getElementById('lesson-view').classList.remove('hidden');
+
+                const lesson = module.lessons[lessonIndex];
+                document.getElementById('lesson-title').textContent = lesson.title;
+
+                const contentDiv = document.getElementById('lesson-content');
+                lesson.sections.forEach(sec => {
+                    contentDiv.innerHTML += `<h3>${sec.heading}</h3><p>${sec.body}</p>`;
+                });
+
+                // Quiz Render
+                const quizDiv = document.getElementById('quiz-container');
+                if (lesson.quiz && lesson.quiz.length > 0) {
+                    const q = lesson.quiz[0]; // Just showing first question for mock
+                    quizDiv.innerHTML = `<p><b>${q.prompt}</b></p>`;
+                    
+                    q.options.forEach((opt, idx) => {
+                        const btn = document.createElement('div');
+                        btn.className = 'quiz-option';
+                        btn.textContent = opt;
+                        btn.onclick = () => checkAnswer(btn, idx, q.correctIndex, q.explanation, lesson.id);
+                        quizDiv.appendChild(btn);
+                    });
+
+                    quizDiv.innerHTML += `<p id="quiz-feedback" style="margin-top:10px; font-weight:bold;"></p>`;
+                } else {
+                    quizDiv.innerHTML = "<p>No quiz for this lesson.</p><button class='btn btn-primary' onclick='finishLesson(\""+lesson.id+"\")'>Mark Complete</button>";
+                }
+            }
+        }
+
+        function checkAnswer(btn, selected, correct, expl, lessonId) {
+            const feedback = document.getElementById('quiz-feedback');
+            // Reset styles
+            document.querySelectorAll('.quiz-option').forEach(b => b.className = 'quiz-option');
+
+            if (selected === correct) {
+                btn.className = 'quiz-option correct';
+                feedback.textContent = "Correct! " + expl;
+                feedback.style.color = "green";
+                // Save progress
+                saveProgress(`${modId}.${lessonId}`);
+            } else {
+                btn.className = 'quiz-option incorrect';
+                feedback.textContent = "Incorrect. Try again.";
+                feedback.style.color = "red";
+            }
+        }
+
+        function finishLesson(lessonId) {
+             saveProgress(`${modId}.${lessonId}`);
+             alert("Lesson Completed!");
+             window.history.back();
+        }
+    </script>
+</body>
+</html>

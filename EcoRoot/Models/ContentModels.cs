@@ -20,11 +20,12 @@ public sealed class Module
 
 public sealed class Lesson
 {
-    public Lesson(string id, string title, string summary, IReadOnlyList<LessonSection> sections, IReadOnlyList<QuizQuestion> quiz)
+    public Lesson(string id, string title, string summary, string? timeEstimate, IReadOnlyList<LessonSection> sections, IReadOnlyList<QuizQuestion> quiz)
     {
         Id = id;
         Title = title;
         Summary = summary;
+        TimeEstimate = timeEstimate;
         Sections = sections;
         Quiz = quiz;
     }
@@ -32,6 +33,7 @@ public sealed class Lesson
     public string Id { get; }
     public string Title { get; }
     public string Summary { get; }
+    public string? TimeEstimate { get; }
     public IReadOnlyList<LessonSection> Sections { get; }
     public IReadOnlyList<QuizQuestion> Quiz { get; }
 }

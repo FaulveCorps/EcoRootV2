@@ -9,4 +9,15 @@ public partial class ProgressPage : ContentPage
         InitializeComponent();
         BindingContext = viewModel;
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        MainContent.Opacity = 0;
+        MainContent.TranslationY = 20;
+        await Task.WhenAll(
+            MainContent.FadeTo(1, 400, Easing.SinOut),
+            MainContent.TranslateTo(0, 0, 400, Easing.SinOut)
+        );
+    }
 }

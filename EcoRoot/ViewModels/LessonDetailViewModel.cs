@@ -53,6 +53,8 @@ public sealed class LessonDetailViewModel : BaseViewModel
         private set => SetProperty(ref sections, value);
     }
 
+    public string? TimeEstimate => Lesson?.TimeEstimate;
+
     public bool HasQuiz => Lesson?.Quiz.Count > 0;
 
     public bool IsCompleted
@@ -92,6 +94,7 @@ public sealed class LessonDetailViewModel : BaseViewModel
         Sections = Lesson?.Sections ?? Array.Empty<LessonSection>();
         UpdateCompletionStatus();
         OnPropertyChanged(nameof(HasQuiz));
+        OnPropertyChanged(nameof(TimeEstimate));
     }
 
     async Task StartQuizAsync()

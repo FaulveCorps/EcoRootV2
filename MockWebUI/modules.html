@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoRoot - Modules</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Modules</h1>
+            <p class="text-muted">Select a topic to start learning.</p>
+            
+            <div id="modules-list">
+                <!-- Modules injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        renderNav('modules');
+
+        const list = document.getElementById('modules-list');
+        const completedIds = getProgress();
+
+        appData.modules.forEach(mod => {
+            // Calculate local progress
+            let modTotal = mod.lessons.length;
+            let modCompleted = 0;
+            mod.lessons.forEach(l => {
+                if(completedIds.includes(`${mod.id}.${l.id}`)) modCompleted++;
+            });
+            let percent = modTotal === 0 ? 0 : (modCompleted / modTotal) * 100;
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <h3>${mod.title}</h3>
+                <p class="text-muted">${mod.summary}</p>
+                
+                <div style="display: flex; align-items: center; gap: 10px; margin: 12px 0;">
+                    <div class="progress-container" style="flex-grow: 1;">
+                        <div class="progress-bar" style="width: ${percent}%"></div>
+                    </div>
+                    <span class="text-eco" style="font-size: 12px;">${Math.round(percent)}%</span>
+                </div>
+
+                <button class="btn btn-secondary" onclick="openModule('${mod.id}')">View Lessons</button>
+            `;
+            list.appendChild(card);
+        });
+
+        function openModule(id) {
+            window.location.href = `module-detail.html?id=${id}`;
+        }
+    </script>
+</body>
+</html>

@@ -146,6 +146,7 @@ public sealed class JsonContentService : IContentService
                         lesson.Id ?? string.Empty,
                         lesson.Title ?? string.Empty,
                         lesson.Summary ?? string.Empty,
+                        lesson.TimeEstimate,
                         sections,
                         quiz));
                 }
@@ -203,6 +204,7 @@ public sealed class JsonContentService : IContentService
         public string? Id { get; set; }
         public string? Title { get; set; }
         public string? Summary { get; set; }
+        public string? TimeEstimate { get; set; }
         public List<LessonSectionDto>? Sections { get; set; }
         public List<QuizQuestionDto>? Quiz { get; set; }
     }

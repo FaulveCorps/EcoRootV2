@@ -4,40 +4,58 @@
              xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
              xmlns:models="clr-namespace:EcoRoot.Models"
              xmlns:resx="clr-namespace:EcoRoot.Resources"
+             xmlns:views="clr-namespace:EcoRoot.Views"
              x:Class="EcoRoot.Views.TeacherResourcesPage"
              x:Name="RootPage"
              x:DataType="viewmodels:TeacherResourcesViewModel"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource PageBackground}">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="24" Spacing="16">
-                 <Label Text="{x:Static resx:Strings.TeacherResourcesTitle}"
-                   Style="{StaticResource TitleLarge}"
-                   SemanticProperties.HeadingLevel="Level1" />
-                 <Label Text="{Binding IntroText}" Style="{StaticResource BodyMedium}" />
-                 <Label Text="{Binding StatusMessage}"
-                     Style="{StaticResource BodyMuted}"
-                     IsVisible="{Binding HasStatusMessage}" />
+    <ScrollView x:Name="MainContent">
+        <VerticalStackLayout Padding="24" Spacing="24">
+            
+            <VerticalStackLayout Spacing="8">
+                <Label Text="{x:Static resx:Strings.TeacherResourcesTitle}"
+                       Style="{StaticResource TitleLarge}"
+                       SemanticProperties.HeadingLevel="Level1" />
+                <Label Text="{Binding IntroText}" 
+                       Style="{StaticResource BodyMedium}" />
+            </VerticalStackLayout>
 
-            <CollectionView ItemsSource="{Binding Resources}"
-                            SelectionMode="None">
-                <CollectionView.ItemTemplate>
+            <Label Text="{Binding StatusMessage}"
+                   Style="{StaticResource HighlightPill}"
+                   HorizontalOptions="Center"
+                   IsVisible="{Binding HasStatusMessage}" />
+
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Resources}" Spacing="16">
+                <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="models:TeacherResourceItem">
-                        <Border Style="{StaticResource CardBorder}" Margin="0,0,0,12">
-                            <VerticalStackLayout Spacing="6">
-                                <Label Text="{Binding Title}" Style="{StaticResource SectionTitle}" SemanticProperties.HeadingLevel="Level2" />
-                                <Label Text="{Binding Description}" Style="{StaticResource BodyMedium}" />
-                                <Button Text="{x:Static resx:Strings.TeacherResourcesCopyButton}"
+                        <Border Style="{StaticResource AppCard}">
+                            <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="8">
+                                <Grid ColumnDefinitions="*, Auto">
+                                    <Label Text="{Binding Title}" Style="{StaticResource CardTitle}" VerticalOptions="Center" />
+                                    <Label Text="📄" Grid.Column="1" FontSize="20"/>
+                                </Grid>
+                                
+                                <Label Grid.Row="1" Text="{Binding Description}" Style="{StaticResource BodyMedium}" />
+                                
+                                <Button Grid.Row="2" 
+                                        Text="{x:Static resx:Strings.TeacherResourcesCopyButton}"
                                         Style="{StaticResource SecondaryButton}"
-                                    SemanticProperties.Hint="{x:Static resx:Strings.TeacherResourcesCopyHint}"
-                                        Command="{Binding BindingContext.CopyResourceCommand, Source={x:Reference RootPage}}"
-                                        CommandParameter="{Binding .}" />
-                            </VerticalStackLayout>
+                                        HorizontalOptions="Start"
+                                        SemanticProperties.Hint="{x:Static resx:Strings.TeacherResourcesCopyHint}"
+                                        CommandParameter="{Binding .}">
+                                    <Button.Command>
+                                        <Binding Path="CopyResourceCommand"
+                                                 Source="{RelativeSource AncestorType={x:Type views:TeacherResourcesPage}}"
+                                                 x:DataType="views:TeacherResourcesPage" />
+                                    </Button.Command>
+                                </Button>
+                            </Grid>
                         </Border>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

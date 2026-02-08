@@ -69,11 +69,14 @@ public sealed class QuizViewModel : BaseViewModel
             if (SetProperty(ref feedback, value))
             {
                 OnPropertyChanged(nameof(HasFeedback));
+                OnPropertyChanged(nameof(IsFeedbackHidden));
             }
         }
     }
 
     public bool HasFeedback => !string.IsNullOrWhiteSpace(Feedback);
+    
+    public bool IsFeedbackHidden => string.IsNullOrWhiteSpace(Feedback);
 
     public string NextButtonText => currentIndex >= questions.Count - 1
         ? Strings.QuizFinish

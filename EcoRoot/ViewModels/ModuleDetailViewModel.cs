@@ -85,7 +85,7 @@ public sealed class ModuleDetailViewModel : BaseViewModel
         foreach (var lesson in Module.Lessons)
         {
             var completed = progressStore.IsLessonCompleted(Module.Id, lesson.Id);
-            items.Add(new LessonProgressItem(Module.Id, lesson.Id, lesson.Title, lesson.Summary, completed));
+            items.Add(new LessonProgressItem(Module.Id, lesson.Id, lesson.Title, lesson.Summary, lesson.TimeEstimate, completed));
         }
 
         Lessons = items;
