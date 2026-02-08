@@ -9,7 +9,7 @@
              x:Name="RootPage"
              x:DataType="viewmodels:ModulesViewModel"
              Title="{Binding Title}"
-             BackgroundColor="{StaticResource PageBackground}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Sand}, Dark={StaticResource OffBlack}}">
 
     <ScrollView>
         <VerticalStackLayout x:Name="MainContent" Padding="24" Spacing="24" Opacity="0">
@@ -46,7 +46,7 @@
                                          </Border>
                                     </Grid>
                                     
-                                    <Label Text="{Binding Summary}" Style="{StaticResource BodyMedium}" LineBreakMode="TailTruncation" MaxLines="2" TextColor="{StaticResource Gray600}"/>
+                                    <Label Text="{Binding Summary}" Style="{StaticResource BodyMedium}" LineBreakMode="TailTruncation" MaxLines="2" TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray300}}"/>
                                     
                                     <Grid ColumnDefinitions="*, Auto" ColumnSpacing="12" Margin="0,4,0,0">
                                         <Border StrokeThickness="0" HeightRequest="8" BackgroundColor="{StaticResource Gray100}" VerticalOptions="Center">
@@ -62,7 +62,7 @@
                                                FontAttributes="Bold"/>
                                     </Grid>
                                     
-                                    <Label Text="{Binding ProgressSummary}" Style="{StaticResource BodySmall}" TextColor="{StaticResource Gray500}" />
+                                    <Label Text="{Binding ProgressSummary}" Style="{StaticResource BodySmall}" TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}" />
                                 </VerticalStackLayout>
                                 
                                 <Button Text="{x:Static resx:Strings.ModulesViewLessons}"

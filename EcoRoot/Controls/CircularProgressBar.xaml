@@ -28,15 +28,15 @@
 
         <!-- Percentage Text -->
         <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
-            <Label Text="{Binding ProgressRatio, StringFormat='{0:P0}'}"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   TextColor="{StaticResource EcoGreenDark}"
+                 <Label Text="{Binding ProgressRatio, StringFormat='{0:P0}'}"
+                     FontSize="24"
+                     FontAttributes="Bold"
+                     TextColor="{AppThemeBinding Light={StaticResource EcoGreenDark}, Dark={StaticResource EcoGreenLight}}"
                    HorizontalOptions="Center"
                    HorizontalTextAlignment="Center" />
             <Label Text="Done"
                    FontSize="12"
-                   TextColor="{StaticResource Gray500}"
+                     TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray300}}"
                    HorizontalOptions="Center"
                    HorizontalTextAlignment="Center" />
         </VerticalStackLayout>

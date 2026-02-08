@@ -8,7 +8,7 @@
              x:Name="RootPage"
              x:DataType="viewmodels:QuizViewModel"
              Title="{Binding Title}"
-             BackgroundColor="{StaticResource PageBackground}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Sand}, Dark={StaticResource OffBlack}}">
 
     <ScrollView x:Name="MainContent">
         <VerticalStackLayout Padding="24" Spacing="24">
@@ -24,7 +24,7 @@
                    SemanticProperties.HeadingLevel="Level1" />
 
             <!-- Question Card -->
-            <Border Style="{StaticResource AppCard}" BackgroundColor="White" Padding="20">
+            <Border Style="{StaticResource AppCard}" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" Padding="20">
                 <VerticalStackLayout Spacing="12">
                     <Label Text="❓" FontSize="40" HorizontalOptions="Center"/>
                     <Label Text="{Binding Prompt}" 
@@ -39,7 +39,7 @@
             <VerticalStackLayout BindableLayout.ItemsSource="{Binding Options}" Spacing="12">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
-                        <Border Style="{StaticResource AppCard}" BackgroundColor="{StaticResource OffWhite}">
+                        <Border Style="{StaticResource AppCard}" BackgroundColor="{AppThemeBinding Light={StaticResource OffWhite}, Dark={StaticResource Gray900}}">
                              <Border.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding .}">
                                     <TapGestureRecognizer.Command>

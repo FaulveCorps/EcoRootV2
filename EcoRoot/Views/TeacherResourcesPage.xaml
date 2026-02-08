@@ -9,7 +9,7 @@
              x:Name="RootPage"
              x:DataType="viewmodels:TeacherResourcesViewModel"
              Title="{Binding Title}"
-             BackgroundColor="{StaticResource PageBackground}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Sand}, Dark={StaticResource OffBlack}}">
 
     <ScrollView x:Name="MainContent">
         <VerticalStackLayout Padding="24" Spacing="24">

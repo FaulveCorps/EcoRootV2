@@ -41,7 +41,7 @@
                                         </Border>
                                     </Grid>
                                     
-                                    <Label Text="{Binding Summary}" Style="{StaticResource BodyMedium}" MaxLines="2" LineBreakMode="TailTruncation" TextColor="{StaticResource Gray600}"/>
+                                    <Label Text="{Binding Summary}" Style="{StaticResource BodyMedium}" MaxLines="2" LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray300}}"/>
                                     
                                     <HorizontalStackLayout Spacing="8" Margin="0,4,0,0">
                                          <Label Text="{Binding StatusText}" Style="{StaticResource BodySmall}" TextColor="{StaticResource EcoGreen}" FontAttributes="Bold"/>

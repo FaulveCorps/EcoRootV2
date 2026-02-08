@@ -3,6 +3,9 @@ using EcoRoot.Views;
 using EcoRoot.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+#if WINDOWS
+using EcoRoot.Platforms.Windows;
+#endif
 
 namespace EcoRoot;
 
@@ -18,6 +21,19 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+#if WINDOWS
+		builder.ConfigureLifecycleEvents(events =>
+		{
+			events.AddWindows(windows =>
+			{
+				windows.OnWindowCreated(window =>
+				{
+					BackspaceNavigationHandler.Attach(window);
+				});
+			});
+		});
+#endif
 
 		builder.Services.AddSingleton<SampleContentService>();
 		builder.Services.AddSingleton<IContentService, JsonContentService>();

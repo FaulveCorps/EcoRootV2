@@ -7,7 +7,7 @@
              x:Class="EcoRoot.Views.HomePage"
              x:DataType="viewmodels:HomeViewModel"
              Title="{Binding Title}"
-             BackgroundColor="{StaticResource PageBackground}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Sand}, Dark={StaticResource OffBlack}}">
 
     <ScrollView>
         <VerticalStackLayout x:Name="MainContent" Spacing="0">
@@ -59,7 +59,7 @@
                 </Border>
 
                 <!-- Next Lesson Focus -->
-                <Border Style="{StaticResource AppCard}" BackgroundColor="White">
+                <Border Style="{StaticResource AppCard}" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}">
                     <VerticalStackLayout Spacing="16">
                         <Label Text="{x:Static resx:Strings.HomeFocusTitle}" Style="{StaticResource CardTitle}" />
                         <Label Text="{Binding FocusDescription}" Style="{StaticResource BodyLarge}" />
@@ -89,7 +89,7 @@
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" HeightRequest="160" Margin="-24,0">
                     <HorizontalStackLayout Spacing="16" Padding="24,10">
                         <!-- Knowledge -->
-                        <Border Style="{StaticResource AppCard}" WidthRequest="130" HeightRequest="150" BackgroundColor="{StaticResource White}" Padding="16">
+                        <Border Style="{StaticResource AppCard}" WidthRequest="130" HeightRequest="150" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" Padding="16">
                              <VerticalStackLayout Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
                                 <Border BackgroundColor="{StaticResource EcoGreenLight}" StrokeShape="RoundRectangle 25" HeightRequest="50" WidthRequest="50" Padding="12">
                                      <Path Data="{StaticResource IconLeaf}" Fill="{StaticResource EcoGreen}" Aspect="Uniform" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -103,7 +103,7 @@
                         </Border>
 
                         <!-- Action -->
-                        <Border Style="{StaticResource AppCard}" WidthRequest="130" HeightRequest="150" BackgroundColor="{StaticResource White}" Padding="16">
+                        <Border Style="{StaticResource AppCard}" WidthRequest="130" HeightRequest="150" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" Padding="16">
                              <VerticalStackLayout Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
                                  <Border BackgroundColor="{StaticResource SunYellowLight}" StrokeShape="RoundRectangle 25" HeightRequest="50" WidthRequest="50" Padding="12">
                                      <Path Data="{StaticResource IconGlobe}" Fill="{StaticResource SoilBrown}" Aspect="Uniform" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -117,7 +117,7 @@
                         </Border>
 
                         <!-- Solutions -->
-                        <Border Style="{StaticResource AppCard}" WidthRequest="130" HeightRequest="150" BackgroundColor="{StaticResource White}" Padding="16">
+                        <Border Style="{StaticResource AppCard}" WidthRequest="130" HeightRequest="150" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" Padding="16">
                              <VerticalStackLayout Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
                                  <Border BackgroundColor="{StaticResource Gray100}" StrokeShape="RoundRectangle 25" HeightRequest="50" WidthRequest="50" Padding="12">
                                      <Path Data="{StaticResource IconBulb}" Fill="{StaticResource Gray600}" Aspect="Uniform" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -169,7 +169,7 @@
 
                 <Button Text="{Binding SecondaryActionText}"
                     Background="Transparent"
-                        TextColor="{StaticResource TextColorMuted}"
+                    TextColor="{AppThemeBinding Light={StaticResource TextColorMuted}, Dark={StaticResource TextColorMutedDark}}"
                         FontSize="14"
                         SemanticProperties.Hint="{x:Static resx:Strings.HintOpenGlossary}"
                         Command="{Binding SecondaryActionCommand}" />

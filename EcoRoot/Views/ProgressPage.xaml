@@ -7,7 +7,7 @@
              x:Class="EcoRoot.Views.ProgressPage"
              x:DataType="viewmodels:ProgressViewModel"
              Title="{Binding Title}"
-             BackgroundColor="{StaticResource PageBackground}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Sand}, Dark={StaticResource OffBlack}}">
 
     <ScrollView x:Name="MainContent">
         <VerticalStackLayout Padding="24" Spacing="24">

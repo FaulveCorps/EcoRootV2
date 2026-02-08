@@ -18,15 +18,17 @@
     <Color x:Key="EcoGreenDark">#1B5E20</Color>
     <Color x:Key="SoilBrown">#6D4C41</Color>
     <Color x:Key="Sand">#FFF8E1</Color> <!-- Lighter yellow background -->
-    <AppThemeColor x:Key="PageBackground" Light="{StaticResource Sand}" Dark="#1f1f1f" />
+    <Color x:Key="PageBackground">#FFF8E1</Color>
     <Color x:Key="RiverBlue">#2A9D8F</Color>
 
     <Color x:Key="EcoGreenLight">#E8F5E9</Color>
     <Color x:Key="SunYellowLight">#FFFDE7</Color>
     <Color x:Key="OffWhite">#FAFAFA</Color>
     
-    <AppThemeColor x:Key="TextColor" Light="#212121" Dark="#F5F5F5" />
-    <AppThemeColor x:Key="TextColorMuted" Light="#757575" Dark="#CFCFCF" />
+    <Color x:Key="TextColor">#212121</Color>
+    <Color x:Key="TextColorDark">#F5F5F5</Color>
+    <Color x:Key="TextColorMuted">#757575</Color>
+    <Color x:Key="TextColorMutedDark">#CFCFCF</Color>
 
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>

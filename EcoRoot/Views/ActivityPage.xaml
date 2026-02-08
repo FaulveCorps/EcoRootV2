@@ -10,7 +10,7 @@
              x:Name="RootPage"
              x:DataType="viewmodels:ActivityViewModel"
              Title="{Binding Title}"
-             BackgroundColor="{StaticResource PageBackground}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Sand}, Dark={StaticResource OffBlack}}">
 
     <ScrollView>
         <VerticalStackLayout x:Name="ContentLayout" Padding="24" Spacing="24">
@@ -63,13 +63,13 @@
                             SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:ActivityOption">
-                         <Border Style="{StaticResource AppCard}" Margin="0,0,0,12" BackgroundColor="{StaticResource OffWhite}" StrokeThickness="0">
+                         <Border Style="{StaticResource AppCard}" Margin="0,0,0,12" BackgroundColor="{AppThemeBinding Light={StaticResource OffWhite}, Dark={StaticResource Gray900}}" StrokeThickness="0">
                             <Border.Shadow>
                                 <Shadow Brush="Black" Offset="0,2" Radius="3" Opacity="0.1" />
                             </Border.Shadow>
                             <Button Text="{Binding Text}"
                                     Style="{StaticResource ActionButton}"
-                                    TextColor="{StaticResource TextColor}"
+                                    TextColor="{AppThemeBinding Light={StaticResource TextColor}, Dark={StaticResource TextColorDark}}"
                                     BackgroundColor="Transparent"
                                     BorderWidth="0"
                                     SemanticProperties.Hint="{x:Static resx:Strings.SelectOptionHint}"

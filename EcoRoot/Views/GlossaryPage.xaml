@@ -6,7 +6,7 @@
              x:Class="EcoRoot.Views.GlossaryPage"
              x:DataType="viewmodels:GlossaryViewModel"
              Title="{Binding Title}"
-             BackgroundColor="{StaticResource PageBackground}">
+             BackgroundColor="{AppThemeBinding Light={StaticResource Sand}, Dark={StaticResource OffBlack}}">
 
     <ScrollView x:Name="MainContent">
         <VerticalStackLayout Padding="24" Spacing="24">
@@ -31,7 +31,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="x:String">
-                        <Border Style="{StaticResource AppCard}" Padding="16" BackgroundColor="White">
+                        <Border Style="{StaticResource AppCard}" Padding="16" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}">
                             <Grid ColumnDefinitions="Auto, *">
                                 <Label Text="📖" FontSize="20" Margin="0,0,12,0" VerticalOptions="Start"/>
                                 <Label Text="{Binding .}" Style="{StaticResource BodyMedium}" Grid.Column="1" />
