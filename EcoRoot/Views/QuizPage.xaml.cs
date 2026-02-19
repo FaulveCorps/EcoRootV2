@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Windows.Input;
-using EcoRoot.ViewModels;
+using EcoWay.ViewModels;
 
-namespace EcoRoot.Views;
+namespace EcoWay.Views;
 
 public partial class QuizPage : ContentPage, IQueryAttributable
 {
@@ -35,3 +35,4 @@ public partial class QuizPage : ContentPage, IQueryAttributable
         );
     }
 }
+

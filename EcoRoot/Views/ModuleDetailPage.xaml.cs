@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Windows.Input;
-using EcoRoot.ViewModels;
+using EcoWay.ViewModels;
 
-namespace EcoRoot.Views;
+namespace EcoWay.Views;
 
 public partial class ModuleDetailPage : ContentPage, IQueryAttributable
 {
@@ -37,3 +37,4 @@ public partial class ModuleDetailPage : ContentPage, IQueryAttributable
         }
     }
 }
+

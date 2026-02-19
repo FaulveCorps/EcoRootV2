@@ -6,7 +6,7 @@ using System.Text.Json;
 using Microsoft.Maui.Storage;
 using SQLite;
 
-namespace EcoRoot.Services;
+namespace EcoWay.Services;
 
 public sealed class SqliteProgressStore : IProgressStore
 {
@@ -18,7 +18,7 @@ public sealed class SqliteProgressStore : IProgressStore
 
     public SqliteProgressStore()
     {
-        dbPath = Path.Combine(FileSystem.AppDataDirectory, "ecoroot.db3");
+        dbPath = Path.Combine(FileSystem.AppDataDirectory, "EcoWay.db3");
         legacyJsonPath = Path.Combine(FileSystem.AppDataDirectory, "progress.json");
         Initialize();
     }
@@ -192,3 +192,4 @@ public sealed class SqliteProgressStore : IProgressStore
         public DateTime CompletedAtUtc { get; set; }
     }
 }
+

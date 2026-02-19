@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using EcoRoot.Models;
-using EcoRoot.Resources;
+using EcoWay.Models;
+using EcoWay.Resources;
 using Microsoft.Maui.ApplicationModel.DataTransfer;
 using Microsoft.Maui.Controls;
 
-namespace EcoRoot.ViewModels;
+namespace EcoWay.ViewModels;
 
 public sealed class TeacherResourcesViewModel : BaseViewModel
 {
@@ -78,3 +78,4 @@ public sealed class TeacherResourcesViewModel : BaseViewModel
         }
     }
 }
+

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using EcoRoot.Models;
+using EcoWay.Models;
 
-namespace EcoRoot.Services;
+namespace EcoWay.Services;
 
 public interface IContentService
 {
@@ -11,3 +11,4 @@ public interface IContentService
 
     Lesson? GetLesson(string moduleId, string lessonId);
 }
+

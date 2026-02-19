@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
-             xmlns:models="clr-namespace:EcoRoot.Models"
-             xmlns:resx="clr-namespace:EcoRoot.Resources"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:models="clr-namespace:EcoWay.Models"
+             xmlns:resx="clr-namespace:EcoWay.Resources"
              xmlns:shapes="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:views="clr-namespace:EcoRoot.Views"
-             x:Class="EcoRoot.Views.ActivityPage"
+             xmlns:views="clr-namespace:EcoWay.Views"
+             x:Class="EcoWay.Views.ActivityPage"
              x:Name="RootPage"
              x:DataType="viewmodels:ActivityViewModel"
              Title="{Binding Title}"
@@ -86,7 +86,7 @@
             </CollectionView>
 
             <Border x:Name="FeedbackVisual" Style="{StaticResource HighlightPill}" IsVisible="{Binding HasFeedback}" Opacity="0" HorizontalOptions="Center">
-                <Label Text="{Binding FeedbackMessage}" Style="{StaticResource BodyBold}" TextColor="{StaticResource SoilBrown}" />
+                <Label Text="{Binding FeedbackMessage}" Style="{StaticResource BodyBold}" TextColor="{AppThemeBinding Light={StaticResource SoilBrown}, Dark={StaticResource SunYellowLight}}" />
             </Border>
 
             <Button Text="{x:Static resx:Strings.ActivityNextScenario}"
@@ -97,3 +97,4 @@
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+

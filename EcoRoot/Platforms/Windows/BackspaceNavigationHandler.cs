@@ -3,14 +3,15 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Windows.System;
+using WinUIWindow = Microsoft.UI.Xaml.Window;
 
-namespace EcoRoot.Platforms.Windows;
+namespace EcoWay.Platforms.Windows;
 
 internal static class BackspaceNavigationHandler
 {
 	private static bool _attached;
 
-	public static void Attach(Window window)
+	public static void Attach(WinUIWindow window)
 	{
 		if (_attached)
 		{

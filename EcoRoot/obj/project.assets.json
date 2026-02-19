@@ -28510,11 +28510,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\EcoRoot.csproj",
-      "projectName": "EcoRoot",
-      "projectPath": "C:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\EcoRoot.csproj",
+      "projectUniqueName": "c:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\EcoWay.csproj",
+      "projectName": "EcoWay",
+      "projectPath": "c:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\EcoWay.csproj",
       "packagesPath": "C:\\Users\\jpfau\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\obj\\",
+      "outputPath": "c:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [

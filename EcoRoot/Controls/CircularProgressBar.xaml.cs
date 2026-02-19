@@ -1,7 +1,7 @@
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
 
-namespace EcoRoot.Controls;
+namespace EcoWay.Controls;
 
 public partial class CircularProgressBar : ContentView
 {
@@ -51,3 +51,4 @@ public partial class CircularProgressBar : ContentView
         ProgressRing.StrokeDashArray = new DoubleCollection { dashLength, gapLength };
     }
 }
+

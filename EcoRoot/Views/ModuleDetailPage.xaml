@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
-             xmlns:models="clr-namespace:EcoRoot.Models"
-             xmlns:resx="clr-namespace:EcoRoot.Resources"
-             xmlns:views="clr-namespace:EcoRoot.Views"
-             x:Class="EcoRoot.Views.ModuleDetailPage"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:models="clr-namespace:EcoWay.Models"
+             xmlns:resx="clr-namespace:EcoWay.Resources"
+             xmlns:views="clr-namespace:EcoWay.Views"
+             x:Class="EcoWay.Views.ModuleDetailPage"
              x:Name="RootPage"
              x:DataType="viewmodels:ModuleDetailViewModel"
              Title="{Binding Title}">
@@ -37,14 +37,14 @@
                                             <Border.StrokeShape>
                                                 <RoundRectangle CornerRadius="8"/>
                                             </Border.StrokeShape>
-                                            <Label Text="{Binding TimeEstimate, TargetNullValue='5 min'}" FontSize="12" TextColor="{StaticResource EcoGreenDark}" FontAttributes="Bold"/>
+                                            <Label Text="{Binding TimeEstimate, TargetNullValue='5 min'}" FontSize="12" TextColor="{AppThemeBinding Light={StaticResource EcoGreenDark}, Dark={StaticResource EcoGreenLight}}" FontAttributes="Bold"/>
                                         </Border>
                                     </Grid>
                                     
                                     <Label Text="{Binding Summary}" Style="{StaticResource BodyMedium}" MaxLines="2" LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray300}}"/>
                                     
                                     <HorizontalStackLayout Spacing="8" Margin="0,4,0,0">
-                                         <Label Text="{Binding StatusText}" Style="{StaticResource BodySmall}" TextColor="{StaticResource EcoGreen}" FontAttributes="Bold"/>
+                                         <Label Text="{Binding StatusText}" Style="{StaticResource BodySmall}" TextColor="{AppThemeBinding Light={StaticResource EcoGreen}, Dark={StaticResource EcoGreenLight}}" FontAttributes="Bold"/>
                                     </HorizontalStackLayout>
                                 </VerticalStackLayout>
                                 
@@ -68,3 +68,4 @@
     </ScrollView>
 
 </ContentPage>
+

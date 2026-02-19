@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using EcoRoot.Models;
+using EcoWay.Models;
 using Microsoft.Maui.Storage;
 using SQLite;
 
-namespace EcoRoot.Services;
+namespace EcoWay.Services;
 
 public sealed class SqliteQuizStatsStore : IQuizStatsStore
 {
@@ -17,7 +17,7 @@ public sealed class SqliteQuizStatsStore : IQuizStatsStore
 
     public SqliteQuizStatsStore()
     {
-        dbPath = Path.Combine(FileSystem.AppDataDirectory, "ecoroot.db3");
+        dbPath = Path.Combine(FileSystem.AppDataDirectory, "EcoWay.db3");
         Initialize();
     }
 
@@ -132,3 +132,4 @@ public sealed class SqliteQuizStatsStore : IQuizStatsStore
         public DateTime AttemptedAtUtc { get; set; }
     }
 }
+

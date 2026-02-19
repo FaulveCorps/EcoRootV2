@@ -1,8 +1,8 @@
-using EcoRoot.Models;
+using EcoWay.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EcoRoot.Services;
+namespace EcoWay.Services;
 
 public sealed class SampleContentService : IContentService
 {
@@ -183,3 +183,4 @@ public sealed class SampleContentService : IContentService
         return GetModule(moduleId)?.Lessons.FirstOrDefault(lesson => lesson.Id == lessonId);
     }
 }
+

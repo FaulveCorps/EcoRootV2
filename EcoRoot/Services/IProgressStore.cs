@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace EcoRoot.Services;
+namespace EcoWay.Services;
 
 public interface IProgressStore
 {
@@ -13,3 +13,4 @@ public interface IProgressStore
 
     void MarkLessonCompleted(string moduleId, string lessonId);
 }
+

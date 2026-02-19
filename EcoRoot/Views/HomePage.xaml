@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
-             xmlns:resx="clr-namespace:EcoRoot.Resources"
-             xmlns:controls="clr-namespace:EcoRoot.Controls"
-             x:Class="EcoRoot.Views.HomePage"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:resx="clr-namespace:EcoWay.Resources"
+             xmlns:controls="clr-namespace:EcoWay.Controls"
+             x:Class="EcoWay.Views.HomePage"
              x:DataType="viewmodels:HomeViewModel"
              Title="{Binding Title}"
              BackgroundColor="{AppThemeBinding Light={StaticResource Sand}, Dark={StaticResource OffBlack}}">
@@ -66,16 +66,16 @@
                         
                         <!-- Sleek Pill Actions -->
                         <HorizontalStackLayout Spacing="10">
-                            <Border Style="{StaticResource AppPill}" BackgroundColor="{StaticResource EcoGreenLight}" StrokeThickness="0">
+                            <Border Style="{StaticResource AppPill}" BackgroundColor="{AppThemeBinding Light={StaticResource EcoGreenLight}, Dark={StaticResource EcoGreenDark}}" StrokeThickness="0">
                                 <HorizontalStackLayout Spacing="4">
-                                     <Path Data="{StaticResource IconLeaf}" Fill="{StaticResource EcoGreen}" Aspect="Uniform" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
-                                     <Label Text="Foundations" TextColor="{StaticResource EcoGreenDark}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+                                     <Path Data="{StaticResource IconLeaf}" Fill="{AppThemeBinding Light={StaticResource EcoGreen}, Dark={StaticResource EcoGreenLight}}" Aspect="Uniform" HeightRequest="16" WidthRequest="16" VerticalOptions="Center"/>
+                                     <Label Text="Foundations" TextColor="{AppThemeBinding Light={StaticResource EcoGreenDark}, Dark={StaticResource EcoGreenLight}}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
                                 </HorizontalStackLayout>
                             </Border>
-                             <Border Style="{StaticResource AppPill}" BackgroundColor="{StaticResource SunYellowLight}" StrokeThickness="0">
+                             <Border Style="{StaticResource AppPill}" BackgroundColor="{AppThemeBinding Light={StaticResource SunYellowLight}, Dark={StaticResource SoilBrown}}" StrokeThickness="0">
                                 <HorizontalStackLayout Spacing="4">
-                                     <Path Data="{StaticResource IconPuzzle}" Fill="{StaticResource SoilBrown}" Aspect="Uniform" HeightRequest="14" WidthRequest="14" VerticalOptions="Center"/>
-                                     <Label Text="Quiz Available" TextColor="{StaticResource SoilBrown}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+                                     <Path Data="{StaticResource IconPuzzle}" Fill="{AppThemeBinding Light={StaticResource SoilBrown}, Dark={StaticResource SunYellow}}" Aspect="Uniform" HeightRequest="14" WidthRequest="14" VerticalOptions="Center"/>
+                                     <Label Text="Quiz Available" TextColor="{AppThemeBinding Light={StaticResource SoilBrown}, Dark={StaticResource SunYellow}}" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
                                 </HorizontalStackLayout>
                             </Border>
                         </HorizontalStackLayout>
@@ -86,7 +86,7 @@
                 <!-- Pillars Carousel -->
                 <Label Text="{x:Static resx:Strings.HomePillarsTitle}" Style="{StaticResource SectionHeader}" Margin="4,0" />
                 
-                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" HeightRequest="160" Margin="-24,0">
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="{OnPlatform WinUI=Default, MacCatalyst=Default, Default=Never}" HeightRequest="160" Margin="-24,0">
                     <HorizontalStackLayout Spacing="16" Padding="24,10">
                         <!-- Knowledge -->
                         <Border Style="{StaticResource AppCard}" WidthRequest="130" HeightRequest="150" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" Padding="16">
@@ -94,11 +94,11 @@
                                 <Border BackgroundColor="{StaticResource EcoGreenLight}" StrokeShape="RoundRectangle 25" HeightRequest="50" WidthRequest="50" Padding="12">
                                      <Path Data="{StaticResource IconLeaf}" Fill="{StaticResource EcoGreen}" Aspect="Uniform" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </Border>
-                                <Label Text="Knowledge" Style="{StaticResource BodyBold}" 
-                                       VerticalOptions="Center" 
-                                       HorizontalOptions="Center"
-                                       TextColor="{StaticResource EcoGreenDark}"
-                                       HorizontalTextAlignment="Center"/>
+                                    <Label Text="Knowledge" Style="{StaticResource BodyBold}" 
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="Center"
+                                        TextColor="{AppThemeBinding Light={StaticResource EcoGreenDark}, Dark={StaticResource EcoGreenLight}}"
+                                        HorizontalTextAlignment="Center"/>
                             </VerticalStackLayout>
                         </Border>
 
@@ -108,11 +108,11 @@
                                  <Border BackgroundColor="{StaticResource SunYellowLight}" StrokeShape="RoundRectangle 25" HeightRequest="50" WidthRequest="50" Padding="12">
                                      <Path Data="{StaticResource IconGlobe}" Fill="{StaticResource SoilBrown}" Aspect="Uniform" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </Border>
-                                <Label Text="Action" Style="{StaticResource BodyBold}" 
-                                       VerticalOptions="Center" 
-                                       HorizontalOptions="Center"
-                                       TextColor="{StaticResource EcoGreenDark}"
-                                       HorizontalTextAlignment="Center"/>
+                                    <Label Text="Action" Style="{StaticResource BodyBold}" 
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="Center"
+                                        TextColor="{AppThemeBinding Light={StaticResource EcoGreenDark}, Dark={StaticResource EcoGreenLight}}"
+                                        HorizontalTextAlignment="Center"/>
                             </VerticalStackLayout>
                         </Border>
 
@@ -122,11 +122,11 @@
                                  <Border BackgroundColor="{StaticResource Gray100}" StrokeShape="RoundRectangle 25" HeightRequest="50" WidthRequest="50" Padding="12">
                                      <Path Data="{StaticResource IconBulb}" Fill="{StaticResource Gray600}" Aspect="Uniform" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </Border>
-                                <Label Text="Solutions" Style="{StaticResource BodyBold}" 
-                                       VerticalOptions="Center" 
-                                       HorizontalOptions="Center"
-                                       TextColor="{StaticResource Gray600}"
-                                       HorizontalTextAlignment="Center"/>
+                                    <Label Text="Solutions" Style="{StaticResource BodyBold}" 
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="Center"
+                                        TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"
+                                        HorizontalTextAlignment="Center"/>
                             </VerticalStackLayout>
                         </Border>
                     </HorizontalStackLayout>
@@ -177,3 +177,4 @@
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using EcoRoot.ViewModels;
+using EcoWay.ViewModels;
 
-namespace EcoRoot.Views;
+namespace EcoWay.Views;
 
 public partial class LessonDetailPage : ContentPage, IQueryAttributable
 {
@@ -33,3 +33,4 @@ public partial class LessonDetailPage : ContentPage, IQueryAttributable
         );
     }
 }
+

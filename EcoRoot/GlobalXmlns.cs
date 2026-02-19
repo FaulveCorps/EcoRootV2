@@ -1,2 +1,3 @@
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "EcoRoot")]
-[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "EcoRoot.Pages")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "EcoWay")]
+[assembly: XmlnsDefinition("http://schemas.microsoft.com/dotnet/maui/global", "EcoWay.Pages")]
+

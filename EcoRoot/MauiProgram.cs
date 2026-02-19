@@ -1,13 +1,16 @@
-﻿using EcoRoot.ViewModels;
-using EcoRoot.Views;
-using EcoRoot.Services;
+using EcoWay.ViewModels;
+using EcoWay.Views;
+using EcoWay.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 #if WINDOWS
-using EcoRoot.Platforms.Windows;
+using Microsoft.Maui.LifecycleEvents;
+#endif
+#if WINDOWS
+using EcoWay.Platforms.Windows;
 #endif
 
-namespace EcoRoot;
+namespace EcoWay;
 
 public static class MauiProgram
 {
@@ -69,3 +72,4 @@ public static class MauiProgram
 		return builder.Build();
 	}
 }
+

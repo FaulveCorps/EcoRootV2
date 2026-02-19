@@ -1,6 +1,6 @@
-using EcoRoot.ViewModels;
+using EcoWay.ViewModels;
 
-namespace EcoRoot.Views;
+namespace EcoWay.Views;
 
 public partial class HomePage : ContentPage
 {
@@ -25,3 +25,4 @@ public partial class HomePage : ContentPage
         );
     }
 }
+

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
-             xmlns:models="clr-namespace:EcoRoot.Models"
-             xmlns:resx="clr-namespace:EcoRoot.Resources"
-             xmlns:views="clr-namespace:EcoRoot.Views"
-             x:Class="EcoRoot.Views.ModulesPage"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:models="clr-namespace:EcoWay.Models"
+             xmlns:resx="clr-namespace:EcoWay.Resources"
+             xmlns:views="clr-namespace:EcoWay.Views"
+             x:Class="EcoWay.Views.ModulesPage"
              x:Name="RootPage"
              x:DataType="viewmodels:ModulesViewModel"
              Title="{Binding Title}"
@@ -25,12 +25,13 @@
                  Style="{StaticResource BodyMuted}"
                  IsVisible="{Binding IsModulesEmpty}" />
 
-            <CollectionView ItemsSource="{Binding Modules}"
-                        SelectionMode="None"
-                        IsVisible="{Binding HasModules}">
-                <CollectionView.ItemTemplate>
+            <!-- Replaced CollectionView with BindableLayout for better desktop scrolling compatibility -->
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Modules}"
+                                 Spacing="16"
+                                 IsVisible="{Binding HasModules}">
+                <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="models:ModuleListItem">
-                        <Border Style="{StaticResource AppCard}" Margin="0,0,0,16" Padding="0">
+                        <Border Style="{StaticResource AppCard}" Padding="0">
                             <Grid RowDefinitions="Auto, Auto, Auto">
                                 <!-- Banner / Header Color Strip -->
                                 <BoxView Color="{StaticResource EcoGreenLight}" HeightRequest="6" VerticalOptions="Start" />
@@ -42,7 +43,7 @@
                                              <Border.StrokeShape>
                                                  <RoundRectangle CornerRadius="8"/>
                                              </Border.StrokeShape>
-                                             <Label Text="Start" FontSize="12" TextColor="{StaticResource SoilBrown}" FontAttributes="Bold"/>
+                                             <Label Text="Start" FontSize="12" TextColor="{AppThemeBinding Light={StaticResource SoilBrown}, Dark={StaticResource SunYellowLight}}" FontAttributes="Bold"/>
                                          </Border>
                                     </Grid>
                                     
@@ -58,7 +59,7 @@
                                         <Label Text="{Binding CompletionRatio, StringFormat='{0:P0}'}" 
                                                Grid.Column="1" 
                                                Style="{StaticResource BodySmall}"
-                                               TextColor="{StaticResource EcoGreen}"
+                                               TextColor="{AppThemeBinding Light={StaticResource EcoGreen}, Dark={StaticResource EcoGreenLight}}"
                                                FontAttributes="Bold"/>
                                     </Grid>
                                     
@@ -80,8 +81,9 @@
                             </Grid>
                         </Border>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+

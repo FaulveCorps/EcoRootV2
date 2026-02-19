@@ -1,6 +1,6 @@
-using EcoRoot.ViewModels;
+using EcoWay.ViewModels;
 
-namespace EcoRoot.Views;
+namespace EcoWay.Views;
 
 public partial class ProgressPage : ContentPage
 {
@@ -21,3 +21,4 @@ public partial class ProgressPage : ContentPage
         );
     }
 }
+

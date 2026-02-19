@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Input;
-using EcoRoot.Resources;
+using EcoWay.Resources;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Storage;
 
-namespace EcoRoot.ViewModels;
+namespace EcoWay.ViewModels;
 
 public sealed class CloudSyncViewModel : BaseViewModel
 {
@@ -164,3 +164,4 @@ public sealed class CloudSyncViewModel : BaseViewModel
             : Strings.CloudSyncLastSyncEmpty;
     }
 }
+

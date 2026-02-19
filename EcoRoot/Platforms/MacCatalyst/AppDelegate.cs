@@ -1,9 +1,10 @@
-﻿using Foundation;
+using Foundation;
 
-namespace EcoRoot;
+namespace EcoWay;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate
 {
 	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }
+

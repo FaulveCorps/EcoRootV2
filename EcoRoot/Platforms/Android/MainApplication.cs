@@ -1,7 +1,7 @@
-﻿using Android.App;
+using Android.App;
 using Android.Runtime;
 
-namespace EcoRoot;
+namespace EcoWay;
 
 [Application]
 public class MainApplication : MauiApplication
@@ -13,3 +13,4 @@ public class MainApplication : MauiApplication
 
 	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }
+

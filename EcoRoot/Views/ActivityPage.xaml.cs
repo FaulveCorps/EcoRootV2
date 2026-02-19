@@ -1,8 +1,8 @@
 using System.Windows.Input;
-using EcoRoot.ViewModels;
+using EcoWay.ViewModels;
 using Microsoft.Maui.Controls.Shapes;
 
-namespace EcoRoot.Views;
+namespace EcoWay.Views;
 
 public partial class ActivityPage : ContentPage
 {
@@ -73,3 +73,4 @@ public partial class ActivityPage : ContentPage
         AnimateScenarioChange(); // Trigger initial animation
     }
 }
+

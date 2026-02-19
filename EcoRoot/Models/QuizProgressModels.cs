@@ -1,8 +1,8 @@
 using System;
 using System.Globalization;
-using EcoRoot.Resources;
+using EcoWay.Resources;
 
-namespace EcoRoot.Models;
+namespace EcoWay.Models;
 
 public sealed class QuizAttemptItem
 {
@@ -54,3 +54,4 @@ public sealed class QuizStatsSummary
         ? Strings.QuizSummaryEmpty
         : string.Format(CultureInfo.CurrentCulture, Strings.QuizSummaryFormat, TotalAttempts, TotalCorrect, TotalQuestions);
 }
+

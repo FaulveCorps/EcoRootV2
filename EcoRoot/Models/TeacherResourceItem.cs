@@ -1,4 +1,4 @@
-namespace EcoRoot.Models;
+namespace EcoWay.Models;
 
 public sealed class TeacherResourceItem
 {
@@ -12,3 +12,4 @@ public sealed class TeacherResourceItem
 
     public string Description { get; }
 }
+

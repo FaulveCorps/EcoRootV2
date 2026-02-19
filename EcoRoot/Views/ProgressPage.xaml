@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
-             xmlns:models="clr-namespace:EcoRoot.Models"
-             xmlns:resx="clr-namespace:EcoRoot.Resources"
-             x:Class="EcoRoot.Views.ProgressPage"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:models="clr-namespace:EcoWay.Models"
+             xmlns:resx="clr-namespace:EcoWay.Resources"
+             x:Class="EcoWay.Views.ProgressPage"
              x:DataType="viewmodels:ProgressViewModel"
              Title="{Binding Title}"
              BackgroundColor="{AppThemeBinding Light={StaticResource Sand}, Dark={StaticResource OffBlack}}">
@@ -41,7 +41,7 @@
                                     
                                     <Label Text="{Binding CompletionRatio, StringFormat='{0:P0}'}" 
                                            Style="{StaticResource BodySmall}"
-                                           TextColor="{StaticResource EcoGreen}"
+                                         TextColor="{AppThemeBinding Light={StaticResource EcoGreen}, Dark={StaticResource EcoGreenLight}}"
                                            FontAttributes="Bold"
                                            Grid.Column="1"/>
                                 </Grid>
@@ -64,7 +64,7 @@
                             <VerticalStackLayout Spacing="8" VerticalOptions="Center">
                                 <Label Text="🏆" HorizontalOptions="Center" FontSize="32"/>
                                 <Label Text="{Binding Title}" Style="{StaticResource CardTitle}" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                                <Label Text="{Binding StatusText}" Style="{StaticResource BodySmall}" HorizontalOptions="Center" TextColor="{StaticResource SoilBrown}"/>
+                                <Label Text="{Binding StatusText}" Style="{StaticResource BodySmall}" HorizontalOptions="Center" TextColor="{AppThemeBinding Light={StaticResource SoilBrown}, Dark={StaticResource SunYellowLight}}"/>
                             </VerticalStackLayout>
                         </Border>
                     </DataTemplate>
@@ -114,3 +114,4 @@
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+

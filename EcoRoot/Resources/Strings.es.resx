@@ -13,7 +13,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppTitle" xml:space="preserve">
-    <value>EcoRoot</value>
+    <value>Eco Way</value>
   </data>
   <data name="HomeTitle" xml:space="preserve">
     <value>Inicio</value>
@@ -397,3 +397,4 @@
     <value>Completa todas las lecciones de la app.</value>
   </data>
 </root>
+

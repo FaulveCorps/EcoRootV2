@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace EcoRoot.Models;
+namespace EcoWay.Models;
 
 public sealed class ActivityScenario
 {
@@ -36,3 +36,4 @@ public sealed class ActivityOption
 
     public string Feedback { get; }
 }
+

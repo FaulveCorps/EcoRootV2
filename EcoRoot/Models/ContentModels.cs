@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace EcoRoot.Models;
+namespace EcoWay.Models;
 
 public sealed class Module
 {
@@ -65,3 +65,4 @@ public sealed class QuizQuestion
     public int CorrectIndex { get; }
     public string Explanation { get; }
 }
+

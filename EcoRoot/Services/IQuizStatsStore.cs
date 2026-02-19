@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using EcoRoot.Models;
+using EcoWay.Models;
 
-namespace EcoRoot.Services;
+namespace EcoWay.Services;
 
 public interface IQuizStatsStore
 {
@@ -14,3 +14,4 @@ public interface IQuizStatsStore
 
     QuizStatsSummary GetSummary();
 }
+

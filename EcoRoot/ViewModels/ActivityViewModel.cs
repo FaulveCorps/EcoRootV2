@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Windows.Input;
-using EcoRoot.Models;
-using EcoRoot.Resources;
+using EcoWay.Models;
+using EcoWay.Resources;
 using Microsoft.Maui.Controls;
 
-namespace EcoRoot.ViewModels;
+namespace EcoWay.ViewModels;
 
 public sealed class ActivityViewModel : BaseViewModel
 {
@@ -122,3 +122,4 @@ public sealed class ActivityViewModel : BaseViewModel
         };
     }
 }
+

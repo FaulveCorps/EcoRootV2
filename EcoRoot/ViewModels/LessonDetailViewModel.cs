@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using EcoRoot.Models;
-using EcoRoot.Services;
-using EcoRoot.Views;
+using EcoWay.Models;
+using EcoWay.Services;
+using EcoWay.Views;
 using Microsoft.Maui.Controls;
 
-namespace EcoRoot.ViewModels;
+namespace EcoWay.ViewModels;
 
 public sealed class LessonDetailViewModel : BaseViewModel
 {
@@ -118,3 +118,4 @@ public sealed class LessonDetailViewModel : BaseViewModel
         IsCompleted = progressStore.IsLessonCompleted(moduleId, lessonId);
     }
 }
+

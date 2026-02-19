@@ -1,7 +1,7 @@
 using System.Globalization;
-using EcoRoot.Resources;
+using EcoWay.Resources;
 
-namespace EcoRoot.Models;
+namespace EcoWay.Models;
 
 public sealed class ModuleProgressItem
 {
@@ -96,3 +96,4 @@ public sealed class BadgeItem
 
     public string StatusText => IsAchieved ? Strings.BadgeUnlocked : Strings.BadgeLocked;
 }
+

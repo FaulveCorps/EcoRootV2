@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using Microsoft.Maui.Controls;
 
-namespace EcoRoot.Resources;
+namespace EcoWay.Resources;
 
 public class ScaleConverter : IValueConverter
 {
@@ -20,3 +20,4 @@ public class ScaleConverter : IValueConverter
         throw new NotImplementedException();
     }
 }
+

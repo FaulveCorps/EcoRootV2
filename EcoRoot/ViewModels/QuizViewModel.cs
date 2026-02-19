@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
-using EcoRoot.Models;
-using EcoRoot.Resources;
-using EcoRoot.Services;
+using EcoWay.Models;
+using EcoWay.Resources;
+using EcoWay.Services;
 using Microsoft.Maui.Controls;
 
-namespace EcoRoot.ViewModels;
+namespace EcoWay.ViewModels;
 
 public sealed class QuizViewModel : BaseViewModel
 {
@@ -186,3 +186,4 @@ public sealed class QuizViewModel : BaseViewModel
         SetCurrentQuestion();
     }
 }
+

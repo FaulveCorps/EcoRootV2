@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y13XgXPCU5E=",
+  "dgSpecHash": "dF+DwdyPxXo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\EcoRoot.csproj",
+  "projectFilePath": "c:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\EcoWay.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jpfau\\.nuget\\packages\\googlegson\\2.13.0.1\\googlegson.2.13.0.1.nupkg.sha512",
     "C:\\Users\\jpfau\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.9\\microsoft.extensions.configuration.9.0.9.nupkg.sha512",

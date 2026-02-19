@@ -2,7 +2,7 @@ using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace EcoRoot;
+namespace EcoWay;
 
 class Program : MauiApplication
 {
@@ -14,3 +14,4 @@ class Program : MauiApplication
 		app.Run(args);
 	}
 }
+

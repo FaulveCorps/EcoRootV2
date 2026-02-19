@@ -1,12 +1,12 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using EcoRoot.Resources;
-using EcoRoot.Models;
-using EcoRoot.Services;
-using EcoRoot.Views;
+using EcoWay.Resources;
+using EcoWay.Models;
+using EcoWay.Services;
+using EcoWay.Views;
 using Microsoft.Maui.Controls;
 
-namespace EcoRoot.ViewModels;
+namespace EcoWay.ViewModels;
 
 public sealed class ProgressViewModel : BaseViewModel
 {
@@ -135,3 +135,4 @@ public sealed class ProgressViewModel : BaseViewModel
         Badges.Add(new BadgeItem(Strings.BadgeSoilChampionTitle, Strings.BadgeSoilChampionDesc, allLessons));
     }
 }
+

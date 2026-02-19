@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using EcoRoot.Resources;
+using EcoWay.Resources;
 
-namespace EcoRoot.ViewModels;
+namespace EcoWay.ViewModels;
 
 public sealed class GlossaryViewModel : BaseViewModel
 {
@@ -26,3 +26,4 @@ public sealed class GlossaryViewModel : BaseViewModel
 
     public bool IsTermsEmpty => !HasTerms;
 }
+

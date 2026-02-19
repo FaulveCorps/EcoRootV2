@@ -1,7 +1,7 @@
 using System.Windows.Input;
-using EcoRoot.ViewModels;
+using EcoWay.ViewModels;
 
-namespace EcoRoot.Views;
+namespace EcoWay.Views;
 
 public partial class ModulesPage : ContentPage
 {
@@ -27,3 +27,4 @@ public partial class ModulesPage : ContentPage
         );
     }
 }
+

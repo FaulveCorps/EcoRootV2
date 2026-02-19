@@ -1,4 +1,4 @@
-﻿namespace EcoRoot;
+namespace EcoWay;
 
 public partial class MainPage : ContentPage
 {
@@ -21,3 +21,4 @@ public partial class MainPage : ContentPage
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
 }
+

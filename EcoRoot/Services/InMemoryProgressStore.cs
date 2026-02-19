@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace EcoRoot.Services;
+namespace EcoWay.Services;
 
 public sealed class InMemoryProgressStore : IProgressStore
 {
@@ -36,3 +36,4 @@ public sealed class InMemoryProgressStore : IProgressStore
 
     static string GetLessonKey(string moduleId, string lessonId) => $"{moduleId}:{lessonId}";
 }
+

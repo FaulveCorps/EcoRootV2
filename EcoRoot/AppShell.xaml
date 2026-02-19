@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="EcoRoot.AppShell"
+    x:Class="EcoWay.AppShell"
+    x:Name="RootShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:EcoRoot.Views"
-    xmlns:resx="clr-namespace:EcoRoot.Resources"
+    xmlns:views="clr-namespace:EcoWay.Views"
+    xmlns:resx="clr-namespace:EcoWay.Resources"
     Title="{x:Static resx:Strings.AppTitle}">
+
+    <Shell.TitleView>
+        <Grid HorizontalOptions="Fill" VerticalOptions="Center">
+            <Label x:Name="ShellTitleLabel"
+                   Text="{x:Static resx:Strings.AppTitle}"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        </Grid>
+    </Shell.TitleView>
 
     <TabBar>
         <ShellContent
@@ -31,3 +45,4 @@
     </TabBar>
 
 </Shell>
+

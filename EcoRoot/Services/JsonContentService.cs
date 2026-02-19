@@ -4,10 +4,10 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using EcoRoot.Models;
+using EcoWay.Models;
 using Microsoft.Maui.Storage;
 
-namespace EcoRoot.Services;
+namespace EcoWay.Services;
 
 public sealed class JsonContentService : IContentService
 {
@@ -223,3 +223,4 @@ public sealed class JsonContentService : IContentService
         public string? Explanation { get; set; }
     }
 }
+

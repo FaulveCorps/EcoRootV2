@@ -4,7 +4,7 @@ using System.IO;
 using System.Text.Json;
 using Microsoft.Maui.Storage;
 
-namespace EcoRoot.Services;
+namespace EcoWay.Services;
 
 public sealed class FileProgressStore : IProgressStore
 {
@@ -111,3 +111,4 @@ public sealed class FileProgressStore : IProgressStore
         public List<string> CompletedLessons { get; set; } = new();
     }
 }
+

@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace EcoRoot.ViewModels;
+namespace EcoWay.ViewModels;
 
 public abstract class BaseViewModel : INotifyPropertyChanged
 {
@@ -39,3 +39,4 @@ public abstract class BaseViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
+

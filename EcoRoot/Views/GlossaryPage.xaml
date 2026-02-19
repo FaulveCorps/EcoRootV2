@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:EcoRoot.ViewModels"
-             xmlns:resx="clr-namespace:EcoRoot.Resources"
-             x:Class="EcoRoot.Views.GlossaryPage"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:resx="clr-namespace:EcoWay.Resources"
+             x:Class="EcoWay.Views.GlossaryPage"
              x:DataType="viewmodels:GlossaryViewModel"
              Title="{Binding Title}"
              BackgroundColor="{AppThemeBinding Light={StaticResource Sand}, Dark={StaticResource OffBlack}}">
@@ -43,3 +43,4 @@
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+

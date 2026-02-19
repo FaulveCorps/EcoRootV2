@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Input;
-using EcoRoot.Resources;
-using EcoRoot.Services;
-using EcoRoot.Views;
+using EcoWay.Resources;
+using EcoWay.Services;
+using EcoWay.Views;
 using Microsoft.Maui.Controls;
 
-namespace EcoRoot.ViewModels;
+namespace EcoWay.ViewModels;
 
 public sealed class HomeViewModel : BaseViewModel
 {
@@ -95,3 +95,4 @@ public sealed class HomeViewModel : BaseViewModel
         ProgressRatio = total == 0 ? 0 : (double)completed / total;
     }
 }
+

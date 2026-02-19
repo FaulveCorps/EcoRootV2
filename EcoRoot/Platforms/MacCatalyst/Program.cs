@@ -1,7 +1,7 @@
-﻿using ObjCRuntime;
+using ObjCRuntime;
 using UIKit;
 
-namespace EcoRoot;
+namespace EcoWay;
 
 public class Program
 {
@@ -13,3 +13,4 @@ public class Program
 		UIApplication.Main(args, null, typeof(AppDelegate));
 	}
 }
+
