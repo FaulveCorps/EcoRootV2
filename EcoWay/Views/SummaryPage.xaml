@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             x:Class="EcoWay.Views.SummaryPage"
+             Shell.NavBarIsVisible="False"
+             Title="Summary">
+
+       <Grid>
+              <Grid.Background>
+                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="{AppThemeBinding Light=#ECFFF5, Dark=#0F211A}" Offset="0" />
+                            <GradientStop Color="{AppThemeBinding Light=#E7F5FF, Dark=#102923}" Offset="1" />
+                     </LinearGradientBrush>
+              </Grid.Background>
+
+              <ScrollView>
+                     <VerticalStackLayout Padding="16,24,16,30" Spacing="14">
+                            <Border StrokeThickness="0"
+                                          Padding="18"
+                                          BackgroundColor="{AppThemeBinding Light=#F5FFF8, Dark=#163427}"
+                                          StrokeShape="RoundRectangle 24">
+                                   <VerticalStackLayout Spacing="7">
+                                          <Label Text="Journey Complete"
+                                                    FontSize="28"
+                                                    FontAttributes="Bold"
+                                                    TextColor="{AppThemeBinding Light=#113926, Dark=#CFFFF0}" />
+                                          <Label Text="Your decisions shaped the ecosystem narrative."
+                                                    FontSize="14"
+                                                    TextColor="{AppThemeBinding Light=#3B6353, Dark=#9BD2B9}" />
+                                   </VerticalStackLayout>
+                            </Border>
+
+                            <Border StrokeThickness="0"
+                                          Padding="14"
+                                          BackgroundColor="{AppThemeBinding Light=#EAF8F1, Dark=#1A3B2D}"
+                                          StrokeShape="RoundRectangle 18">
+                                   <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                                          <Label Text="🌍"
+                                                    FontSize="22"
+                                                    VerticalTextAlignment="Center" />
+                                          <VerticalStackLayout Grid.Column="1" Spacing="1">
+                                                 <Label Text="Final Eco Score"
+                                                           FontSize="12"
+                                                           TextColor="{AppThemeBinding Light=#456B5C, Dark=#9ECFBA}" />
+                                                 <Label Text="{Binding TotalScore, StringFormat='{}{0} pts'}"
+                                                           FontSize="24"
+                                                           FontAttributes="Bold"
+                                                           TextColor="{AppThemeBinding Light=#1C4A39, Dark=#C6FFE2}" />
+                                          </VerticalStackLayout>
+                                   </Grid>
+                            </Border>
+
+                            <Border StrokeThickness="0"
+                                          Padding="16"
+                                          BackgroundColor="{AppThemeBinding Light=#F2FAF6, Dark=#18372B}"
+                                          StrokeShape="RoundRectangle 20">
+                                   <VerticalStackLayout Spacing="8">
+                                          <Label Text="{Binding Ending.Title}"
+                                                    FontSize="23"
+                                                    FontAttributes="Bold"
+                                                    TextColor="{AppThemeBinding Light=#17543E, Dark=#B8F0D6}" />
+                                          <Label Text="{Binding Ending.Description}"
+                                                    FontSize="15"
+                                                    LineBreakMode="WordWrap"
+                                                    TextColor="{AppThemeBinding Light=#426C5C, Dark=#9BCDB7}" />
+                                   </VerticalStackLayout>
+                            </Border>
+
+                            <Border StrokeThickness="0"
+                                          Padding="14"
+                                          BackgroundColor="{AppThemeBinding Light=#1F7C5A, Dark=#285E49}"
+                                          StrokeShape="RoundRectangle 999"
+                                          HorizontalOptions="Fill">
+                                   <Label Text="Play Again"
+                                             HorizontalTextAlignment="Center"
+                                             FontSize="15"
+                                             FontAttributes="Bold"
+                                             TextColor="#ECFFF6" />
+                                   <Border.GestureRecognizers>
+                                          <TapGestureRecognizer Command="{Binding RestartCommand}" />
+                                   </Border.GestureRecognizers>
+                            </Border>
+                     </VerticalStackLayout>
+              </ScrollView>
+       </Grid>
+</ContentPage>

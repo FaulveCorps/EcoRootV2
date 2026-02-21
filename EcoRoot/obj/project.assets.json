@@ -28510,11 +28510,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\EcoWay.csproj",
+      "projectUniqueName": "C:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\EcoWay.csproj",
       "projectName": "EcoWay",
-      "projectPath": "c:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\EcoWay.csproj",
+      "projectPath": "C:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\EcoWay.csproj",
       "packagesPath": "C:\\Users\\jpfau\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\obj\\",
+      "outputPath": "C:\\Users\\jpfau\\Desktop\\Project\\EcoRoot\\EcoRoot\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
@@ -28804,5 +28804,13 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
+    }
+  ]
 }

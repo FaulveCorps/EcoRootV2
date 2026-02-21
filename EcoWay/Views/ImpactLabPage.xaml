@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:EcoWay.Models"
+             x:Class="EcoWay.Views.ImpactLabPage"
+             x:Name="ImpactLabRoot"
+             Shell.NavBarIsVisible="False"
+             Title="Impact Lab">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{AppThemeBinding Light=#EEFFF7, Dark=#10271F}" Offset="0" />
+                <GradientStop Color="{AppThemeBinding Light=#E8F5FF, Dark=#102820}" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="14,14,14,28" Spacing="12">
+                <Border Padding="14"
+                        StrokeThickness="0"
+                        BackgroundColor="{AppThemeBinding Light=#F4FFF8, Dark=#143227}"
+                        StrokeShape="RoundRectangle 20">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="{Binding ModeTitle}"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#153C2B, Dark=#D5FFE9}" />
+                        <Label Text="{Binding ModeSubtitle}"
+                               FontSize="13"
+                               TextColor="{AppThemeBinding Light=#3C6556, Dark=#9FD5BC}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Grid ColumnDefinitions="*,*,Auto" ColumnSpacing="8">
+                    <Border Padding="12,10"
+                            StrokeThickness="0"
+                            BackgroundColor="{Binding HarmChipBackground}"
+                            StrokeShape="RoundRectangle 14">
+                        <Label Text="Harm"
+                               HorizontalTextAlignment="Center"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#F4FFFB" />
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SetModeCommand}" CommandParameter="harm" />
+                        </Border.GestureRecognizers>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                            Padding="12,10"
+                            StrokeThickness="0"
+                            BackgroundColor="{Binding RecoveryChipBackground}"
+                            StrokeShape="RoundRectangle 14">
+                        <Label Text="Recovery"
+                               HorizontalTextAlignment="Center"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#F4FFFB" />
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SetModeCommand}" CommandParameter="recovery" />
+                        </Border.GestureRecognizers>
+                    </Border>
+
+                    <Border Grid.Column="2"
+                            Padding="10,10"
+                            StrokeThickness="0"
+                            BackgroundColor="{AppThemeBinding Light=#496378, Dark=#3D5569}"
+                            StrokeShape="RoundRectangle 14">
+                        <Label Text="Reset"
+                               HorizontalTextAlignment="Center"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#F4FFFB" />
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ResetCommand}" />
+                        </Border.GestureRecognizers>
+                    </Border>
+                </Grid>
+
+                <Border Padding="10"
+                        StrokeThickness="0"
+                        BackgroundColor="{AppThemeBinding Light=#EAF8F1, Dark=#193B2E}"
+                        StrokeShape="RoundRectangle 14">
+                    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" ColumnSpacing="8" RowSpacing="6">
+                        <Label Text="{Binding EnvironmentStatus}"
+                               FontAttributes="Bold"
+                               FontSize="14"
+                               TextColor="{AppThemeBinding Light=#1F4F3C, Dark=#ACE2C9}" />
+                        <Border Grid.Column="1"
+                                Padding="8,4"
+                                StrokeThickness="0"
+                                BackgroundColor="{AppThemeBinding Light=#1F7B5A, Dark=#285E49}"
+                                StrokeShape="RoundRectangle 999">
+                            <Label Text="{Binding ModeChipText}"
+                                   FontSize="11"
+                                   FontAttributes="Bold"
+                                   TextColor="#E8FFF4" />
+                        </Border>
+
+                        <ProgressBar Grid.Row="1"
+                                     Progress="{Binding HealthProgress}"
+                                     HeightRequest="8"
+                                     ProgressColor="{AppThemeBinding Light=#2E8B57, Dark=#6AD9A7}"
+                                     BackgroundColor="{AppThemeBinding Light=#D0EBDD, Dark=#355648}" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding HealthText}"
+                               FontSize="12"
+                               VerticalTextAlignment="Center"
+                               TextColor="{AppThemeBinding Light=#355D4E, Dark=#9BD3B9}" />
+                    </Grid>
+                </Border>
+
+                <Border HeightRequest="250"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 22">
+                    <Grid IsClippedToBounds="True">
+                        <Border StrokeThickness="0" StrokeShape="RoundRectangle 22">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#88D6FF" Offset="0" />
+                                    <GradientStop Color="#EAF9FF" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+
+                        <AbsoluteLayout Margin="10">
+                            <BoxView x:Name="Sun"
+                                     Color="#FFD966"
+                                     WidthRequest="56"
+                                     HeightRequest="56"
+                                     CornerRadius="28"
+                                     AbsoluteLayout.LayoutBounds="0.14,0.12,56,56"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="Horizon"
+                                     Color="#7EA0BA"
+                                     Opacity="0.45"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.54,0.96,0.01"
+                                     AbsoluteLayout.LayoutFlags="All" />
+
+                            <BoxView x:Name="CityBand"
+                                     Color="#70889A"
+                                     Opacity="0.9"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.62,0.84,0.20"
+                                     AbsoluteLayout.LayoutFlags="All" />
+
+                            <BoxView x:Name="Ground"
+                                     Color="#5FA35A"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.88,1.02,0.28"
+                                     AbsoluteLayout.LayoutFlags="All" />
+
+                            <BoxView x:Name="Water"
+                                     Color="#4CA7E8"
+                                     Opacity="{Binding WaterClarityOpacity}"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.85,0.52,0.14"
+                                     AbsoluteLayout.LayoutFlags="All" />
+
+                            <BoxView x:Name="Tree1Trunk"
+                                     Color="#6F4E37"
+                                     WidthRequest="10"
+                                     HeightRequest="40"
+                                     AbsoluteLayout.LayoutBounds="0.17,0.74,10,40"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+                            <BoxView x:Name="Tree1Crown"
+                                     Color="#2E8B57"
+                                     Scale="{Binding TreeScale}"
+                                     WidthRequest="38"
+                                     HeightRequest="38"
+                                     CornerRadius="19"
+                                     AbsoluteLayout.LayoutBounds="0.16,0.63,38,38"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="Tree2Trunk"
+                                     Color="#6F4E37"
+                                     WidthRequest="10"
+                                     HeightRequest="40"
+                                     AbsoluteLayout.LayoutBounds="0.83,0.74,10,40"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+                            <BoxView x:Name="Tree2Crown"
+                                     Color="#3A9960"
+                                     Scale="{Binding TreeScale}"
+                                     WidthRequest="38"
+                                     HeightRequest="38"
+                                     CornerRadius="19"
+                                     AbsoluteLayout.LayoutBounds="0.82,0.63,38,38"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="PollutionOverlay"
+                                     Color="#5E5D5D"
+                                     Opacity="{Binding PollutionOpacity}"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                                     AbsoluteLayout.LayoutFlags="All" />
+                        </AbsoluteLayout>
+                    </Grid>
+                </Border>
+
+                <Border StrokeThickness="0"
+                        Padding="10"
+                        BackgroundColor="{AppThemeBinding Light=#EEF9F4, Dark=#18382D}"
+                        StrokeShape="RoundRectangle 16">
+                    <VerticalStackLayout Spacing="7" BindableLayout.ItemsSource="{Binding CurrentActions}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="models:ImpactAction">
+                                <Border StrokeThickness="0"
+                                        Padding="11"
+                                        BackgroundColor="{AppThemeBinding Light=#E1F2EA, Dark=#1B4335}"
+                                        StrokeShape="RoundRectangle 14">
+                                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="2">
+                                        <Label Grid.RowSpan="3"
+                                               Text="{Binding Icon}"
+                                               FontSize="21"
+                                               VerticalOptions="Center" />
+
+                                        <Label Grid.Column="1"
+                                               Text="{Binding Title}"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="{AppThemeBinding Light=#1D4A38, Dark=#CFFFE7}" />
+
+                                        <Label Grid.Column="1"
+                                               Grid.Row="1"
+                                               Text="{Binding Description}"
+                                               FontSize="11"
+                                               TextColor="{AppThemeBinding Light=#4A6D60, Dark=#9FD1BB}" />
+
+                                        <Border Grid.Column="1"
+                                                Grid.Row="2"
+                                                HorizontalOptions="Start"
+                                                Margin="0,4,0,0"
+                                                Padding="8,4"
+                                                StrokeThickness="0"
+                                                BackgroundColor="{AppThemeBinding Light=#1F7B5A, Dark=#29604A}"
+                                                StrokeShape="RoundRectangle 999">
+                                            <Label Text="Apply Impact"
+                                                   FontSize="11"
+                                                   TextColor="#E9FFF6" />
+                                        </Border>
+
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Source={x:Reference ImpactLabRoot}, Path=BindingContext.ApplyActionCommand}"
+                                                CommandParameter="{Binding .}" />
+                                        </Grid.GestureRecognizers>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border StrokeThickness="0"
+                        Padding="10"
+                        BackgroundColor="{AppThemeBinding Light=#F4FBF7, Dark=#173629}"
+                        StrokeShape="RoundRectangle 16">
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Active Effects"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#244F3D, Dark=#B7EAD3}" />
+                        <Label Text="{Binding StatusHint}"
+                               FontSize="11"
+                               TextColor="{AppThemeBinding Light=#507566, Dark=#9ACDB8}" />
+
+                        <VerticalStackLayout BindableLayout.ItemsSource="{Binding ActiveEffects}" Spacing="5">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="6">
+                                        <Label Text="✦"
+                                               FontSize="11"
+                                               TextColor="{AppThemeBinding Light=#2A8761, Dark=#6EDAA9}" />
+                                        <Label Grid.Column="1"
+                                               Text="{Binding .}"
+                                               FontSize="11"
+                                               LineBreakMode="WordWrap"
+                                               TextColor="{AppThemeBinding Light=#355F50, Dark=#A1D9BF}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

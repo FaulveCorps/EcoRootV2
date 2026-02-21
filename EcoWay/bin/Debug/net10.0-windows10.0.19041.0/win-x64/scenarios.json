@@ -1,0 +1,111 @@
+{
+  "scenarios": [
+    {
+      "Id": "start",
+      "Title": "Morning Commute",
+      "Description": "You need to get to work. How will you travel today?",
+      "VisualConfig": "city_morning",
+      "Choices": [
+        {
+          "Id": "c1",
+          "Icon": "🚌",
+          "Text": "Join a shared shuttle with a short detour",
+          "Teaser": "Lower hassle, but less direct control.",
+          "TargetScenarioId": "lunch",
+          "ImpactDelta": 10,
+          "Aftermath": "Street congestion eases slightly and roadside air looks clearer."
+        },
+        {
+          "Id": "c2",
+          "Icon": "🚗",
+          "Text": "Take your own car to keep your schedule flexible",
+          "Teaser": "Fast departure, higher personal convenience.",
+          "TargetScenarioId": "lunch",
+          "ImpactDelta": -10,
+          "Aftermath": "Traffic remains heavy and a haze lingers over the main road."
+        },
+        {
+          "Id": "c3",
+          "Icon": "🚲",
+          "Text": "Use a mixed route: cycle part-way, then transfer",
+          "Teaser": "Requires coordination, saves fuel-intensive distance.",
+          "TargetScenarioId": "lunch",
+          "ImpactDelta": 20,
+          "Aftermath": "Noise drops near the avenue and the morning scene feels calmer."
+        }
+      ]
+    },
+    {
+      "Id": "lunch",
+      "Title": "Lunch Break",
+      "Description": "It's time for lunch. What are you having?",
+      "VisualConfig": "office_lunch",
+      "Choices": [
+        {
+          "Id": "c4",
+          "Icon": "🥡",
+          "Text": "Pick the quickest meal bundle with takeaway packaging",
+          "Teaser": "Minimal wait time, heavier disposable footprint.",
+          "TargetScenarioId": "evening",
+          "ImpactDelta": -5,
+          "Aftermath": "Bin levels rise and cleanup crews face extra mixed waste."
+        },
+        {
+          "Id": "c5",
+          "Icon": "🥗",
+          "Text": "Choose a nearby made-to-order option",
+          "Teaser": "Slight prep delay, potentially less waste generated.",
+          "TargetScenarioId": "evening",
+          "ImpactDelta": 15,
+          "Aftermath": "Lunch traffic steadies and less packaging appears around offices."
+        }
+      ]
+    },
+    {
+      "Id": "evening",
+      "Title": "Evening at Home",
+      "Description": "You are back home. How do you spend your evening?",
+      "VisualConfig": "home_evening",
+      "Choices": [
+        {
+          "Id": "c6",
+          "Icon": "📺",
+          "Text": "Keep everything running while you wind down",
+          "Teaser": "Maximum comfort, ongoing baseline consumption.",
+          "TargetScenarioId": "end",
+          "ImpactDelta": -15,
+          "Aftermath": "Power demand spikes and evening emissions rise across the block."
+        },
+        {
+          "Id": "c7",
+          "Icon": "📖",
+          "Text": "Set a comfort routine with focused lighting",
+          "Teaser": "A bit of setup, steadier household energy use.",
+          "TargetScenarioId": "end",
+          "ImpactDelta": 10,
+          "Aftermath": "Neighborhood load smooths out and the night scene feels cleaner."
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "Id": "good",
+      "Title": "Eco Champion",
+      "Description": "You made great choices today! The environment thanks you.",
+      "MinimumScore": 20
+    },
+    {
+      "Id": "neutral",
+      "Title": "Eco Conscious",
+      "Description": "You made some good choices, but there is room for improvement.",
+      "MinimumScore": 0
+    },
+    {
+      "Id": "bad",
+      "Title": "Eco Hazard",
+      "Description": "Your choices today had a negative impact on the environment.",
+      "MinimumScore": -100
+    }
+  ]
+}

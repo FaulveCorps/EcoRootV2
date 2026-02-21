@@ -1,115 +1,186 @@
-# EcoRoot — Long-Term Context
+# Eco Way — Long-Term Context
+
+## Product Identity
+
+- **App Name:** Eco Way
+- **Product Type:** Mobile-only interactive choose-your-own-adventure simulation
+- **Theme:** Environmental decision-making and long-term sustainability outcomes
+- **Core Experience:** Visual, animated scenario branching with meaningful consequences
 
 ## Vision
-Build a cross-platform (.NET MAUI) learning app for senior high school students that deepens understanding of soil pollution—its causes, impacts, and solutions—through engaging, bite‑sized learning and interactive activities.
+
+Build a polished, mobile-first .NET MAUI sustainability simulation where users learn through decisions, not lectures. Every choice should produce visible world changes and alter future paths.
 
 ## Mission
-Deliver accurate, age‑appropriate, and locally relevant learning experiences that help students recognize soil pollution in real life, understand its consequences, and explore mitigation strategies.
 
-## Target Audience
-- **Primary:** Senior High School Students (Grades 11–12)
-- **Secondary:** Teachers and school facilitators
+Help users understand environmental trade-offs by placing them inside interactive, animated scenarios where immediate and long-term consequences are both visible and measurable.
 
-## Learning Outcomes
-Students should be able to:
-- Define soil pollution and distinguish it from other forms of pollution.
-- Identify major sources (industrial waste, agriculture runoff, improper disposal, mining, etc.).
-- Explain impacts on health, agriculture, ecosystems, and water systems.
-- Analyze local case studies and propose mitigation actions.
-- Practice responsible disposal and soil conservation habits.
+## Platform Scope (Non-Negotiable)
 
-## Content Pillars
-1. **Foundations**: Soil composition, functions, and importance.
-2. **Pollution Sources**: Industrial, agricultural, domestic, and mining activities.
-3. **Impacts**: Human health, food safety, biodiversity, and climate effects.
-4. **Solutions**: Prevention, remediation, policy, and community action.
-5. **Local Context**: Community examples, regulations, and local best practices.
+- **Framework:** .NET MAUI
+- **Targets:** Android and iOS only
+- **Architecture:** MVVM with strict separation of:
+	- `Views`
+	- `ViewModels`
+	- `Models`
+	- `Services`
+- **Not in scope:** Desktop-specific UX flows and desktop-targeted delivery
 
-## Product Scope
-### In Scope
-- Modular lessons with short readings, diagrams, and infographics
-- Interactive quizzes and knowledge checks
-- Mini‑activities (scenario analysis, matching, timeline ordering)
-- Glossary and keyword highlights
-- Progress tracking and achievement badges
-- Offline access to core content
+## Experience Model
 
-### Out of Scope (for now)
-- Social networking features
-- Student data collection beyond local progress
-- Paid content or subscriptions
+Eco Way presents connected environmental scenes such as:
 
-## Platform & Form Factors
-- **Mobile:** Android, iOS
-- **Desktop:** Windows, macOS
-- Adaptive layouts for phones, tablets, and desktops
+- waste management
+- transportation choices
+- household/community energy use
+- neighborhood sustainability initiatives
 
-## UX Principles
-- Microlearning (5–8 minute lesson segments)
-- Visual first (infographics, photos, diagrams)
-- Clear progress feedback
-- Low cognitive load and simple navigation
-- Encouraging tone without being childish
+Each scenario must include:
 
-## Accessibility & Inclusivity
-- WCAG‑aligned contrast and typography
-- Scalable text size
-- Captions/alt text for media
-- Offline access for low‑connectivity schools
-- Local language support (future expansion)
+1. a short contextual setup,
+2. a visual animated scene,
+3. 2 to 4 action choices,
+4. branch navigation to next scenario based on selected action,
+5. sustainability score and impact updates.
 
-## Data & Privacy
-- **Default:** Local‑only progress storage
-- No required sign‑in for students
-- Avoid collecting personal data unless explicitly needed later
-- If cloud sync is added, ensure parental/guardian consent workflows
+## Visual Storytelling Standard
 
-## Technical Direction
-- .NET MAUI with MVVM architecture
-- Local persistence (e.g., SQLite) for lessons and progress
-- Content packaged with the app; optional updates via secure download
-- Theming system for consistent visual identity
+The app must emphasize visual communication over long text blocks.
 
-## Quality & Content Standards
-- Content reviewed by educators or subject‑matter experts
-- References to reliable sources (environment agencies, educational texts)
-- Clear definitions and consistent terminology
+### Required Native MAUI Animation Tools
 
-## Risks & Open Questions
-- Availability of locally relevant case studies
-- Ensuring content accuracy across regions
-- Device performance on low‑end hardware
-- Offline vs. online update strategy
-- Optional cloud sync scope, consent workflow, and data retention policy
+- `TranslateTo`, `FadeTo`, `ScaleTo`, `RotateTo`
+- `Animation` class for coordinated timelines
+- `GraphicsView` for custom scene rendering
+- `AbsoluteLayout` or `Grid` for layered composition
+- `Image`, `Shapes`, `BoxView` for animated objects
 
-## Roadmap (High‑Level)
-**MVP**
-- Core lessons (Foundations, Sources, Impacts)
-- Basic quizzes and glossary
+### Example Consequence Visuals
 
-**v1**
-- Solutions module
-- Progress tracking and badges
-- Teacher resources
+- Factory smoke intensity rises/falls after industrial decisions
+- Traffic density changes if public transport is selected
+- Trees grow/shrink from policy outcomes
+- Water level transitions up/down based on water-use choices
 
-**v2+**
-- Localization support
-- Richer interactive simulations
-- Optional cloud sync
+### Animation Quality Rules
 
-## Success Metrics
-- Lesson completion rate
-- Quiz accuracy improvement across modules
-- Teacher feedback and classroom adoption
-- Student self‑reported understanding gains
+- Consequences must be visually clear after each decision
+- Animations must remain smooth and responsive on mobile
+- Use `async/await` for non-blocking transitions
+- Avoid external animation packages unless absolutely necessary
 
-## Glossary (Seed Terms)
-- Soil contamination
-- Heavy metals
-- Pesticide residue
-- Leaching
-- Remediation
-- Bioaccumulation
+## Core State Management
+
+Persist and manage:
+
+- current scenario ID
+- ordered decision history
+- total environmental score
+- optional category impact totals (waste, transport, energy, community)
+- ending classification based on score thresholds/rules
+
+Use a branching graph (tree/graph) loaded from local JSON or equivalent local model data.
+
+## Required Data Models
+
+### Scenario
+
+- `Id`
+- `Title`
+- `Description`
+- `VisualConfig`
+- `Choices` (2–4)
+
+### Choice
+
+- `Id`
+- `Text`
+- `TargetScenarioId`
+- `ImpactDelta`
+- optional category deltas
+
+### Ending
+
+- `Id`
+- `Title`
+- `Description`
+- threshold/rule condition
+
+### Supporting Models
+
+- `DecisionRecord` (scenario, choice, score before/after, timestamp)
+- `GameState` (current node, score, history, ending)
+
+## UI/UX Direction
+
+- Clean, minimal eco-themed palette
+- Mobile-first layout and spacing
+- Responsive across common phone form factors
+- Reusable scenario template page
+- Animated transitions between scenarios
+- Fast interaction loop with clear feedback
+
+## Advanced Features (Target)
+
+- Progress indicator through scenario flow
+- Restart / Play Again capability
+- Summary screen with environmental impact timeline
+- Optional ambient background animation
+- Lightweight performance optimization suitable for mobile devices
+
+## Project Structure Target
+
+- `Models/`
+- `ViewModels/`
+- `Views/`
+- `Services/`
+- `Data/` (scenario graph JSON)
+- `Resources/Styles/`
+- `Resources/Images/`
+- `Resources/Raw/`
+- `Helpers/` (animation and utility helpers)
+
+## Technical Deliverables
+
+The implementation must include:
+
+1. documented project folder structure,
+2. at least one complete branching scenario chain,
+3. ViewModel example handling choice + branching + score updates,
+4. XAML with layered animated scene composition,
+5. animation logic using native MAUI capabilities,
+6. clear branching-logic explanation,
+7. run instructions for Android emulator and iOS simulator,
+8. performance notes and maintainability guidelines.
+
+## Performance & Maintainability Rules
+
+- Keep animation loops lightweight and frame-friendly
+- Avoid unnecessary object allocation during scene updates
+- Prefer reusable view elements and data-driven scene config
+- Keep business/branching logic in ViewModels/Services, not page code-behind
+- Keep code modular, testable, and easy to extend with new scenarios
+
+## Definition of Done
+
+Eco Way is considered complete when:
+
+- Android and iOS builds run successfully,
+- branching works deterministically for all defined choices,
+- score/history/endings update correctly,
+- consequence animations visibly match decisions,
+- restart resets state cleanly,
+- summary timeline reflects actual decision history,
+- architecture remains MVVM-clean and maintainable.
+
+## Current Build Priorities
+
+1. Establish robust branching data model and scenario JSON loader
+2. Implement reusable animated scenario page template
+3. Implement state container (history + score + ending resolver)
+4. Add sample scenario chain (waste + transport + energy)
+5. Build summary timeline and restart flow
+6. Tune animation smoothness for mobile hardware
 
 ---
-Last updated: 2026‑02‑02
+Last updated: 2026-02-21

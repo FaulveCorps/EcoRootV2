@@ -1,0 +1,253 @@
+{
+  "startScenarioId": "waste_intro",
+  "targetSteps": 6,
+  "scenarios": [
+    {
+      "id": "waste_intro",
+      "title": "Neighborhood Waste Overflow",
+      "description": "Bins are overflowing after a community event. You need a rapid, practical response.",
+      "visual": {
+        "smokeLevel": 35,
+        "trafficDensity": 40,
+        "treeHealth": 55,
+        "waterLevel": 45
+      },
+      "choices": [
+        {
+          "id": "waste_sort_drive",
+          "text": "Organize a sorting + compost drive",
+          "targetScenarioId": "transport_morning",
+          "impactDelta": 10,
+          "consequence": "Organic and recyclable waste drops significantly."
+        },
+        {
+          "id": "waste_burn",
+          "text": "Burn waste to clear it quickly",
+          "targetScenarioId": "transport_morning",
+          "impactDelta": -12,
+          "consequence": "Air quality worsens and neighborhood complaints rise."
+        },
+        {
+          "id": "waste_dump_river",
+          "text": "Dump remaining waste near a drainage canal",
+          "targetScenarioId": "water_supply",
+          "impactDelta": -16,
+          "consequence": "Runoff contamination risk spikes."
+        }
+      ]
+    },
+    {
+      "id": "transport_morning",
+      "title": "Morning Commute Policy",
+      "description": "Rush-hour congestion is increasing emissions. Pick the transport policy for your district.",
+      "visual": {
+        "smokeLevel": 45,
+        "trafficDensity": 75,
+        "treeHealth": 50,
+        "waterLevel": 46
+      },
+      "choices": [
+        {
+          "id": "transport_bus_priority",
+          "text": "Prioritize buses and bike lanes",
+          "targetScenarioId": "energy_home",
+          "impactDelta": 12,
+          "consequence": "Vehicle count falls and air clears in peak hours."
+        },
+        {
+          "id": "transport_car_only",
+          "text": "Expand car-only lanes",
+          "targetScenarioId": "energy_home",
+          "impactDelta": -10,
+          "consequence": "Traffic returns quickly with higher emissions."
+        },
+        {
+          "id": "transport_hybrid",
+          "text": "Alternate-day private vehicle access",
+          "targetScenarioId": "community_project",
+          "impactDelta": 6,
+          "consequence": "Congestion drops, but enforcement is mixed."
+        }
+      ]
+    },
+    {
+      "id": "water_supply",
+      "title": "Reservoir Contamination Alert",
+      "description": "Water quality indicators show rising pollutants after recent storms.",
+      "visual": {
+        "smokeLevel": 55,
+        "trafficDensity": 60,
+        "treeHealth": 42,
+        "waterLevel": 82
+      },
+      "choices": [
+        {
+          "id": "water_repair_filter",
+          "text": "Fund rapid filtration + drainage repair",
+          "targetScenarioId": "community_project",
+          "impactDelta": 11,
+          "consequence": "Water quality stabilizes and flooding pressure drops."
+        },
+        {
+          "id": "water_delay_action",
+          "text": "Delay action until the next budget cycle",
+          "targetScenarioId": "ending_checkpoint",
+          "impactDelta": -14,
+          "consequence": "Public health risk and cleanup costs increase."
+        }
+      ]
+    },
+    {
+      "id": "energy_home",
+      "title": "Community Energy Plan",
+      "description": "Homes need reliable power upgrades. Your decision affects cost and emissions long-term.",
+      "visual": {
+        "smokeLevel": 48,
+        "trafficDensity": 52,
+        "treeHealth": 58,
+        "waterLevel": 50
+      },
+      "choices": [
+        {
+          "id": "energy_led_insulation",
+          "text": "Deploy LED + insulation retrofit kits",
+          "targetScenarioId": "community_project",
+          "impactDelta": 9,
+          "consequence": "Demand drops and savings appear within months."
+        },
+        {
+          "id": "energy_diesel_backup",
+          "text": "Subsidize diesel backup generators",
+          "targetScenarioId": "ending_checkpoint",
+          "impactDelta": -13,
+          "consequence": "Reliability improves, but emissions and noise rise."
+        },
+        {
+          "id": "energy_solar_microgrid",
+          "text": "Pilot a neighborhood solar microgrid",
+          "targetScenarioId": "community_project",
+          "impactDelta": 14,
+          "consequence": "Grid pressure eases and emissions trend downward."
+        }
+      ]
+    },
+    {
+      "id": "community_project",
+      "title": "Community Action Vote",
+      "description": "Residents vote on a shared project that will shape local environmental resilience.",
+      "visual": {
+        "smokeLevel": 32,
+        "trafficDensity": 40,
+        "treeHealth": 65,
+        "waterLevel": 42
+      },
+      "choices": [
+        {
+          "id": "community_tree_drive",
+          "text": "Launch urban tree restoration",
+          "targetScenarioId": "final_reflection",
+          "impactDelta": 13,
+          "consequence": "Heat islands shrink and biodiversity begins to recover."
+        },
+        {
+          "id": "community_parking_lot",
+          "text": "Convert green strip into parking",
+          "targetScenarioId": "final_reflection",
+          "impactDelta": -11,
+          "consequence": "Runoff increases and shade coverage drops."
+        },
+        {
+          "id": "community_repair_hub",
+          "text": "Build a repair + reuse center",
+          "targetScenarioId": "final_reflection",
+          "impactDelta": 9,
+          "consequence": "Material waste declines through reuse."
+        }
+      ]
+    },
+    {
+      "id": "ending_checkpoint",
+      "title": "Systems Under Pressure",
+      "description": "Your earlier choices have created strain. One final intervention is available.",
+      "visual": {
+        "smokeLevel": 76,
+        "trafficDensity": 70,
+        "treeHealth": 36,
+        "waterLevel": 78
+      },
+      "choices": [
+        {
+          "id": "checkpoint_emergency_plan",
+          "text": "Activate emergency mitigation plan",
+          "targetScenarioId": "final_reflection",
+          "impactDelta": 8,
+          "consequence": "Damage slows, but recovery will take sustained effort."
+        },
+        {
+          "id": "checkpoint_minimal_response",
+          "text": "Use minimal short-term fixes",
+          "targetScenarioId": "final_reflection",
+          "impactDelta": -8,
+          "consequence": "Short-term relief fades quickly, risks remain high."
+        }
+      ]
+    },
+    {
+      "id": "final_reflection",
+      "title": "Long-Term Outcome",
+      "description": "A final strategic decision will shape the long-term environmental trajectory.",
+      "visual": {
+        "smokeLevel": 40,
+        "trafficDensity": 35,
+        "treeHealth": 62,
+        "waterLevel": 45
+      },
+      "choices": [
+        {
+          "id": "final_commit_restoration",
+          "text": "Commit to long-term restoration funding",
+          "targetScenarioId": "",
+          "impactDelta": 10,
+          "consequence": "Ecosystem recovery accelerates over time."
+        },
+        {
+          "id": "final_delay_investment",
+          "text": "Delay long-term investment",
+          "targetScenarioId": "",
+          "impactDelta": -10,
+          "consequence": "Environmental stress accumulates across systems."
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "regenerative_future",
+      "title": "Regenerative Future",
+      "description": "Your choices created measurable ecosystem recovery, cleaner air, and stronger community resilience.",
+      "minScore": 40,
+      "maxScore": 999
+    },
+    {
+      "id": "transition_path",
+      "title": "Transition Path",
+      "description": "Progress is visible, but sustained policy and community effort are still needed to lock in gains.",
+      "minScore": 10,
+      "maxScore": 39
+    },
+    {
+      "id": "fragile_balance",
+      "title": "Fragile Balance",
+      "description": "Mixed decisions produced short-term relief but left long-term environmental risks unresolved.",
+      "minScore": -10,
+      "maxScore": 9
+    },
+    {
+      "id": "climate_strain",
+      "title": "Climate Strain",
+      "description": "Compounding negative decisions increased pollution pressure and weakened ecosystem stability.",
+      "minScore": -999,
+      "maxScore": -11
+    }
+  ]
+}
