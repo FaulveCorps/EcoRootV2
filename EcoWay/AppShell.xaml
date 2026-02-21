@@ -8,6 +8,11 @@
 
     <TabBar>
         <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate views:MainMenuPage}"
+            Route="MainMenuPage" />
+
+        <ShellContent
             Title="Story"
             ContentTemplate="{DataTemplate views:ScenarioPage}"
             Route="ScenarioPage" />

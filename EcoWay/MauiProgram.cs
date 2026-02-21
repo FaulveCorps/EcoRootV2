@@ -24,6 +24,9 @@ public static class MauiProgram
 		builder.Services.AddTransient<ScenarioViewModel>();
 		builder.Services.AddTransient<ScenarioPage>();
 
+		builder.Services.AddTransient<MainMenuViewModel>();
+		builder.Services.AddTransient<MainMenuPage>();
+
 		builder.Services.AddTransient<SummaryViewModel>();
 		builder.Services.AddTransient<SummaryPage>();
 

@@ -27,6 +27,22 @@
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
 
+    <!-- EcoWay visual theme tokens -->
+    <Color x:Key="EcoPageGradientTopLight">#ECFFF5</Color>
+    <Color x:Key="EcoPageGradientTopDark">#0F211A</Color>
+    <Color x:Key="EcoPageGradientBottomLight">#E7F5FF</Color>
+    <Color x:Key="EcoPageGradientBottomDark">#102923</Color>
+
+    <Color x:Key="EcoSurfacePrimaryLight">#F4FFF8</Color>
+    <Color x:Key="EcoSurfacePrimaryDark">#163427</Color>
+    <Color x:Key="EcoSurfaceSecondaryLight">#EAF8F1</Color>
+    <Color x:Key="EcoSurfaceSecondaryDark">#1A3B2D</Color>
+    <Color x:Key="EcoSurfaceTertiaryLight">#E1F2EA</Color>
+    <Color x:Key="EcoSurfaceTertiaryDark">#1B4335</Color>
+
+    <Color x:Key="EcoAccentPrimaryLight">#1F7C5A</Color>
+    <Color x:Key="EcoAccentPrimaryDark">#285E49</Color>
+
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>

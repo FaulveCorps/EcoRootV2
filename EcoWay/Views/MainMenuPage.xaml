@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             x:Class="EcoWay.Views.MainMenuPage"
+             x:DataType="viewmodels:MainMenuViewModel"
+             Shell.NavBarIsVisible="False"
+             Title="Mission Hub">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientTopLight}, Dark={StaticResource EcoPageGradientTopDark}}" Offset="0" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientBottomLight}, Dark={StaticResource EcoPageGradientBottomDark}}" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="16,20,16,30" Spacing="12">
+
+                <Border x:Name="HeroPanel"
+                        StrokeThickness="0"
+                        Padding="0"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfacePrimaryLight}, Dark={StaticResource EcoSurfacePrimaryDark}}"
+                        StrokeShape="RoundRectangle 24">
+                    <Grid RowDefinitions="130,Auto" RowSpacing="0">
+                        <Grid Grid.Row="0" IsClippedToBounds="True">
+                            <AbsoluteLayout Margin="10,6,10,0">
+                                <BoxView x:Name="SunOrb"
+                                         Color="#FFD966"
+                                         WidthRequest="56"
+                                         HeightRequest="56"
+                                         CornerRadius="28"
+                                         AbsoluteLayout.LayoutBounds="0.14,0.18,56,56"
+                                         AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                                <Border x:Name="CloudLeft"
+                                        BackgroundColor="#ECF8FF"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 16"
+                                        WidthRequest="76"
+                                        HeightRequest="28"
+                                        AbsoluteLayout.LayoutBounds="0.40,0.20,76,28"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                                <Border x:Name="CloudRight"
+                                        BackgroundColor="#DFF2FF"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 16"
+                                        WidthRequest="68"
+                                        HeightRequest="24"
+                                        AbsoluteLayout.LayoutBounds="0.70,0.26,68,24"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                                <BoxView Color="#5FA35A"
+                                         AbsoluteLayout.LayoutBounds="0.5,0.92,1.05,0.30"
+                                         AbsoluteLayout.LayoutFlags="All" />
+
+                                <Label x:Name="LeafIcon"
+                                       Text="🍃"
+                                       FontSize="28"
+                                       AbsoluteLayout.LayoutBounds="0.85,0.72,40,40"
+                                       AbsoluteLayout.LayoutFlags="PositionProportional" />
+                            </AbsoluteLayout>
+                        </Grid>
+
+                        <VerticalStackLayout Grid.Row="1" Padding="16,10,16,14" Spacing="4">
+                            <Label Text="E C O W A Y"
+                                   FontSize="12"
+                                   LetterSpacing="4"
+                                   FontFamily="OpenSansSemibold"
+                                   TextColor="{AppThemeBinding Light=#2D6552, Dark=#9FD4BD}" />
+
+                            <Label Text="Mission Hub"
+                                   FontSize="32"
+                                   FontFamily="OpenSansSemibold"
+                                   TextColor="{AppThemeBinding Light=#134232, Dark=#D6FFEA}" />
+
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                <Label Text="{Binding PlayerRankText}"
+                                       FontSize="13"
+                                       TextColor="{AppThemeBinding Light=#3A6658, Dark=#A5D8C2}" />
+                                <Border Grid.Column="1"
+                                        Padding="8,4"
+                                        StrokeThickness="0"
+                                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}"
+                                        StrokeShape="RoundRectangle 999">
+                                    <Label Text="{Binding RunStateText}"
+                                           FontSize="11"
+                                           FontFamily="OpenSansSemibold"
+                                           TextColor="#E9FFF5" />
+                                </Border>
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                    <Border StrokeThickness="0"
+                            Padding="10"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
+                            StrokeShape="RoundRectangle 14">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Eco Score"
+                                   FontSize="11"
+                                   TextColor="{AppThemeBinding Light=#507467, Dark=#96CBB3}" />
+                            <Label Text="{Binding TotalScoreText}"
+                                   FontSize="18"
+                                   FontFamily="OpenSansSemibold"
+                                   TextColor="{AppThemeBinding Light=#1E4F3D, Dark=#C4F9DE}" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                            StrokeThickness="0"
+                            Padding="10"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
+                            StrokeShape="RoundRectangle 14">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Decisions"
+                                   FontSize="11"
+                                   TextColor="{AppThemeBinding Light=#507467, Dark=#96CBB3}" />
+                            <Label Text="{Binding DecisionsCountText}"
+                                   FontSize="18"
+                                   FontFamily="OpenSansSemibold"
+                                   TextColor="{AppThemeBinding Light=#1E4F3D, Dark=#C4F9DE}" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="2"
+                            StrokeThickness="0"
+                            Padding="10"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
+                            StrokeShape="RoundRectangle 14">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Checkpoint"
+                                   FontSize="11"
+                                   TextColor="{AppThemeBinding Light=#507467, Dark=#96CBB3}" />
+                            <Label Text="{Binding LastCheckpointText}"
+                                   FontSize="15"
+                                   FontFamily="OpenSansSemibold"
+                                   MaxLines="1"
+                                   LineBreakMode="TailTruncation"
+                                   TextColor="{AppThemeBinding Light=#1E4F3D, Dark=#C4F9DE}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <Border x:Name="CampaignPanel"
+                        StrokeThickness="0"
+                        Padding="14"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
+                        StrokeShape="RoundRectangle 18">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="🎮 Story Campaign"
+                               FontSize="16"
+                               FontFamily="OpenSansSemibold"
+                               TextColor="{AppThemeBinding Light=#1C4A39, Dark=#C2F5DC}" />
+
+                        <Label Text="{Binding PrimaryActionHint}"
+                               FontSize="13"
+                               LineBreakMode="WordWrap"
+                               TextColor="{AppThemeBinding Light=#496E60, Dark=#9CCFB9}" />
+
+                        <Button x:Name="PrimaryActionButton"
+                                Text="{Binding PrimaryActionText}"
+                                Command="{Binding PrimaryActionCommand}"
+                                FontFamily="OpenSansSemibold"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}"
+                                TextColor="#ECFFF6" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <Border StrokeThickness="0"
+                            Padding="12"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceTertiaryLight}, Dark={StaticResource EcoSurfaceTertiaryDark}}"
+                            StrokeShape="RoundRectangle 16">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="🧪 Impact Lab"
+                                   FontSize="14"
+                                   FontFamily="OpenSansSemibold"
+                                   TextColor="{AppThemeBinding Light=#244E66, Dark=#BBDCF0}" />
+                            <Label Text="Sandbox for harm vs recovery experiments with instant visual outcomes."
+                                   FontSize="12"
+                                   LineBreakMode="WordWrap"
+                                   TextColor="{AppThemeBinding Light=#4E6E7F, Dark=#9CC0D4}" />
+                            <Button Text="Launch Lab"
+                                    Command="{Binding OpenImpactLabCommand}"
+                                    FontFamily="OpenSansSemibold"
+                                    BackgroundColor="{AppThemeBinding Light=#2D6E8A, Dark=#355F7B}"
+                                    TextColor="#ECF8FF" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                            StrokeThickness="0"
+                            Padding="12"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceTertiaryLight}, Dark={StaticResource EcoSurfaceTertiaryDark}}"
+                            StrokeShape="RoundRectangle 16">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="🏁 Run Results"
+                                   FontSize="14"
+                                   FontFamily="OpenSansSemibold"
+                                   TextColor="{AppThemeBinding Light=#3F5566, Dark=#BED0DD}" />
+                            <Label Text="{Binding SummaryHintText}"
+                                   FontSize="12"
+                                   LineBreakMode="WordWrap"
+                                   TextColor="{AppThemeBinding Light=#5F7280, Dark=#A8BECF}" />
+                            <Button Text="{Binding SummaryActionText}"
+                                    Command="{Binding ViewSummaryCommand}"
+                                    IsEnabled="{Binding CanViewSummary}"
+                                    FontFamily="OpenSansSemibold"
+                                    BackgroundColor="{AppThemeBinding Light=#5B6F80, Dark=#4D6172}"
+                                    TextColor="#EEF8FF" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

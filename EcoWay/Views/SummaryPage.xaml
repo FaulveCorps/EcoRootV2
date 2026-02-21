@@ -9,8 +9,8 @@
        <Grid>
               <Grid.Background>
                      <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="{AppThemeBinding Light=#ECFFF5, Dark=#0F211A}" Offset="0" />
-                            <GradientStop Color="{AppThemeBinding Light=#E7F5FF, Dark=#102923}" Offset="1" />
+                            <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientTopLight}, Dark={StaticResource EcoPageGradientTopDark}}" Offset="0" />
+                            <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientBottomLight}, Dark={StaticResource EcoPageGradientBottomDark}}" Offset="1" />
                      </LinearGradientBrush>
               </Grid.Background>
 
@@ -18,12 +18,12 @@
                      <VerticalStackLayout Padding="16,24,16,30" Spacing="14">
                             <Border StrokeThickness="0"
                                           Padding="18"
-                                          BackgroundColor="{AppThemeBinding Light=#F5FFF8, Dark=#163427}"
+                                          BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfacePrimaryLight}, Dark={StaticResource EcoSurfacePrimaryDark}}"
                                           StrokeShape="RoundRectangle 24">
                                    <VerticalStackLayout Spacing="7">
                                           <Label Text="Journey Complete"
                                                     FontSize="28"
-                                                    FontAttributes="Bold"
+                                                    FontFamily="OpenSansSemibold"
                                                     TextColor="{AppThemeBinding Light=#113926, Dark=#CFFFF0}" />
                                           <Label Text="Your decisions shaped the ecosystem narrative."
                                                     FontSize="14"
@@ -33,7 +33,7 @@
 
                             <Border StrokeThickness="0"
                                           Padding="14"
-                                          BackgroundColor="{AppThemeBinding Light=#EAF8F1, Dark=#1A3B2D}"
+                                          BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
                                           StrokeShape="RoundRectangle 18">
                                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
                                           <Label Text="🌍"
@@ -45,7 +45,7 @@
                                                            TextColor="{AppThemeBinding Light=#456B5C, Dark=#9ECFBA}" />
                                                  <Label Text="{Binding TotalScore, StringFormat='{}{0} pts'}"
                                                            FontSize="24"
-                                                           FontAttributes="Bold"
+                                                           FontFamily="OpenSansSemibold"
                                                            TextColor="{AppThemeBinding Light=#1C4A39, Dark=#C6FFE2}" />
                                           </VerticalStackLayout>
                                    </Grid>
@@ -53,12 +53,12 @@
 
                             <Border StrokeThickness="0"
                                           Padding="16"
-                                          BackgroundColor="{AppThemeBinding Light=#F2FAF6, Dark=#18372B}"
+                                          BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
                                           StrokeShape="RoundRectangle 20">
                                    <VerticalStackLayout Spacing="8">
                                           <Label Text="{Binding Ending.Title}"
                                                     FontSize="23"
-                                                    FontAttributes="Bold"
+                                                    FontFamily="OpenSansSemibold"
                                                     TextColor="{AppThemeBinding Light=#17543E, Dark=#B8F0D6}" />
                                           <Label Text="{Binding Ending.Description}"
                                                     FontSize="15"
@@ -69,13 +69,13 @@
 
                             <Border StrokeThickness="0"
                                           Padding="14"
-                                          BackgroundColor="{AppThemeBinding Light=#1F7C5A, Dark=#285E49}"
+                                                                                                  BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}"
                                           StrokeShape="RoundRectangle 999"
                                           HorizontalOptions="Fill">
                                    <Label Text="Play Again"
                                              HorizontalTextAlignment="Center"
                                              FontSize="15"
-                                             FontAttributes="Bold"
+                                                                                                         FontFamily="OpenSansSemibold"
                                              TextColor="#ECFFF6" />
                                    <Border.GestureRecognizers>
                                           <TapGestureRecognizer Command="{Binding RestartCommand}" />

@@ -1,4 +1,6 @@
 using System.ComponentModel;
+using System.Collections.Specialized;
+using EcoWay.Models;
 using EcoWay.ViewModels;
 
 namespace EcoWay.Views;
@@ -8,6 +10,8 @@ public partial class ScenarioPage : ContentPage
     private readonly ScenarioViewModel _viewModel;
     private CancellationTokenSource? _sceneAnimationCts;
     private bool _isAppearing;
+    private bool _isApplyingChoice;
+    private double _vehicleSceneOffset;
 
     public ScenarioPage(ScenarioViewModel viewModel)
     {
@@ -20,6 +24,7 @@ public partial class ScenarioPage : ContentPage
         base.OnAppearing();
         _isAppearing = true;
         _viewModel.PropertyChanged += OnViewModelPropertyChanged;
+        _viewModel.ActiveEffects.CollectionChanged += OnActiveEffectsChanged;
 
         await _viewModel.InitializeAsync();
         await ApplyVisualConfigAsync(animated: false);
@@ -31,6 +36,7 @@ public partial class ScenarioPage : ContentPage
         base.OnDisappearing();
         _isAppearing = false;
         _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
+        _viewModel.ActiveEffects.CollectionChanged -= OnActiveEffectsChanged;
         StopAmbientAnimations();
     }
 
@@ -40,6 +46,21 @@ public partial class ScenarioPage : ContentPage
         {
             MainThread.BeginInvokeOnMainThread(async () => await ApplyVisualConfigAsync(animated: true));
         }
+
+        if (e.PropertyName == nameof(ScenarioViewModel.ProgressValue) && _isAppearing)
+        {
+            MainThread.BeginInvokeOnMainThread(async () => await AnimateProgressAsync());
+        }
+    }
+
+    private void OnActiveEffectsChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        if (!_isAppearing || e.Action != NotifyCollectionChangedAction.Add)
+        {
+            return;
+        }
+
+        MainThread.BeginInvokeOnMainThread(async () => await AnimateEffectsCardAsync());
     }
 
     private void StartAmbientAnimations()
@@ -60,6 +81,9 @@ public partial class ScenarioPage : ContentPage
         CloudB.CancelAnimations();
         SmokePlume.CancelAnimations();
         Vehicle.CancelAnimations();
+        RippleRingA.CancelAnimations();
+        RippleRingB.CancelAnimations();
+        EffectsCard.CancelAnimations();
     }
 
     private async Task RunAmbientAnimationsAsync(CancellationToken cancellationToken)
@@ -68,9 +92,13 @@ public partial class ScenarioPage : ContentPage
         {
             await Task.WhenAll(
                 Sun.ScaleToAsync(1.08, 1600, Easing.CubicInOut),
+                Sun.TranslateToAsync(0, -3, 1600, Easing.CubicInOut),
                 CloudA.TranslateToAsync(12, 0, 2200, Easing.SinInOut),
                 CloudB.TranslateToAsync(-10, 0, 2500, Easing.SinInOut),
-                SmokePlume.TranslateToAsync(0, -6, 1400, Easing.CubicInOut));
+                SmokePlume.TranslateToAsync(0, -6, 1400, Easing.CubicInOut),
+                Vehicle.TranslateToAsync(_vehicleSceneOffset + 20, 0, 1400, Easing.SinInOut),
+                PulseRippleAsync(RippleRingA, 0),
+                PulseRippleAsync(RippleRingB, 180));
 
             if (cancellationToken.IsCancellationRequested)
             {
@@ -79,9 +107,72 @@ public partial class ScenarioPage : ContentPage
 
             await Task.WhenAll(
                 Sun.ScaleToAsync(1.0, 1500, Easing.CubicInOut),
+                Sun.TranslateToAsync(0, 0, 1500, Easing.CubicInOut),
                 CloudA.TranslateToAsync(0, 0, 2200, Easing.SinInOut),
                 CloudB.TranslateToAsync(0, 0, 2500, Easing.SinInOut),
-                SmokePlume.TranslateToAsync(0, 0, 1400, Easing.CubicInOut));
+                SmokePlume.TranslateToAsync(0, 0, 1400, Easing.CubicInOut),
+                Vehicle.TranslateToAsync(_vehicleSceneOffset - 14, 0, 1400, Easing.SinInOut));
+        }
+    }
+
+    private static async Task PulseRippleAsync(VisualElement ripple, uint delay)
+    {
+        if (delay > 0)
+        {
+            await Task.Delay((int)delay);
+        }
+
+        ripple.Scale = 0.42;
+        ripple.Opacity = 0;
+
+        await Task.WhenAll(
+            ripple.FadeToAsync(0.48, 180, Easing.CubicOut),
+            ripple.ScaleToAsync(1.28, 520, Easing.CubicOut));
+
+        await ripple.FadeToAsync(0.0, 280, Easing.CubicIn);
+    }
+
+    private async Task AnimateProgressAsync()
+    {
+        await ScenarioProgressBar.ProgressTo(Math.Clamp(_viewModel.ProgressValue, 0.0, 1.0), 360, Easing.CubicInOut);
+    }
+
+    private async Task AnimateEffectsCardAsync()
+    {
+        await EffectsCard.ScaleToAsync(1.03, 120, Easing.CubicOut);
+        await EffectsCard.ScaleToAsync(1.0, 160, Easing.CubicInOut);
+    }
+
+    private async void OnChoiceTapped(object? sender, TappedEventArgs e)
+    {
+        if (_isApplyingChoice)
+        {
+            return;
+        }
+
+        if (sender is not TapGestureRecognizer tapGesture || tapGesture.Parent is not Grid grid || grid.BindingContext is not Choice choice)
+        {
+            return;
+        }
+
+        _isApplyingChoice = true;
+
+        try
+        {
+            if (grid.Parent is Border card)
+            {
+                await card.ScaleToAsync(0.97, 90, Easing.CubicOut);
+                await card.ScaleToAsync(1.0, 140, Easing.CubicInOut);
+            }
+
+            if (_viewModel.MakeChoiceCommand.CanExecute(choice))
+            {
+                _viewModel.MakeChoiceCommand.Execute(choice);
+            }
+        }
+        finally
+        {
+            _isApplyingChoice = false;
         }
     }
 
@@ -141,6 +232,7 @@ public partial class ScenarioPage : ContentPage
         var treeScale = 0.84 + (ecoFactor * 0.36);
         var smokeAdjusted = Math.Clamp(smokeOpacity * (1.15 - (ecoFactor * 0.6)), 0.05, 0.55);
         var waterAdjusted = Math.Clamp(waterOpacity + (ecoFactor * 0.18), 0.06, 0.45);
+        _vehicleSceneOffset = vehicleOffset;
 
         SkyGradientTop.Color = skyTop;
         SkyGradientBottom.Color = skyBottom;
@@ -151,6 +243,7 @@ public partial class ScenarioPage : ContentPage
 
         if (!animated)
         {
+            ScenarioProgressBar.Progress = _viewModel.ProgressValue;
             SmokePlume.Opacity = smokeAdjusted;
             WaterLevel.Opacity = waterAdjusted;
             Vehicle.TranslationX = vehicleOffset;
@@ -160,6 +253,7 @@ public partial class ScenarioPage : ContentPage
         }
 
         await Task.WhenAll(
+            ScenarioProgressBar.ProgressTo(Math.Clamp(_viewModel.ProgressValue, 0.0, 1.0), 360, Easing.CubicInOut),
             SmokePlume.FadeToAsync(smokeAdjusted, 420, Easing.CubicInOut),
             WaterLevel.FadeToAsync(waterAdjusted, 420, Easing.CubicInOut),
             Vehicle.TranslateToAsync(vehicleOffset, 0, 420, Easing.CubicOut),

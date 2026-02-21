@@ -83,7 +83,7 @@ public class ScenarioViewModel : BaseViewModel
         if (scenarioId == "end")
         {
             // Navigate to summary
-            Shell.Current.GoToAsync("//SummaryPage");
+            Shell.Current.GoToAsync("SummaryPage");
             return;
         }
 

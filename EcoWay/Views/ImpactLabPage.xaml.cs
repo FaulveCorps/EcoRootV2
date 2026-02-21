@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using EcoWay.Models;
 using EcoWay.ViewModels;
 
 namespace EcoWay.Views;
@@ -13,6 +14,7 @@ public partial class ImpactLabPage : ContentPage
     private readonly Color _dirtyWater = Color.FromArgb("#6E7A54");
     private readonly Color _healthyGround = Color.FromArgb("#5FA35A");
     private readonly Color _stressedGround = Color.FromArgb("#7C7A54");
+    private bool _isApplyingAction;
 
     public ImpactLabPage(ImpactLabViewModel viewModel)
     {
@@ -36,9 +38,18 @@ public partial class ImpactLabPage : ContentPage
 
     private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
+        if (e.PropertyName == nameof(ImpactLabViewModel.HealthProgress))
+        {
+            MainThread.BeginInvokeOnMainThread(async () => await AnimateHealthProgressAsync());
+        }
+
         if (e.PropertyName == nameof(ImpactLabViewModel.ActionAnimationTick) && !string.IsNullOrWhiteSpace(_viewModel.LastActionId))
         {
-            MainThread.BeginInvokeOnMainThread(async () => await AnimateOutcomeAsync(_viewModel.LastActionId));
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await AnimateOutcomeAsync(_viewModel.LastActionId);
+                await AnimateStatusPulseAsync();
+            });
         }
     }
 
@@ -56,20 +67,78 @@ public partial class ImpactLabPage : ContentPage
         _animationCts = null;
 
         Sun.CancelAnimations();
+        CloudA.CancelAnimations();
+        CloudB.CancelAnimations();
+        SmokePlume.CancelAnimations();
+        HealthStatusCard.CancelAnimations();
     }
 
     private async Task AnimateSceneAsync(CancellationToken token)
     {
         while (!token.IsCancellationRequested)
         {
-            await Sun.ScaleToAsync(1.08, 1300, Easing.CubicInOut);
+            await Task.WhenAll(
+                Sun.ScaleToAsync(1.08, 1300, Easing.CubicInOut),
+                Sun.TranslateToAsync(0, -2, 1300, Easing.CubicInOut),
+                CloudA.TranslateToAsync(10, 0, 1800, Easing.SinInOut),
+                CloudB.TranslateToAsync(-8, 0, 1900, Easing.SinInOut),
+                SmokePlume.FadeToAsync(Math.Clamp(SmokePlume.Opacity + 0.05, 0.05, 0.45), 1200, Easing.CubicInOut));
 
             if (token.IsCancellationRequested)
             {
                 break;
             }
 
-            await Sun.ScaleToAsync(1.0, 1200, Easing.CubicInOut);
+            await Task.WhenAll(
+                Sun.ScaleToAsync(1.0, 1200, Easing.CubicInOut),
+                Sun.TranslateToAsync(0, 0, 1200, Easing.CubicInOut),
+                CloudA.TranslateToAsync(0, 0, 1800, Easing.SinInOut),
+                CloudB.TranslateToAsync(0, 0, 1900, Easing.SinInOut),
+                SmokePlume.FadeToAsync(Math.Clamp(SmokePlume.Opacity - 0.04, 0.05, 0.45), 1200, Easing.CubicInOut));
+        }
+    }
+
+    private async Task AnimateHealthProgressAsync()
+    {
+        await LabHealthBar.ProgressTo(Math.Clamp(_viewModel.HealthProgress, 0.0, 1.0), 260, Easing.CubicInOut);
+    }
+
+    private async Task AnimateStatusPulseAsync()
+    {
+        await HealthStatusCard.ScaleToAsync(1.025, 120, Easing.CubicOut);
+        await HealthStatusCard.ScaleToAsync(1.0, 160, Easing.CubicInOut);
+    }
+
+    private async void OnImpactActionTapped(object? sender, TappedEventArgs e)
+    {
+        if (_isApplyingAction)
+        {
+            return;
+        }
+
+        if (sender is not TapGestureRecognizer tapGesture || tapGesture.Parent is not Grid grid || grid.BindingContext is not ImpactAction action)
+        {
+            return;
+        }
+
+        _isApplyingAction = true;
+
+        try
+        {
+            if (grid.Parent is Border card)
+            {
+                await card.ScaleToAsync(0.975, 90, Easing.CubicOut);
+                await card.ScaleToAsync(1.0, 140, Easing.CubicInOut);
+            }
+
+            if (_viewModel.ApplyActionCommand.CanExecute(action))
+            {
+                _viewModel.ApplyActionCommand.Execute(action);
+            }
+        }
+        finally
+        {
+            _isApplyingAction = false;
         }
     }
 

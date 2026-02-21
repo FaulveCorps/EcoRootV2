@@ -10,8 +10,8 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="{AppThemeBinding Light=#ECFFF5, Dark=#0F211A}" Offset="0" />
-                <GradientStop Color="{AppThemeBinding Light=#E7F5FF, Dark=#102923}" Offset="1" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientTopLight}, Dark={StaticResource EcoPageGradientTopDark}}" Offset="0" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientBottomLight}, Dark={StaticResource EcoPageGradientBottomDark}}" Offset="1" />
             </LinearGradientBrush>
         </Grid.Background>
 
@@ -19,12 +19,12 @@
             <VerticalStackLayout Padding="14,14,14,28" Spacing="12">
                 <Border StrokeThickness="0"
                         Padding="16"
-                        BackgroundColor="{AppThemeBinding Light=#F4FFF8, Dark=#18372B}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfacePrimaryLight}, Dark={StaticResource EcoSurfacePrimaryDark}}"
                         StrokeShape="RoundRectangle 24">
                     <VerticalStackLayout Spacing="8">
                         <Label Text="{Binding CurrentScenario.Title}"
                                FontSize="28"
-                               FontAttributes="Bold"
+                               FontFamily="OpenSansSemibold"
                                TextColor="{AppThemeBinding Light=#123827, Dark=#D2FFE9}" />
                         <Label Text="{Binding CurrentScenario.Description}"
                                FontSize="15"
@@ -35,7 +35,7 @@
 
                 <Border StrokeThickness="0"
                         Padding="12"
-                        BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#173328}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
                         StrokeShape="RoundRectangle 18">
                     <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" RowSpacing="6" ColumnSpacing="10">
                         <Label Text="{Binding SceneMoodText}"
@@ -45,7 +45,7 @@
                                 StrokeThickness="0"
                                 Padding="4"
                                 MinimumHeightRequest="32"
-                                BackgroundColor="{AppThemeBinding Light=#1F7C5A, Dark=#295E4A}"
+                            BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}"
                                 StrokeShape="RoundRectangle 999">
                             <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="4">
                                 <Border StrokeThickness="0"
@@ -67,7 +67,7 @@
                                         StrokeShape="RoundRectangle 999">
                                     <Label Text="{Binding StageBadgeText}"
                                            FontSize="11"
-                                           FontAttributes="Bold"
+                                         FontFamily="OpenSansSemibold"
                                            MaxLines="1"
                                            LineBreakMode="NoWrap"
                                            VerticalTextAlignment="Center"
@@ -76,7 +76,8 @@
                             </Grid>
                         </Border>
 
-                        <ProgressBar Grid.Row="1"
+                        <ProgressBar x:Name="ScenarioProgressBar"
+                                     Grid.Row="1"
                                      Progress="{Binding ProgressValue}"
                                      HeightRequest="8"
                                      ProgressColor="{AppThemeBinding Light=#2D8C66, Dark=#6AD9A7}"
@@ -202,6 +203,28 @@
                                      AbsoluteLayout.LayoutBounds="0.5,0.86,0.46,0.13"
                                      AbsoluteLayout.LayoutFlags="All" />
 
+                                <Border x:Name="RippleRingA"
+                                    Stroke="#D7F2FF"
+                                    StrokeThickness="2"
+                                    BackgroundColor="Transparent"
+                                    Opacity="0"
+                                    WidthRequest="34"
+                                    HeightRequest="34"
+                                    StrokeShape="RoundRectangle 17"
+                                    AbsoluteLayout.LayoutBounds="0.50,0.83,34,34"
+                                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                                <Border x:Name="RippleRingB"
+                                    Stroke="#C5E8FF"
+                                    StrokeThickness="2"
+                                    BackgroundColor="Transparent"
+                                    Opacity="0"
+                                    WidthRequest="34"
+                                    HeightRequest="34"
+                                    StrokeShape="RoundRectangle 17"
+                                    AbsoluteLayout.LayoutBounds="0.59,0.84,34,34"
+                                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+
                             <BoxView x:Name="SmokePlume"
                                      Color="#8C9AA7"
                                      Opacity="0.2"
@@ -214,14 +237,15 @@
                     </Grid>
                 </Border>
 
-                <Border StrokeThickness="0"
+                <Border x:Name="EffectsCard"
+                    StrokeThickness="0"
                         Padding="12"
-                        BackgroundColor="{AppThemeBinding Light=#F4FBF7, Dark=#163227}"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfacePrimaryLight}, Dark={StaticResource EcoSurfacePrimaryDark}}"
                         StrokeShape="RoundRectangle 16">
                     <VerticalStackLayout Spacing="8">
                         <Label Text="Active Effects"
                                FontSize="13"
-                               FontAttributes="Bold"
+                               FontFamily="OpenSansSemibold"
                                TextColor="{AppThemeBinding Light=#2E5E4B, Dark=#A7E2C7}" />
 
                         <Label Text="{Binding NoEffectsText}"
@@ -252,7 +276,7 @@
                         <DataTemplate x:DataType="models:Choice">
                             <Border StrokeThickness="0"
                                     Padding="14"
-                                    BackgroundColor="{AppThemeBinding Light=#EAF8F0, Dark=#17382C}"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
                                     StrokeShape="RoundRectangle 18">
                                 <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="3">
                                     <Label Grid.RowSpan="2"
@@ -263,7 +287,7 @@
                                     <Label Grid.Column="1"
                                            Text="{Binding Text}"
                                            FontSize="15"
-                                           FontAttributes="Bold"
+                                         FontFamily="OpenSansSemibold"
                                            TextColor="{AppThemeBinding Light=#153C2B, Dark=#D6FFE9}" />
 
                                     <Label Grid.Column="1"
@@ -278,7 +302,7 @@
                                             Padding="8,5"
                                             VerticalOptions="Center"
                                             StrokeThickness="0"
-                                            BackgroundColor="{AppThemeBinding Light=#1F7C5A, Dark=#285F4A}"
+                                            BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}"
                                             StrokeShape="RoundRectangle 999">
                                         <Label Text="Choose"
                                                FontSize="11"
@@ -286,9 +310,7 @@
                                     </Border>
 
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={x:Reference ScenarioPageRoot}, Path=BindingContext.MakeChoiceCommand}"
-                                            CommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer Tapped="OnChoiceTapped" />
                                     </Grid.GestureRecognizers>
                                 </Grid>
                             </Border>
