@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EcoWay")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+c09e065a2b3ada5f075660b713d744cd31e4c997")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+3a53c420126f5476df00f6c0e28343e4709fec35")]
 [assembly: System.Reflection.AssemblyProductAttribute("EcoWay")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EcoWay")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
