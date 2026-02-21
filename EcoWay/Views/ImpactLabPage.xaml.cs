@@ -336,4 +336,24 @@ public partial class ImpactLabPage : ContentPage
 
         return tcs.Task;
     }
+
+    private async void OnGoHomeClicked(object? sender, EventArgs e)
+    {
+        if (Shell.Current is null)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync("//MainMenuPage");
+    }
+
+    private async void OnGoStoryClicked(object? sender, EventArgs e)
+    {
+        if (Shell.Current is null)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync("//ScenarioPage");
+    }
 }

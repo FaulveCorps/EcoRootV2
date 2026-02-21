@@ -17,4 +17,24 @@ public partial class SummaryPage : ContentPage
         base.OnAppearing();
         _viewModel.Initialize();
     }
+
+    private async void OnGoHomeClicked(object? sender, EventArgs e)
+    {
+        if (Shell.Current is null)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync("//MainMenuPage");
+    }
+
+    private async void OnGoImpactLabClicked(object? sender, EventArgs e)
+    {
+        if (Shell.Current is null)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync("//ImpactLabPage");
+    }
 }

@@ -20,10 +20,15 @@ public class MainMenuViewModel : BaseViewModel
     private string _primaryActionHint = "Begin from the first scenario and shape your ecosystem arc.";
     private string _summaryActionText = "Summary Locked";
     private string _summaryHintText = "Finish at least one decision to unlock run results.";
+    private string _dailyQuestTitle = "Daily Quest: Eco Sprint";
+    private string _dailyQuestProgressText = "0/5 milestones";
+    private string _dailyQuestHintText = "Complete five decisions to max your daily eco streak.";
+    private double _dailyQuestProgress;
 
     public ICommand PrimaryActionCommand { get; }
     public ICommand OpenImpactLabCommand { get; }
     public ICommand ViewSummaryCommand => _viewSummaryCommand;
+    public ICommand ResetRunCommand { get; }
 
     public string PlayerRankText
     {
@@ -79,6 +84,30 @@ public class MainMenuViewModel : BaseViewModel
         set => SetProperty(ref _summaryHintText, value);
     }
 
+    public string DailyQuestTitle
+    {
+        get => _dailyQuestTitle;
+        set => SetProperty(ref _dailyQuestTitle, value);
+    }
+
+    public string DailyQuestProgressText
+    {
+        get => _dailyQuestProgressText;
+        set => SetProperty(ref _dailyQuestProgressText, value);
+    }
+
+    public string DailyQuestHintText
+    {
+        get => _dailyQuestHintText;
+        set => SetProperty(ref _dailyQuestHintText, value);
+    }
+
+    public double DailyQuestProgress
+    {
+        get => _dailyQuestProgress;
+        set => SetProperty(ref _dailyQuestProgress, value);
+    }
+
     public bool CanViewSummary
     {
         get => _canViewSummary;
@@ -99,6 +128,7 @@ public class MainMenuViewModel : BaseViewModel
         PrimaryActionCommand = new Command(async () => await StartOrContinueAsync());
         OpenImpactLabCommand = new Command(async () => await GoToAsync("//ImpactLabPage"));
         _viewSummaryCommand = new Command(async () => await OpenSummaryAsync(), () => CanViewSummary);
+        ResetRunCommand = new Command(async () => await ResetRunAsync());
 
         RefreshState();
     }
@@ -136,6 +166,14 @@ public class MainMenuViewModel : BaseViewModel
             ? "Inspect your current ending and score breakdown."
             : "Finish at least one decision to unlock run results.";
 
+        const int questGoal = 5;
+        var questProgressCount = Math.Min(decisions, questGoal);
+        DailyQuestProgress = Math.Clamp((double)questProgressCount / questGoal, 0d, 1d);
+        DailyQuestProgressText = $"{questProgressCount}/{questGoal} milestones";
+        DailyQuestHintText = questProgressCount >= questGoal
+            ? "Daily quest complete — your ecosystem instincts are on fire."
+            : "Complete five decisions to max your daily eco streak.";
+
         PlayerRankText = GetPlayerRank(state.TotalScore, decisions);
     }
 
@@ -153,6 +191,13 @@ public class MainMenuViewModel : BaseViewModel
     {
         await _scenarioService.LoadDataAsync();
         await GoToAsync("SummaryPage");
+    }
+
+    private Task ResetRunAsync()
+    {
+        _gameStateService.Reset();
+        RefreshState();
+        return Task.CompletedTask;
     }
 
     private static string GetPlayerRank(int score, int decisions)

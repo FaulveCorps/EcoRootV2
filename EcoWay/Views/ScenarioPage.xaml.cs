@@ -260,4 +260,24 @@ public partial class ScenarioPage : ContentPage
             TreeLeftCrown.ScaleToAsync(treeScale, 420, Easing.CubicOut),
             TreeRightCrown.ScaleToAsync(treeScale, 420, Easing.CubicOut));
     }
+
+    private async void OnGoHomeClicked(object? sender, EventArgs e)
+    {
+        if (Shell.Current is null)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync("//MainMenuPage");
+    }
+
+    private async void OnGoImpactLabClicked(object? sender, EventArgs e)
+    {
+        if (Shell.Current is null)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync("//ImpactLabPage");
+    }
 }

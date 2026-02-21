@@ -43,6 +43,20 @@
     <Color x:Key="EcoAccentPrimaryLight">#1F7C5A</Color>
     <Color x:Key="EcoAccentPrimaryDark">#285E49</Color>
 
+    <!-- Android/Material-inspired tokens -->
+    <Color x:Key="AndroidSurfaceLight">#FFFFFF</Color>
+    <Color x:Key="AndroidSurfaceDark">#1C2A23</Color>
+    <Color x:Key="AndroidSurfaceAltLight">#F2FBF6</Color>
+    <Color x:Key="AndroidSurfaceAltDark">#1E342A</Color>
+    <Color x:Key="AndroidAccentLight">#1FA26F</Color>
+    <Color x:Key="AndroidAccentDark">#33C48D</Color>
+    <Color x:Key="AndroidSecondaryAccentLight">#2E8BC0</Color>
+    <Color x:Key="AndroidSecondaryAccentDark">#5FA9D4</Color>
+    <Color x:Key="AndroidFabLight">#16794E</Color>
+    <Color x:Key="AndroidFabDark">#2FA96F</Color>
+    <Color x:Key="AndroidChipLight">#E6F6EE</Color>
+    <Color x:Key="AndroidChipDark">#244536</Color>
+
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>

@@ -1,4 +1,5 @@
 using System.Windows.Input;
+using System.Collections.ObjectModel;
 using EcoWay.Models;
 using EcoWay.Services;
 
@@ -23,6 +24,8 @@ public class SummaryViewModel : BaseViewModel
         set => SetProperty(ref _totalScore, value);
     }
 
+    public ObservableCollection<string> AchievementTags { get; } = [];
+
     public ICommand RestartCommand { get; }
 
     public SummaryViewModel(GameStateService gameStateService, ScenarioService scenarioService)
@@ -37,6 +40,14 @@ public class SummaryViewModel : BaseViewModel
     {
         TotalScore = _gameStateService.CurrentState.TotalScore;
         Ending = _scenarioService.GetEnding(TotalScore);
+
+        var decisions = _gameStateService.CurrentState.History.Count;
+
+        AchievementTags.Clear();
+        AchievementTags.Add($"Decisions: {decisions}");
+        AchievementTags.Add(TotalScore >= 0 ? "Net Positive" : "Needs Recovery");
+        AchievementTags.Add(TotalScore >= 20 ? "High Impact" : "Learning Run");
+        AchievementTags.Add(decisions >= 3 ? "Route Explorer" : "Quick Route");
     }
 
     private void OnRestart()

@@ -16,6 +16,36 @@
 
               <ScrollView>
                      <VerticalStackLayout Padding="16,24,16,30" Spacing="14">
+                            <Border Style="{StaticResource AndroidAppBarCard}">
+                                   <VerticalStackLayout Spacing="8">
+                                          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                                 <Label Text="🏁 Run Summary"
+                                                           Style="{StaticResource AndroidSectionTitle}" />
+                                                 <Border Grid.Column="1"
+                                                         Style="{StaticResource AndroidChip}"
+                                                         BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}">
+                                                        <Label Text="Complete"
+                                                              FontSize="11"
+                                                              FontFamily="OpenSansSemibold"
+                                                              TextColor="#ECFFF6" />
+                                                 </Border>
+                                          </Grid>
+
+                                          <HorizontalStackLayout Spacing="6"
+                                                                 BindableLayout.ItemsSource="{Binding AchievementTags}">
+                                                 <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                               <Border Style="{StaticResource AndroidChip}">
+                                                                      <Label Text="{Binding .}"
+                                                                            FontSize="11"
+                                                                            TextColor="{AppThemeBinding Light=#2E6651, Dark=#9ED4BC}" />
+                                                               </Border>
+                                                        </DataTemplate>
+                                                 </BindableLayout.ItemTemplate>
+                                          </HorizontalStackLayout>
+                                   </VerticalStackLayout>
+                            </Border>
+
                             <Border StrokeThickness="0"
                                           Padding="18"
                                           BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfacePrimaryLight}, Dark={StaticResource EcoSurfacePrimaryDark}}"
@@ -80,6 +110,24 @@
                                    <Border.GestureRecognizers>
                                           <TapGestureRecognizer Command="{Binding RestartCommand}" />
                                    </Border.GestureRecognizers>
+                            </Border>
+
+                            <Border Style="{StaticResource AndroidCard}">
+                                   <VerticalStackLayout Spacing="8">
+                                          <Label Text="Quick Actions"
+                                                    Style="{StaticResource AndroidSectionTitle}" />
+                                          <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                                                 <Button Text="Mission Hub"
+                                                         Style="{StaticResource AndroidFabButton}"
+                                                         Clicked="OnGoHomeClicked"
+                                                         BackgroundColor="{AppThemeBinding Light=#5B6F80, Dark=#4D6172}" />
+                                                 <Button Grid.Column="1"
+                                                         Text="Impact Lab"
+                                                         Style="{StaticResource AndroidFabButton}"
+                                                         Clicked="OnGoImpactLabClicked"
+                                                         BackgroundColor="{AppThemeBinding Light={StaticResource AndroidSecondaryAccentLight}, Dark={StaticResource AndroidSecondaryAccentDark}}" />
+                                          </Grid>
+                                   </VerticalStackLayout>
                             </Border>
                      </VerticalStackLayout>
               </ScrollView>
