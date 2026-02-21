@@ -166,10 +166,21 @@
                             <BoxView x:Name="Tree1Crown"
                                      Color="#2E8B57"
                                      Scale="{Binding TreeScale}"
+                                     AnchorX="0.5"
+                                     AnchorY="1.0"
                                      WidthRequest="38"
                                      HeightRequest="38"
                                      CornerRadius="19"
                                      AbsoluteLayout.LayoutBounds="0.16,0.63,38,38"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="Tree1Stump"
+                                     Color="#6F4E37"
+                                     Opacity="0"
+                                     WidthRequest="18"
+                                     HeightRequest="8"
+                                     CornerRadius="4"
+                                     AbsoluteLayout.LayoutBounds="0.16,0.80,18,8"
                                      AbsoluteLayout.LayoutFlags="PositionProportional" />
 
                             <BoxView x:Name="Tree2Trunk"
@@ -181,11 +192,79 @@
                             <BoxView x:Name="Tree2Crown"
                                      Color="#3A9960"
                                      Scale="{Binding TreeScale}"
+                                     AnchorX="0.5"
+                                     AnchorY="1.0"
                                      WidthRequest="38"
                                      HeightRequest="38"
                                      CornerRadius="19"
                                      AbsoluteLayout.LayoutBounds="0.82,0.63,38,38"
                                      AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="Tree2Stump"
+                                     Color="#6F4E37"
+                                     Opacity="0"
+                                     WidthRequest="18"
+                                     HeightRequest="8"
+                                     CornerRadius="4"
+                                     AbsoluteLayout.LayoutBounds="0.82,0.80,18,8"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="TrashLeft"
+                                     Color="#A2A5A8"
+                                     Opacity="0"
+                                     Rotation="-14"
+                                     WidthRequest="14"
+                                     HeightRequest="10"
+                                     CornerRadius="2"
+                                     AbsoluteLayout.LayoutBounds="0.34,0.80,14,10"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="TrashRight"
+                                     Color="#94989E"
+                                     Opacity="0"
+                                     Rotation="18"
+                                     WidthRequest="12"
+                                     HeightRequest="9"
+                                     CornerRadius="2"
+                                     AbsoluteLayout.LayoutBounds="0.66,0.79,12,9"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="SproutLeft"
+                                     Color="#77C66E"
+                                     Opacity="0"
+                                     Scale="0.2"
+                                     WidthRequest="12"
+                                     HeightRequest="16"
+                                     CornerRadius="6"
+                                     AbsoluteLayout.LayoutBounds="0.40,0.77,12,16"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="SproutRight"
+                                     Color="#77C66E"
+                                     Opacity="0"
+                                     Scale="0.2"
+                                     WidthRequest="12"
+                                     HeightRequest="16"
+                                     CornerRadius="6"
+                                     AbsoluteLayout.LayoutBounds="0.58,0.77,12,16"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="CoverCropBand"
+                                     Color="#68B66A"
+                                     Opacity="0"
+                                     ScaleX="0.2"
+                                     AnchorX="0"
+                                     AnchorY="0.5"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.84,0.72,0.08"
+                                     AbsoluteLayout.LayoutFlags="All" />
+
+                            <BoxView x:Name="SmokePlume"
+                                     Color="#666A6A"
+                                     Opacity="0.08"
+                                     Scale="0.8"
+                                     CornerRadius="34"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.58,0.36,0.16"
+                                     AbsoluteLayout.LayoutFlags="All" />
 
                             <BoxView x:Name="PollutionOverlay"
                                      Color="#5E5D5D"

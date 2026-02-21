@@ -43,18 +43,37 @@
                                TextColor="{AppThemeBinding Light=#3A6554, Dark=#9FD0BA}" />
                         <Border Grid.Column="1"
                                 StrokeThickness="0"
-                                Padding="9,4"
+                                Padding="4"
+                                MinimumHeightRequest="32"
                                 BackgroundColor="{AppThemeBinding Light=#1F7C5A, Dark=#295E4A}"
                                 StrokeShape="RoundRectangle 999">
-                            <HorizontalStackLayout Spacing="6">
-                                <Label Text="Phase"
-                                       FontSize="11"
-                                       TextColor="#E8FFF4" />
-                                <Label Text="{Binding StageBadgeText}"
-                                       FontSize="11"
-                                       FontAttributes="Bold"
-                                       TextColor="#E8FFF4" />
-                            </HorizontalStackLayout>
+                            <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="4">
+                                <Border StrokeThickness="0"
+                                        Padding="8,3"
+                                        BackgroundColor="Transparent"
+                                        StrokeShape="RoundRectangle 999">
+                                    <Label Text="Phase"
+                                           FontSize="11"
+                                           MaxLines="1"
+                                           LineBreakMode="NoWrap"
+                                           VerticalTextAlignment="Center"
+                                           TextColor="#E8FFF4" />
+                                </Border>
+
+                                <Border Grid.Column="1"
+                                        StrokeThickness="0"
+                                        Padding="10,3"
+                                        BackgroundColor="{AppThemeBinding Light=#3D9D77, Dark=#3A7F65}"
+                                        StrokeShape="RoundRectangle 999">
+                                    <Label Text="{Binding StageBadgeText}"
+                                           FontSize="11"
+                                           FontAttributes="Bold"
+                                           MaxLines="1"
+                                           LineBreakMode="NoWrap"
+                                           VerticalTextAlignment="Center"
+                                           TextColor="#E8FFF4" />
+                                </Border>
+                            </Grid>
                         </Border>
 
                         <ProgressBar Grid.Row="1"

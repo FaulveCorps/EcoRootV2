@@ -170,6 +170,20 @@ public class ImpactLabViewModel : BaseViewModel
         set => SetProperty(ref _modeChipText, value);
     }
 
+    private string _lastActionId = string.Empty;
+    public string LastActionId
+    {
+        get => _lastActionId;
+        set => SetProperty(ref _lastActionId, value);
+    }
+
+    private int _actionAnimationTick;
+    public int ActionAnimationTick
+    {
+        get => _actionAnimationTick;
+        set => SetProperty(ref _actionAnimationTick, value);
+    }
+
     public Color HarmChipBackground => IsHarmMode
         ? Color.FromArgb("#C84B4B")
         : Color.FromArgb("#4A6268");
@@ -218,6 +232,7 @@ public class ImpactLabViewModel : BaseViewModel
         }
 
         ActiveEffects.Clear();
+        LastActionId = string.Empty;
         RefreshVisualState();
 
         OnPropertyChanged(nameof(HarmChipBackground));
@@ -254,6 +269,9 @@ public class ImpactLabViewModel : BaseViewModel
         }
 
         RefreshVisualState();
+
+        LastActionId = action.Id;
+        ActionAnimationTick++;
     }
 
     private void RefreshVisualState()
