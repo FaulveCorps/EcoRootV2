@@ -71,40 +71,34 @@
                         <Label Text="{Binding SceneMoodText}"
                                FontSize="12"
                                TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
-                        <Border Grid.Column="1"
-                                StrokeThickness="0"
-                                Padding="4"
-                                MinimumHeightRequest="32"
-                            BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentPrimaryLight}, Dark={StaticResource ModernAccentPrimaryDark}}"
-                                StrokeShape="RoundRectangle 999">
-                            <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="4">
-                                <Border StrokeThickness="0"
-                                        Padding="8,3"
-                                        BackgroundColor="Transparent"
-                                        StrokeShape="RoundRectangle 999">
-                                    <Label Text="Phase"
-                                           FontSize="11"
-                                           MaxLines="1"
-                                           LineBreakMode="NoWrap"
-                                           VerticalTextAlignment="Center"
-                                           TextColor="#E8FFF4" />
-                                </Border>
+                        <HorizontalStackLayout Grid.Column="1"
+                                               Spacing="4"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Center">
+                            <Border Style="{StaticResource AndroidChip}"
+                                    Padding="9,4"
+                                    BackgroundColor="{AppThemeBinding Light=#2F7F62, Dark=#2B6D56}">
+                                <Label Text="Phase"
+                                       FontSize="11"
+                                       FontFamily="OpenSansSemibold"
+                                       MaxLines="1"
+                                       LineBreakMode="NoWrap"
+                                       VerticalTextAlignment="Center"
+                                       TextColor="#E9FFF5" />
+                            </Border>
 
-                                <Border Grid.Column="1"
-                                        StrokeThickness="0"
-                                        Padding="10,3"
-                                        BackgroundColor="{AppThemeBinding Light=#3D9D77, Dark=#3A7F65}"
-                                        StrokeShape="RoundRectangle 999">
-                                    <Label Text="{Binding StageBadgeText}"
-                                           FontSize="11"
-                                         FontFamily="OpenSansSemibold"
-                                           MaxLines="1"
-                                           LineBreakMode="NoWrap"
-                                           VerticalTextAlignment="Center"
-                                           TextColor="#E8FFF4" />
-                                </Border>
-                            </Grid>
-                        </Border>
+                            <Border Style="{StaticResource AndroidChip}"
+                                    Padding="10,4"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentPrimaryLight}, Dark={StaticResource ModernAccentPrimaryDark}}">
+                                <Label Text="{Binding StageBadgeText}"
+                                       FontSize="11"
+                                       FontFamily="OpenSansSemibold"
+                                       MaxLines="1"
+                                       LineBreakMode="NoWrap"
+                                       VerticalTextAlignment="Center"
+                                       TextColor="#E9FFF5" />
+                            </Border>
+                        </HorizontalStackLayout>
 
                         <ProgressBar x:Name="ScenarioProgressBar"
                                      Grid.Row="1"
