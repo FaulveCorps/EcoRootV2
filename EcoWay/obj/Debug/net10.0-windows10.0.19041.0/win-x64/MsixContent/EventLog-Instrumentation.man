@@ -2,7 +2,8 @@
 <instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events">
   <instrumentation>
     <events>
-      <!-- The 'message' attribute is the hierarchy path in Event Viewer -->
+      <!-- The 'message' attribute is the hierarchy path in Event Viewer 
+        name must be equal to the constexpr in InstallMyselfDeh\InstallMyselfDeh.cpp-->
       <provider
           guid="{43833e12-078d-4d7d-8aaf-ae8c8520f18c}"
           message="$(string.AppxDeploymentUndockedDeh)"

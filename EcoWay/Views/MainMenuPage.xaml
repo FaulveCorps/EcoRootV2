@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="EcoWay.Views.MainMenuPage"
              x:DataType="viewmodels:MainMenuViewModel"
              Shell.NavBarIsVisible="False"
@@ -10,112 +11,126 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientTopLight}, Dark={StaticResource EcoPageGradientTopDark}}" Offset="0" />
-                <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientBottomLight}, Dark={StaticResource EcoPageGradientBottomDark}}" Offset="1" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource ModernPageGradientTopLight}, Dark={StaticResource ModernPageGradientTopDark}}" Offset="0" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource ModernPageGradientBottomLight}, Dark={StaticResource ModernPageGradientBottomDark}}" Offset="1" />
             </LinearGradientBrush>
         </Grid.Background>
 
         <ScrollView>
             <VerticalStackLayout Padding="16,20,16,28" Spacing="12">
-                <Border StrokeThickness="0"
-                        Padding="16"
-                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfacePrimaryLight}, Dark={StaticResource EcoSurfacePrimaryDark}}"
-                        StrokeShape="RoundRectangle 22">
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="🎮 ECO WAY"
-                               FontSize="30"
-                               FontFamily="OpenSansSemibold"
-                               TextColor="{AppThemeBinding Light=#134232, Dark=#D6FFEA}" />
-                        <Label Text="Mission Hub"
-                               FontSize="15"
-                               FontFamily="OpenSansSemibold"
-                               TextColor="{AppThemeBinding Light=#2D6552, Dark=#9FD4BD}" />
+
+                <Border Style="{StaticResource AndroidAppBarCard}">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="EcoWay Command Center"
+                               Style="{StaticResource ModernHeroTitle}" />
+
                         <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
                             <Label Text="{Binding PlayerRankText}"
-                                   FontSize="13"
-                                   TextColor="{AppThemeBinding Light=#3A6658, Dark=#A5D8C2}" />
-                            <Border Grid.Column="1"
-                                    Padding="8,4"
-                                    StrokeThickness="0"
-                                    BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}"
-                                    StrokeShape="RoundRectangle 999">
+                                   Style="{StaticResource ModernBodyMuted}" />
+                            <Border Style="{StaticResource AndroidChip}"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentPrimaryLight}, Dark={StaticResource ModernAccentPrimaryDark}}">
                                 <Label Text="{Binding RunStateText}"
-                                       FontSize="11"
                                        FontFamily="OpenSansSemibold"
-                                       TextColor="#E9FFF5" />
+                                       FontSize="11"
+                                       TextColor="#EDFFF7" />
                             </Border>
                         </Grid>
+
+                        <Label Text="Choose a mode and shape your ecosystem outcomes with polished, real-time feedback."
+                               Style="{StaticResource ModernBodyMuted}" />
                     </VerticalStackLayout>
                 </Border>
 
-                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
-                    <Border StrokeThickness="0" Padding="10" BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}" StrokeShape="RoundRectangle 14">
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+                    <Border Style="{StaticResource AndroidCard}">
                         <VerticalStackLayout Spacing="2">
-                            <Label Text="Eco Score" FontSize="11" TextColor="{AppThemeBinding Light=#507467, Dark=#96CBB3}" />
-                            <Label Text="{Binding TotalScoreText}" FontSize="18" FontFamily="OpenSansSemibold" TextColor="{AppThemeBinding Light=#1E4F3D, Dark=#C4F9DE}" />
+                            <Label Text="Eco Score" Style="{StaticResource ModernBodyMuted}" />
+                            <Label Text="{Binding TotalScoreText}" Style="{StaticResource ModernStatValue}" />
                         </VerticalStackLayout>
                     </Border>
 
-                    <Border Grid.Column="1" StrokeThickness="0" Padding="10" BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}" StrokeShape="RoundRectangle 14">
+                    <Border Grid.Column="1" Style="{StaticResource AndroidCard}">
                         <VerticalStackLayout Spacing="2">
-                            <Label Text="Decisions" FontSize="11" TextColor="{AppThemeBinding Light=#507467, Dark=#96CBB3}" />
-                            <Label Text="{Binding DecisionsCountText}" FontSize="18" FontFamily="OpenSansSemibold" TextColor="{AppThemeBinding Light=#1E4F3D, Dark=#C4F9DE}" />
+                            <Label Text="Decisions" Style="{StaticResource ModernBodyMuted}" />
+                            <Label Text="{Binding DecisionsCountText}" Style="{StaticResource ModernStatValue}" />
                         </VerticalStackLayout>
                     </Border>
 
-                    <Border Grid.Column="2" StrokeThickness="0" Padding="10" BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}" StrokeShape="RoundRectangle 14">
+                    <Border Grid.Row="1" Style="{StaticResource AndroidCard}">
                         <VerticalStackLayout Spacing="2">
-                            <Label Text="Checkpoint" FontSize="11" TextColor="{AppThemeBinding Light=#507467, Dark=#96CBB3}" />
-                            <Label Text="{Binding LastCheckpointText}" FontSize="15" FontFamily="OpenSansSemibold" MaxLines="1" LineBreakMode="TailTruncation" TextColor="{AppThemeBinding Light=#1E4F3D, Dark=#C4F9DE}" />
+                            <Label Text="Checkpoint" Style="{StaticResource ModernBodyMuted}" />
+                            <Label Text="{Binding LastCheckpointText}"
+                                   FontFamily="OpenSansSemibold"
+                                   FontSize="15"
+                                   MaxLines="1"
+                                   LineBreakMode="TailTruncation"
+                                   TextColor="{AppThemeBinding Light={StaticResource ModernTextHeadlineLight}, Dark={StaticResource ModernTextHeadlineDark}}" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource AndroidCard}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Daily Quest" Style="{StaticResource ModernBodyMuted}" />
+                            <Label Text="{Binding DailyQuestProgressText}"
+                                   FontFamily="OpenSansSemibold"
+                                   FontSize="14"
+                                   TextColor="{AppThemeBinding Light={StaticResource ModernTextHeadlineLight}, Dark={StaticResource ModernTextHeadlineDark}}" />
+                            <ProgressBar Progress="{Binding DailyQuestProgress}"
+                                         HeightRequest="7"
+                                         ProgressColor="{AppThemeBinding Light={StaticResource ModernAccentPrimaryLight}, Dark={StaticResource ModernAccentPrimaryDark}}"
+                                         BackgroundColor="{AppThemeBinding Light=#D8ECE2, Dark=#3A5A4B}" />
                         </VerticalStackLayout>
                     </Border>
                 </Grid>
 
-                <Border StrokeThickness="0"
-                        Padding="14"
-                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
-                        StrokeShape="RoundRectangle 18">
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="🌍 Story Campaign"
-                               FontSize="16"
-                               FontFamily="OpenSansSemibold"
-                               TextColor="{AppThemeBinding Light=#1C4A39, Dark=#C2F5DC}" />
-                        <Label Text="{Binding PrimaryActionHint}"
-                               FontSize="13"
-                               LineBreakMode="WordWrap"
-                               TextColor="{AppThemeBinding Light=#496E60, Dark=#9CCFB9}" />
+                <Border Style="{StaticResource AndroidCard}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Story Campaign"
+                               Style="{StaticResource AndroidSectionTitle}" />
+
+                        <Label Text="{Binding PrimaryActionHint}" Style="{StaticResource ModernBodyMuted}" />
+
                         <Button Text="{Binding PrimaryActionText}"
                                 Command="{Binding PrimaryActionCommand}"
-                                FontFamily="OpenSansSemibold"
-                                BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}"
-                                TextColor="#ECFFF6" />
+                                Clicked="OnPrimaryActionClicked"
+                                Style="{StaticResource AndroidFabButton}">
+                            <Button.Behaviors>
+                                <toolkit:TouchBehavior PressedScale="0.97" PressedOpacity="0.86" />
+                            </Button.Behaviors>
+                        </Button>
                     </VerticalStackLayout>
                 </Border>
 
-                <Border StrokeThickness="0"
-                        Padding="12"
-                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceTertiaryLight}, Dark={StaticResource EcoSurfaceTertiaryDark}}"
-                        StrokeShape="RoundRectangle 16">
-                    <VerticalStackLayout Spacing="8">
-                        <Label Text="🧪 Challenge Modes"
-                               FontSize="14"
-                               FontFamily="OpenSansSemibold"
-                               TextColor="{AppThemeBinding Light=#244E66, Dark=#BBDCF0}" />
-                        <Button Text="Launch Impact Lab"
-                                Command="{Binding OpenImpactLabCommand}"
-                                FontFamily="OpenSansSemibold"
-                                BackgroundColor="{AppThemeBinding Light=#2D6E8A, Dark=#355F7B}"
-                                TextColor="#ECF8FF" />
-                        <Button Text="{Binding SummaryActionText}"
-                                Command="{Binding ViewSummaryCommand}"
-                                IsEnabled="{Binding CanViewSummary}"
-                                FontFamily="OpenSansSemibold"
-                                BackgroundColor="{AppThemeBinding Light=#5B6F80, Dark=#4D6172}"
-                                TextColor="#EEF8FF" />
-                        <Label Text="{Binding SummaryHintText}"
-                               FontSize="12"
-                               LineBreakMode="WordWrap"
-                               TextColor="{AppThemeBinding Light=#5F7280, Dark=#A8BECF}" />
+                <Border Style="{StaticResource AndroidCard}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Challenge Modes"
+                               Style="{StaticResource AndroidSectionTitle}" />
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                            <Button Text="Launch Impact Lab"
+                                    Command="{Binding OpenImpactLabCommand}"
+                                    Clicked="OnOpenImpactLabClicked"
+                                    Style="{StaticResource AndroidFabButton}"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentSecondaryLight}, Dark={StaticResource ModernAccentSecondaryDark}}">
+                                <Button.Behaviors>
+                                    <toolkit:TouchBehavior PressedScale="0.97" PressedOpacity="0.86" />
+                                </Button.Behaviors>
+                            </Button>
+
+                            <Button Grid.Column="1"
+                                    Text="{Binding SummaryActionText}"
+                                    Command="{Binding ViewSummaryCommand}"
+                                    Clicked="OnOpenSummaryClicked"
+                                    IsEnabled="{Binding CanViewSummary}"
+                                    Style="{StaticResource AndroidFabButton}"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentWarningLight}, Dark={StaticResource ModernAccentWarningDark}}">
+                                <Button.Behaviors>
+                                    <toolkit:TouchBehavior PressedScale="0.97" PressedOpacity="0.86" />
+                                </Button.Behaviors>
+                            </Button>
+                        </Grid>
+
+                        <Label Text="{Binding SummaryHintText}" Style="{StaticResource ModernBodyMuted}" />
                     </VerticalStackLayout>
                 </Border>
             </VerticalStackLayout>

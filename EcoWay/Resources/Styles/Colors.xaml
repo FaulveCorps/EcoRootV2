@@ -57,6 +57,31 @@
     <Color x:Key="AndroidChipLight">#E6F6EE</Color>
     <Color x:Key="AndroidChipDark">#244536</Color>
 
+    <!-- Modernized design system tokens -->
+    <Color x:Key="ModernPageGradientTopLight">#F4FFF9</Color>
+    <Color x:Key="ModernPageGradientTopDark">#101C17</Color>
+    <Color x:Key="ModernPageGradientBottomLight">#E9F5FF</Color>
+    <Color x:Key="ModernPageGradientBottomDark">#13231E</Color>
+
+    <Color x:Key="ModernSurfaceHeroLight">#FCFFFD</Color>
+    <Color x:Key="ModernSurfaceHeroDark">#182A23</Color>
+    <Color x:Key="ModernSurfaceCardLight">#F3FBF6</Color>
+    <Color x:Key="ModernSurfaceCardDark">#1E332A</Color>
+    <Color x:Key="ModernSurfaceSubtleLight">#E8F5EE</Color>
+    <Color x:Key="ModernSurfaceSubtleDark">#213B30</Color>
+
+    <Color x:Key="ModernAccentPrimaryLight">#118A61</Color>
+    <Color x:Key="ModernAccentPrimaryDark">#29B883</Color>
+    <Color x:Key="ModernAccentSecondaryLight">#2F7FD7</Color>
+    <Color x:Key="ModernAccentSecondaryDark">#6BA6E7</Color>
+    <Color x:Key="ModernAccentWarningLight">#B85D2E</Color>
+    <Color x:Key="ModernAccentWarningDark">#D99163</Color>
+
+    <Color x:Key="ModernTextHeadlineLight">#123A2A</Color>
+    <Color x:Key="ModernTextHeadlineDark">#D5FFE8</Color>
+    <Color x:Key="ModernTextBodyLight">#3E6757</Color>
+    <Color x:Key="ModernTextBodyDark">#9ECFB8</Color>
+
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>

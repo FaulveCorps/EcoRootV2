@@ -2,134 +2,131 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="EcoWay.Views.SummaryPage"
+             x:DataType="viewmodels:SummaryViewModel"
              Shell.NavBarIsVisible="False"
              Title="Summary">
 
-       <Grid>
-              <Grid.Background>
-                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientTopLight}, Dark={StaticResource EcoPageGradientTopDark}}" Offset="0" />
-                            <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientBottomLight}, Dark={StaticResource EcoPageGradientBottomDark}}" Offset="1" />
-                     </LinearGradientBrush>
-              </Grid.Background>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{AppThemeBinding Light={StaticResource ModernPageGradientTopLight}, Dark={StaticResource ModernPageGradientTopDark}}" Offset="0" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource ModernPageGradientBottomLight}, Dark={StaticResource ModernPageGradientBottomDark}}" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
 
-              <ScrollView>
-                     <VerticalStackLayout Padding="16,24,16,30" Spacing="14">
-                            <Border Style="{StaticResource AndroidAppBarCard}">
-                                   <VerticalStackLayout Spacing="8">
-                                          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
-                                                 <Label Text="🏁 Run Summary"
-                                                           Style="{StaticResource AndroidSectionTitle}" />
-                                                 <Border Grid.Column="1"
-                                                         Style="{StaticResource AndroidChip}"
-                                                         BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}">
-                                                        <Label Text="Complete"
-                                                              FontSize="11"
-                                                              FontFamily="OpenSansSemibold"
-                                                              TextColor="#ECFFF6" />
-                                                 </Border>
-                                          </Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="16,22,16,30" Spacing="12">
 
-                                          <HorizontalStackLayout Spacing="6"
-                                                                 BindableLayout.ItemsSource="{Binding AchievementTags}">
-                                                 <BindableLayout.ItemTemplate>
-                                                        <DataTemplate>
-                                                               <Border Style="{StaticResource AndroidChip}">
-                                                                      <Label Text="{Binding .}"
-                                                                            FontSize="11"
-                                                                            TextColor="{AppThemeBinding Light=#2E6651, Dark=#9ED4BC}" />
-                                                               </Border>
-                                                        </DataTemplate>
-                                                 </BindableLayout.ItemTemplate>
-                                          </HorizontalStackLayout>
-                                   </VerticalStackLayout>
+                <Border Style="{StaticResource AndroidAppBarCard}">
+                    <VerticalStackLayout Spacing="8">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                            <Label Text="Run Outcome"
+                                   Style="{StaticResource AndroidSectionTitle}" />
+                            <Border Style="{StaticResource AndroidChip}"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentPrimaryLight}, Dark={StaticResource ModernAccentPrimaryDark}}">
+                                <Label Text="Complete"
+                                       FontFamily="OpenSansSemibold"
+                                       FontSize="11"
+                                       TextColor="#ECFFF6" />
                             </Border>
+                        </Grid>
 
-                            <Border StrokeThickness="0"
-                                          Padding="18"
-                                          BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfacePrimaryLight}, Dark={StaticResource EcoSurfacePrimaryDark}}"
-                                          StrokeShape="RoundRectangle 24">
-                                   <VerticalStackLayout Spacing="7">
-                                          <Label Text="Journey Complete"
-                                                    FontSize="28"
-                                                    FontFamily="OpenSansSemibold"
-                                                    TextColor="{AppThemeBinding Light=#113926, Dark=#CFFFF0}" />
-                                          <Label Text="Your decisions shaped the ecosystem narrative."
-                                                    FontSize="14"
-                                                    TextColor="{AppThemeBinding Light=#3B6353, Dark=#9BD2B9}" />
-                                   </VerticalStackLayout>
-                            </Border>
+                        <HorizontalStackLayout Spacing="6"
+                                               BindableLayout.ItemsSource="{Binding AchievementTags}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource AndroidChip}">
+                                        <Label Text="{Binding .}"
+                                               FontSize="11"
+                                               TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
+                                    </Border>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
 
-                            <Border StrokeThickness="0"
-                                          Padding="14"
-                                          BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
-                                          StrokeShape="RoundRectangle 18">
-                                   <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
-                                          <Label Text="🌍"
-                                                    FontSize="22"
-                                                    VerticalTextAlignment="Center" />
-                                          <VerticalStackLayout Grid.Column="1" Spacing="1">
-                                                 <Label Text="Final Eco Score"
-                                                           FontSize="12"
-                                                           TextColor="{AppThemeBinding Light=#456B5C, Dark=#9ECFBA}" />
-                                                 <Label Text="{Binding TotalScore, StringFormat='{}{0} pts'}"
-                                                           FontSize="24"
-                                                           FontFamily="OpenSansSemibold"
-                                                           TextColor="{AppThemeBinding Light=#1C4A39, Dark=#C6FFE2}" />
-                                          </VerticalStackLayout>
-                                   </Grid>
-                            </Border>
+                <Border Style="{StaticResource AndroidCard}">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Journey Complete"
+                               Style="{StaticResource ModernHeroTitle}" />
+                        <Label Text="Your decisions shaped this ecosystem narrative arc."
+                               Style="{StaticResource ModernBodyMuted}" />
+                    </VerticalStackLayout>
+                </Border>
 
-                            <Border StrokeThickness="0"
-                                          Padding="16"
-                                          BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
-                                          StrokeShape="RoundRectangle 20">
-                                   <VerticalStackLayout Spacing="8">
-                                          <Label Text="{Binding Ending.Title}"
-                                                    FontSize="23"
-                                                    FontFamily="OpenSansSemibold"
-                                                    TextColor="{AppThemeBinding Light=#17543E, Dark=#B8F0D6}" />
-                                          <Label Text="{Binding Ending.Description}"
-                                                    FontSize="15"
-                                                    LineBreakMode="WordWrap"
-                                                    TextColor="{AppThemeBinding Light=#426C5C, Dark=#9BCDB7}" />
-                                   </VerticalStackLayout>
-                            </Border>
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <Border Style="{StaticResource AndroidCard}">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Final Score" Style="{StaticResource ModernBodyMuted}" />
+                            <Label Text="{Binding TotalScore, StringFormat='{}{0} pts'}"
+                                   Style="{StaticResource ModernStatValue}" />
+                        </VerticalStackLayout>
+                    </Border>
 
-                            <Border StrokeThickness="0"
-                                          Padding="14"
-                                                                                                  BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}"
-                                          StrokeShape="RoundRectangle 999"
-                                          HorizontalOptions="Fill">
-                                   <Label Text="Play Again"
-                                             HorizontalTextAlignment="Center"
-                                             FontSize="15"
-                                                                                                         FontFamily="OpenSansSemibold"
-                                             TextColor="#ECFFF6" />
-                                   <Border.GestureRecognizers>
-                                          <TapGestureRecognizer Command="{Binding RestartCommand}" />
-                                   </Border.GestureRecognizers>
-                            </Border>
+                    <Border Grid.Column="1" Style="{StaticResource AndroidCard}">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Ending" Style="{StaticResource ModernBodyMuted}" />
+                            <Label Text="{Binding Ending.Title}"
+                                   FontFamily="OpenSansSemibold"
+                                   FontSize="16"
+                                   MaxLines="1"
+                                   LineBreakMode="TailTruncation"
+                                   TextColor="{AppThemeBinding Light={StaticResource ModernTextHeadlineLight}, Dark={StaticResource ModernTextHeadlineDark}}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
 
-                            <Border Style="{StaticResource AndroidCard}">
-                                   <VerticalStackLayout Spacing="8">
-                                          <Label Text="Quick Actions"
-                                                    Style="{StaticResource AndroidSectionTitle}" />
-                                          <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
-                                                 <Button Text="Mission Hub"
-                                                         Style="{StaticResource AndroidFabButton}"
-                                                         Clicked="OnGoHomeClicked"
-                                                         BackgroundColor="{AppThemeBinding Light=#5B6F80, Dark=#4D6172}" />
-                                                 <Button Grid.Column="1"
-                                                         Text="Impact Lab"
-                                                         Style="{StaticResource AndroidFabButton}"
-                                                         Clicked="OnGoImpactLabClicked"
-                                                         BackgroundColor="{AppThemeBinding Light={StaticResource AndroidSecondaryAccentLight}, Dark={StaticResource AndroidSecondaryAccentDark}}" />
-                                          </Grid>
-                                   </VerticalStackLayout>
-                            </Border>
-                     </VerticalStackLayout>
-              </ScrollView>
-       </Grid>
+                <Border Style="{StaticResource AndroidCard}">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="{Binding Ending.Title}"
+                               FontFamily="OpenSansSemibold"
+                               FontSize="22"
+                               TextColor="{AppThemeBinding Light={StaticResource ModernTextHeadlineLight}, Dark={StaticResource ModernTextHeadlineDark}}" />
+                        <Label Text="{Binding Ending.Description}"
+                               FontSize="14"
+                               LineBreakMode="WordWrap"
+                               TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Button Text="Play Again"
+                        Command="{Binding RestartCommand}"
+                        Style="{StaticResource AndroidFabButton}">
+                    <Button.Behaviors>
+                        <toolkit:TouchBehavior PressedScale="0.97" PressedOpacity="0.86" />
+                    </Button.Behaviors>
+                </Button>
+
+                <Border Style="{StaticResource AndroidCard}">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Quick Actions"
+                               Style="{StaticResource AndroidSectionTitle}" />
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                            <Button Text="Mission Hub"
+                                    Style="{StaticResource AndroidFabButton}"
+                                    Clicked="OnGoHomeClicked"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentSecondaryLight}, Dark={StaticResource ModernAccentSecondaryDark}}">
+                                <Button.Behaviors>
+                                    <toolkit:TouchBehavior PressedScale="0.97" PressedOpacity="0.86" />
+                                </Button.Behaviors>
+                            </Button>
+
+                            <Button Grid.Column="1"
+                                    Text="Impact Lab"
+                                    Style="{StaticResource AndroidFabButton}"
+                                    Clicked="OnGoImpactLabClicked"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentWarningLight}, Dark={StaticResource ModernAccentWarningDark}}">
+                                <Button.Behaviors>
+                                    <toolkit:TouchBehavior PressedScale="0.97" PressedOpacity="0.86" />
+                                </Button.Behaviors>
+                            </Button>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

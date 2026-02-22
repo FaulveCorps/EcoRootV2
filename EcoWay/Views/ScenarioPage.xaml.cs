@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Collections.Specialized;
+using EcoWay.Helpers;
 using EcoWay.Models;
 using EcoWay.ViewModels;
 
@@ -167,6 +168,8 @@ public partial class ScenarioPage : ContentPage
 
             if (_viewModel.MakeChoiceCommand.CanExecute(choice))
             {
+                UiFeedback.TryHaptic();
+                _ = UiFeedback.ShowToastAsync($"Choice applied: {TrimForToast(choice.Text)}");
                 _viewModel.MakeChoiceCommand.Execute(choice);
             }
         }
@@ -268,6 +271,8 @@ public partial class ScenarioPage : ContentPage
             return;
         }
 
+        UiFeedback.TryHaptic();
+        _ = UiFeedback.ShowToastAsync("Returning to Mission Hub...");
         await Shell.Current.GoToAsync("//MainMenuPage");
     }
 
@@ -278,6 +283,22 @@ public partial class ScenarioPage : ContentPage
             return;
         }
 
+        UiFeedback.TryHaptic();
+        _ = UiFeedback.ShowToastAsync("Switching to Impact Lab...");
         await Shell.Current.GoToAsync("//ImpactLabPage");
+    }
+
+    private static string TrimForToast(string? input)
+    {
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            return "decision saved";
+        }
+
+        const int maxLength = 42;
+        var normalized = input.Replace('\n', ' ').Trim();
+        return normalized.Length <= maxLength
+            ? normalized
+            : $"{normalized[..(maxLength - 1)]}…";
     }
 }

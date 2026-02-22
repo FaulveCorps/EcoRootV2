@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using EcoWay.Helpers;
 using EcoWay.Models;
 using EcoWay.ViewModels;
 
@@ -49,6 +50,15 @@ public partial class ImpactLabPage : ContentPage
             {
                 await AnimateOutcomeAsync(_viewModel.LastActionId);
                 await AnimateStatusPulseAsync();
+            });
+        }
+
+        if (e.PropertyName == nameof(ImpactLabViewModel.ModeChipText))
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                UiFeedback.TryHaptic();
+                _ = UiFeedback.ShowToastAsync($"{_viewModel.ModeChipText} mode active.");
             });
         }
     }
@@ -133,6 +143,8 @@ public partial class ImpactLabPage : ContentPage
 
             if (_viewModel.ApplyActionCommand.CanExecute(action))
             {
+                UiFeedback.TryHaptic();
+                _ = UiFeedback.ShowToastAsync($"Applied: {TrimForToast(action.Title)}");
                 _viewModel.ApplyActionCommand.Execute(action);
             }
         }
@@ -344,6 +356,8 @@ public partial class ImpactLabPage : ContentPage
             return;
         }
 
+        UiFeedback.TryHaptic();
+        _ = UiFeedback.ShowToastAsync("Returning to Mission Hub...");
         await Shell.Current.GoToAsync("//MainMenuPage");
     }
 
@@ -354,6 +368,22 @@ public partial class ImpactLabPage : ContentPage
             return;
         }
 
+        UiFeedback.TryHaptic();
+        _ = UiFeedback.ShowToastAsync("Switching to Story Mode...");
         await Shell.Current.GoToAsync("//ScenarioPage");
+    }
+
+    private static string TrimForToast(string? input)
+    {
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            return "impact action";
+        }
+
+        const int maxLength = 42;
+        var normalized = input.Replace('\n', ' ').Trim();
+        return normalized.Length <= maxLength
+            ? normalized
+            : $"{normalized[..(maxLength - 1)]}…";
     }
 }

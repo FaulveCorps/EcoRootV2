@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:EcoWay.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="EcoWay.Views.ImpactLabPage"
              x:Name="ImpactLabRoot"
              Shell.NavBarIsVisible="False"
@@ -10,8 +11,8 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientTopLight}, Dark={StaticResource EcoPageGradientTopDark}}" Offset="0" />
-                <GradientStop Color="{AppThemeBinding Light={StaticResource EcoPageGradientBottomLight}, Dark={StaticResource EcoPageGradientBottomDark}}" Offset="1" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource ModernPageGradientTopLight}, Dark={StaticResource ModernPageGradientTopDark}}" Offset="0" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource ModernPageGradientBottomLight}, Dark={StaticResource ModernPageGradientBottomDark}}" Offset="1" />
             </LinearGradientBrush>
         </Grid.Background>
 
@@ -20,7 +21,7 @@
                 <Border Style="{StaticResource AndroidAppBarCard}">
                     <VerticalStackLayout Spacing="8">
                         <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
-                            <Label Text="🧪 Impact Lab"
+                            <Label Text="Impact Lab"
                                    Style="{StaticResource AndroidSectionTitle}" />
                             <Border Grid.Column="1"
                                     Style="{StaticResource AndroidChip}"
@@ -36,34 +37,31 @@
                             <Border Style="{StaticResource AndroidChip}">
                                 <Label Text="Simulation"
                                        FontSize="11"
-                                       TextColor="{AppThemeBinding Light=#2E6651, Dark=#9ED4BC}" />
+                                       TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
                             </Border>
                             <Border Style="{StaticResource AndroidChip}">
                                 <Label Text="Action Feedback"
                                        FontSize="11"
-                                       TextColor="{AppThemeBinding Light=#2E6651, Dark=#9ED4BC}" />
+                                       TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
                             </Border>
                             <Border Style="{StaticResource AndroidChip}">
                                 <Label Text="Recovery Paths"
                                        FontSize="11"
-                                       TextColor="{AppThemeBinding Light=#2E6651, Dark=#9ED4BC}" />
+                                       TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
                             </Border>
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </Border>
 
-                <Border Padding="14"
-                        StrokeThickness="0"
-                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfacePrimaryLight}, Dark={StaticResource EcoSurfacePrimaryDark}}"
-                        StrokeShape="RoundRectangle 20">
+                <Border Style="{StaticResource AndroidCard}">
                     <VerticalStackLayout Spacing="4">
                         <Label Text="{Binding ModeTitle}"
                                FontSize="26"
                                FontFamily="OpenSansSemibold"
-                               TextColor="{AppThemeBinding Light=#153C2B, Dark=#D5FFE9}" />
+                               TextColor="{AppThemeBinding Light={StaticResource ModernTextHeadlineLight}, Dark={StaticResource ModernTextHeadlineDark}}" />
                         <Label Text="{Binding ModeSubtitle}"
                                FontSize="13"
-                               TextColor="{AppThemeBinding Light=#3C6556, Dark=#9FD5BC}" />
+                               TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
                     </VerticalStackLayout>
                 </Border>
 
@@ -72,6 +70,9 @@
                             StrokeThickness="0"
                             BackgroundColor="{Binding HarmChipBackground}"
                             StrokeShape="RoundRectangle 14">
+                        <Border.Behaviors>
+                            <toolkit:TouchBehavior PressedScale="0.98" PressedOpacity="0.9" />
+                        </Border.Behaviors>
                         <Label Text="Harm"
                                HorizontalTextAlignment="Center"
                                FontSize="13"
@@ -87,6 +88,9 @@
                             StrokeThickness="0"
                             BackgroundColor="{Binding RecoveryChipBackground}"
                             StrokeShape="RoundRectangle 14">
+                        <Border.Behaviors>
+                            <toolkit:TouchBehavior PressedScale="0.98" PressedOpacity="0.9" />
+                        </Border.Behaviors>
                         <Label Text="Recovery"
                                HorizontalTextAlignment="Center"
                                FontSize="13"
@@ -102,6 +106,9 @@
                             StrokeThickness="0"
                             BackgroundColor="{AppThemeBinding Light=#496378, Dark=#3D5569}"
                             StrokeShape="RoundRectangle 14">
+                        <Border.Behaviors>
+                            <toolkit:TouchBehavior PressedScale="0.98" PressedOpacity="0.9" />
+                        </Border.Behaviors>
                         <Label Text="Reset"
                                HorizontalTextAlignment="Center"
                                FontSize="13"
@@ -114,15 +121,12 @@
                 </Grid>
 
                 <Border x:Name="HealthStatusCard"
-                    Padding="10"
-                        StrokeThickness="0"
-                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
-                        StrokeShape="RoundRectangle 14">
+                        Style="{StaticResource AndroidCard}">
                     <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" ColumnSpacing="8" RowSpacing="6">
                         <Label Text="{Binding EnvironmentStatus}"
                                FontSize="14"
                                FontFamily="OpenSansSemibold"
-                               TextColor="{AppThemeBinding Light=#1F4F3C, Dark=#ACE2C9}" />
+                               TextColor="{AppThemeBinding Light={StaticResource ModernTextHeadlineLight}, Dark={StaticResource ModernTextHeadlineDark}}" />
                         <Border Grid.Column="1"
                                 Padding="8,4"
                                 StrokeThickness="0"
@@ -330,17 +334,17 @@
                     </Grid>
                 </Border>
 
-                <Border StrokeThickness="0"
-                        Padding="10"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceSecondaryLight}, Dark={StaticResource EcoSurfaceSecondaryDark}}"
-                        StrokeShape="RoundRectangle 16">
+                <Border Style="{StaticResource AndroidCard}">
                     <VerticalStackLayout Spacing="7" BindableLayout.ItemsSource="{Binding CurrentActions}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="models:ImpactAction">
                                 <Border StrokeThickness="0"
                                         Padding="11"
-                                    BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfaceTertiaryLight}, Dark={StaticResource EcoSurfaceTertiaryDark}}"
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernSurfaceSubtleLight}, Dark={StaticResource ModernSurfaceSubtleDark}}"
                                         StrokeShape="RoundRectangle 14">
+                                    <Border.Behaviors>
+                                        <toolkit:TouchBehavior PressedScale="0.975" PressedOpacity="0.9" />
+                                    </Border.Behaviors>
                                     <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="2">
                                         <Label Grid.RowSpan="3"
                                                Text="{Binding Icon}"
@@ -351,13 +355,13 @@
                                                Text="{Binding Title}"
                                                FontSize="13"
                                                  FontFamily="OpenSansSemibold"
-                                               TextColor="{AppThemeBinding Light=#1D4A38, Dark=#CFFFE7}" />
+                                                                                             TextColor="{AppThemeBinding Light={StaticResource ModernTextHeadlineLight}, Dark={StaticResource ModernTextHeadlineDark}}" />
 
                                         <Label Grid.Column="1"
                                                Grid.Row="1"
                                                Text="{Binding Description}"
                                                FontSize="11"
-                                               TextColor="{AppThemeBinding Light=#4A6D60, Dark=#9FD1BB}" />
+                                               TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
 
                                         <Border Grid.Column="1"
                                                 Grid.Row="2"
@@ -382,10 +386,7 @@
                     </VerticalStackLayout>
                 </Border>
 
-                <Border StrokeThickness="0"
-                        Padding="10"
-                        BackgroundColor="{AppThemeBinding Light={StaticResource EcoSurfacePrimaryLight}, Dark={StaticResource EcoSurfacePrimaryDark}}"
-                        StrokeShape="RoundRectangle 16">
+                <Border Style="{StaticResource AndroidCard}">
                     <VerticalStackLayout Spacing="6">
                         <Label Text="Active Effects"
                                FontSize="13"
@@ -422,12 +423,20 @@
                             <Button Text="Mission Hub"
                                     Style="{StaticResource AndroidFabButton}"
                                     Clicked="OnGoHomeClicked"
-                                    BackgroundColor="{AppThemeBinding Light=#5B6F80, Dark=#4D6172}" />
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentSecondaryLight}, Dark={StaticResource ModernAccentSecondaryDark}}">
+                                <Button.Behaviors>
+                                    <toolkit:TouchBehavior PressedScale="0.97" PressedOpacity="0.85" />
+                                </Button.Behaviors>
+                            </Button>
                             <Button Grid.Column="1"
                                     Text="Story Mode"
                                     Style="{StaticResource AndroidFabButton}"
                                     Clicked="OnGoStoryClicked"
-                                    BackgroundColor="{AppThemeBinding Light={StaticResource EcoAccentPrimaryLight}, Dark={StaticResource EcoAccentPrimaryDark}}" />
+                                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentWarningLight}, Dark={StaticResource ModernAccentWarningDark}}">
+                                <Button.Behaviors>
+                                    <toolkit:TouchBehavior PressedScale="0.97" PressedOpacity="0.85" />
+                                </Button.Behaviors>
+                            </Button>
                         </Grid>
                     </VerticalStackLayout>
                 </Border>
