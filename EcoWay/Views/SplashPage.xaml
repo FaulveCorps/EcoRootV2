@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EcoWay.Views.SplashPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             Title="Splash">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{AppThemeBinding Light={StaticResource ModernPageGradientTopLight}, Dark={StaticResource ModernPageGradientTopDark}}" Offset="0" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource ModernPageGradientBottomLight}, Dark={StaticResource ModernPageGradientBottomDark}}" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <VerticalStackLayout Spacing="16"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Padding="22">
+            <Border x:Name="LogoOrb"
+                    WidthRequest="108"
+                    HeightRequest="108"
+                    Padding="0"
+                    StrokeThickness="0"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentPrimaryLight}, Dark={StaticResource ModernAccentPrimaryDark}}"
+                    StrokeShape="RoundRectangle 54">
+                <Label Text="🌿"
+                       FontSize="44"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       TextColor="#EAFFF5" />
+            </Border>
+
+            <Label Text="EcoWay"
+                   FontFamily="OpenSansSemibold"
+                   FontSize="34"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource ModernTextHeadlineLight}, Dark={StaticResource ModernTextHeadlineDark}}" />
+
+            <Label Text="Loading your ecosystem mission..."
+                   FontSize="14"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
+
+            <ActivityIndicator IsRunning="True"
+                               Color="{AppThemeBinding Light={StaticResource ModernAccentPrimaryLight}, Dark={StaticResource ModernAccentPrimaryDark}}" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
