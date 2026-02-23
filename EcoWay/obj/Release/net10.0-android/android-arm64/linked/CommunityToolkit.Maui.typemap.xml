@@ -1,0 +1,7 @@
+<api type="release" assembly-name="CommunityToolkit.Maui" mvid="dde12b6bcd4e41e29c5eedaf7310e102">
+  <module assembly-name="CommunityToolkit.Maui" mvid="dde12b6bcd4e41e29c5eedaf7310e102" mvid-bytes="ayvh3U7N4kGcXu2vcxDhAg==">
+    <types-scratch>
+      <entry key="crc640fd0ddb16fe433d4/TouchBehavior_AccessibilityListener" java-name="crc640fd0ddb16fe433d4/TouchBehavior_AccessibilityListener" managed-type-name="CommunityToolkit.Maui.Behaviors.TouchBehavior/AccessibilityListener" token="33554483" />
+    </types-scratch>
+  </module>
+</api>

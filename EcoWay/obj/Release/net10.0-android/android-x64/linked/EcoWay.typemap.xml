@@ -1,0 +1,8 @@
+<api type="release" assembly-name="EcoWay" mvid="80fbea0bcfb94f328851d8c4fc5e9179">
+  <module assembly-name="EcoWay" mvid="80fbea0bcfb94f328851d8c4fc5e9179" mvid-bytes="C+r7gLnPMk+IUdjE/F6ReQ==">
+    <types-scratch>
+      <entry key="crc642e8db94a5d2e1227/MainActivity" java-name="crc642e8db94a5d2e1227/MainActivity" managed-type-name="EcoWay.MainActivity" token="33554505" />
+      <entry key="crc642e8db94a5d2e1227/MainApplication" java-name="crc642e8db94a5d2e1227/MainApplication" managed-type-name="EcoWay.MainApplication" token="33554506" />
+    </types-scratch>
+  </module>
+</api>

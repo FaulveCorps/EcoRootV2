@@ -1,0 +1,3 @@
+C:\Users\jpfau\Desktop\Project\EcoRoot\EcoWay\bin\Release\net10.0-android\publish\com.group6.ecoway-Signed.apk
+C:\Users\jpfau\Desktop\Project\EcoRoot\EcoWay\bin\Release\net10.0-android\publish\com.group6.ecoway.apk
+C:\Users\jpfau\Desktop\Project\EcoRoot\EcoWay\bin\Release\net10.0-android\publish\_Microsoft.Android.Resource.Designer.dll
