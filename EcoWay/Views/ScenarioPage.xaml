@@ -328,14 +328,15 @@
                                             StrokeThickness="0"
                                             BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentPrimaryLight}, Dark={StaticResource ModernAccentPrimaryDark}}"
                                             StrokeShape="RoundRectangle 999">
-                                        <Label Text="Choose"
-                                               FontSize="11"
-                                               TextColor="#E6FFF3" />
+                                        <Button Text="Choose"
+                                                FontSize="11"
+                                                Padding="10,2"
+                                                CornerRadius="999"
+                                                BorderWidth="0"
+                                                BackgroundColor="Transparent"
+                                                TextColor="#E6FFF3"
+                                                Clicked="OnChoiceButtonClicked" />
                                     </Border>
-
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnChoiceTapped" />
-                                    </Grid.GestureRecognizers>
                                 </Grid>
                             </Border>
                         </DataTemplate>

@@ -46,6 +46,12 @@ public partial class MainMenuPage : ContentPage
         UiFeedback.TryHaptic();
         _ = UiFeedback.ShowToastAsync(_viewModel.CanViewSummary
             ? "Opening run summary..."
-            : "Summary is locked. Make at least one decision first.");
+            : "No decisions yet — opening summary preview.");
+    }
+
+    private void OnResetRunClicked(object? sender, EventArgs e)
+    {
+        UiFeedback.TryHaptic();
+        _ = UiFeedback.ShowToastAsync("Run reset. Ready for a fresh start.");
     }
 }

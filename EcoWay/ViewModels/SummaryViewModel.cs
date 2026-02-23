@@ -33,7 +33,7 @@ public class SummaryViewModel : BaseViewModel
         _gameStateService = gameStateService;
         _scenarioService = scenarioService;
 
-        RestartCommand = new Command(OnRestart);
+        RestartCommand = new Command(async () => await OnRestartAsync());
     }
 
     public void Initialize()
@@ -50,9 +50,15 @@ public class SummaryViewModel : BaseViewModel
         AchievementTags.Add(decisions >= 3 ? "Route Explorer" : "Quick Route");
     }
 
-    private void OnRestart()
+    private async Task OnRestartAsync()
     {
         _gameStateService.Reset();
-        Shell.Current.GoToAsync("//ScenarioPage");
+
+        if (Shell.Current is null)
+        {
+            return;
+        }
+
+        await Shell.Current.GoToAsync("//ScenarioPage");
     }
 }

@@ -121,7 +121,6 @@
                                     Text="{Binding SummaryActionText}"
                                     Command="{Binding ViewSummaryCommand}"
                                     Clicked="OnOpenSummaryClicked"
-                                    IsEnabled="{Binding CanViewSummary}"
                                     Style="{StaticResource AndroidFabButton}"
                                     BackgroundColor="{AppThemeBinding Light={StaticResource ModernAccentWarningLight}, Dark={StaticResource ModernAccentWarningDark}}">
                                 <Button.Behaviors>
@@ -131,6 +130,16 @@
                         </Grid>
 
                         <Label Text="{Binding SummaryHintText}" Style="{StaticResource ModernBodyMuted}" />
+
+                        <Button Text="Reset Run"
+                                Command="{Binding ResetRunCommand}"
+                                Clicked="OnResetRunClicked"
+                                Style="{StaticResource AndroidFabButton}"
+                                BackgroundColor="{AppThemeBinding Light=#4A6778, Dark=#3F596A}">
+                            <Button.Behaviors>
+                                <toolkit:TouchBehavior PressedScale="0.97" PressedOpacity="0.86" />
+                            </Button.Behaviors>
+                        </Button>
                     </VerticalStackLayout>
                 </Border>
             </VerticalStackLayout>

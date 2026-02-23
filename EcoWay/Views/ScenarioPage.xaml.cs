@@ -144,14 +144,14 @@ public partial class ScenarioPage : ContentPage
         await EffectsCard.ScaleToAsync(1.0, 160, Easing.CubicInOut);
     }
 
-    private async void OnChoiceTapped(object? sender, TappedEventArgs e)
+    private async void OnChoiceButtonClicked(object? sender, EventArgs e)
     {
         if (_isApplyingChoice)
         {
             return;
         }
 
-        if (sender is not TapGestureRecognizer tapGesture || tapGesture.Parent is not Grid grid || grid.BindingContext is not Choice choice)
+        if (sender is not Button button || button.BindingContext is not Choice choice)
         {
             return;
         }
@@ -160,11 +160,8 @@ public partial class ScenarioPage : ContentPage
 
         try
         {
-            if (grid.Parent is Border card)
-            {
-                await card.ScaleToAsync(0.97, 90, Easing.CubicOut);
-                await card.ScaleToAsync(1.0, 140, Easing.CubicInOut);
-            }
+            await button.ScaleToAsync(0.95, 90, Easing.CubicOut);
+            await button.ScaleToAsync(1.0, 140, Easing.CubicInOut);
 
             if (_viewModel.MakeChoiceCommand.CanExecute(choice))
             {

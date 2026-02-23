@@ -111,13 +111,7 @@ public class MainMenuViewModel : BaseViewModel
     public bool CanViewSummary
     {
         get => _canViewSummary;
-        set
-        {
-            if (SetProperty(ref _canViewSummary, value))
-            {
-                _viewSummaryCommand.ChangeCanExecute();
-            }
-        }
+        set => SetProperty(ref _canViewSummary, value);
     }
 
     public MainMenuViewModel(GameStateService gameStateService, ScenarioService scenarioService)
@@ -127,7 +121,7 @@ public class MainMenuViewModel : BaseViewModel
 
         PrimaryActionCommand = new Command(async () => await StartOrContinueAsync());
         OpenImpactLabCommand = new Command(async () => await GoToAsync("//ImpactLabPage"));
-        _viewSummaryCommand = new Command(async () => await OpenSummaryAsync(), () => CanViewSummary);
+        _viewSummaryCommand = new Command(async () => await OpenSummaryAsync());
         ResetRunCommand = new Command(async () => await ResetRunAsync());
 
         RefreshState();
@@ -161,10 +155,10 @@ public class MainMenuViewModel : BaseViewModel
             ? $"Resume at checkpoint '{state.CurrentScenarioId}'."
             : "Launch a fresh campaign run from the opening scenario.";
 
-        SummaryActionText = CanViewSummary ? "View Run Summary" : "Summary Locked";
+        SummaryActionText = CanViewSummary ? "View Run Summary" : "Preview Summary";
         SummaryHintText = CanViewSummary
             ? "Inspect your current ending and score breakdown."
-            : "Finish at least one decision to unlock run results.";
+            : "No decisions yet — open summary to preview your current ecosystem state.";
 
         const int questGoal = 5;
         var questProgressCount = Math.Min(decisions, questGoal);
