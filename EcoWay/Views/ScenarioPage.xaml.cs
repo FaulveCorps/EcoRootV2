@@ -88,6 +88,9 @@ public partial class ScenarioPage : ContentPage
         RippleRingA.CancelAnimations();
         RippleRingB.CancelAnimations();
         EffectsCard.CancelAnimations();
+        OutcomeHaze.CancelAnimations();
+        DebrisBand.CancelAnimations();
+        BloomBand.CancelAnimations();
     }
 
     private async Task RunAmbientAnimationsAsync(CancellationToken cancellationToken)
@@ -203,12 +206,16 @@ public partial class ScenarioPage : ContentPage
         var cityColor = Color.FromArgb("#6B7D8F");
         var roadColor = Color.FromArgb("#4D5965");
         var vehicleColor = Color.FromArgb("#F4A261");
+        var waterColor = Color.FromArgb("#4CA7E8");
         var treeLeftColor = Color.FromArgb("#2E8B57");
         var treeRightColor = Color.FromArgb("#3C9A5F");
         var treeOpacity = 1.0;
         var trunkOpacity = 1.0;
         var smokeOpacity = 0.2;
         var waterOpacity = 0.15;
+        var hazeOpacity = 0.0;
+        var debrisOpacity = 0.0;
+        var bloomOpacity = 0.0;
         var vehicleOffset = 0d;
 
         switch (visualConfig)
@@ -233,6 +240,7 @@ public partial class ScenarioPage : ContentPage
                 vehicleColor = Color.FromArgb("#E98153");
                 smokeOpacity = 0.35;
                 waterOpacity = 0.12;
+                waterColor = Color.FromArgb("#4B93CD");
                 vehicleOffset = 6;
                 break;
 
@@ -245,6 +253,7 @@ public partial class ScenarioPage : ContentPage
                 vehicleColor = Color.FromArgb("#7FC9D8");
                 smokeOpacity = 0.14;
                 waterOpacity = 0.25;
+                waterColor = Color.FromArgb("#4E90C5");
                 vehicleOffset = 12;
                 break;
         }
@@ -260,12 +269,14 @@ public partial class ScenarioPage : ContentPage
             smokeAdjusted += 0.16 * immediateFactor;
             waterAdjusted -= 0.12 * immediateFactor;
             treeScale -= 0.18 * immediateFactor;
+            hazeOpacity += 0.06 * immediateFactor;
         }
         else if (_viewModel.LatestImpactDelta > 0)
         {
             smokeAdjusted -= 0.14 * immediateFactor;
             waterAdjusted += 0.12 * immediateFactor;
             treeScale += 0.16 * immediateFactor;
+            bloomOpacity += 0.08 * immediateFactor;
         }
 
         switch (outcomeVisual)
@@ -277,6 +288,9 @@ public partial class ScenarioPage : ContentPage
                 trunkOpacity = 0.58;
                 treeScale = Math.Clamp(treeScale - 0.26, 0.34, 1.4);
                 smokeAdjusted += 0.10;
+                hazeOpacity += 0.24;
+                debrisOpacity += 0.82;
+                waterColor = Color.FromArgb("#6B8466");
                 break;
 
             case "clean_transport":
@@ -284,30 +298,40 @@ public partial class ScenarioPage : ContentPage
                 vehicleColor = Color.FromArgb("#6CCFAE");
                 smokeAdjusted -= 0.08;
                 waterAdjusted += 0.04;
+                bloomOpacity += 0.42;
+                hazeOpacity -= 0.04;
                 break;
 
             case "emissions":
                 smokeAdjusted += 0.14;
                 cityColor = Color.FromArgb("#637485");
                 waterAdjusted -= 0.06;
+                hazeOpacity += 0.28;
+                waterColor = Color.FromArgb("#6E89A1");
                 break;
 
             case "waste":
                 groundColor = Color.FromArgb("#748664");
                 waterAdjusted -= 0.09;
                 smokeAdjusted += 0.08;
+                debrisOpacity += 0.68;
+                hazeOpacity += 0.12;
+                waterColor = Color.FromArgb("#6F8A5B");
                 break;
 
             case "low_waste":
                 groundColor = Color.FromArgb("#6BB067");
                 waterAdjusted += 0.05;
                 smokeAdjusted -= 0.06;
+                bloomOpacity += 0.46;
+                debrisOpacity -= 0.12;
                 break;
 
             case "energy_overuse":
                 skyTop = Color.FromArgb("#5E74A5");
                 skyBottom = Color.FromArgb("#7F92B8");
                 smokeAdjusted += 0.12;
+                hazeOpacity += 0.22;
                 break;
 
             case "energy_saver":
@@ -315,12 +339,28 @@ public partial class ScenarioPage : ContentPage
                 skyBottom = Color.FromArgb("#9EC0E8");
                 smokeAdjusted -= 0.10;
                 waterAdjusted += 0.04;
+                bloomOpacity += 0.38;
+                hazeOpacity -= 0.04;
+                waterColor = Color.FromArgb("#59B3EE");
+                break;
+
+            case "general_negative":
+                hazeOpacity += 0.16;
+                debrisOpacity += 0.24;
+                break;
+
+            case "general_positive":
+                bloomOpacity += 0.32;
+                hazeOpacity -= 0.04;
                 break;
         }
 
         smokeAdjusted = Math.Clamp(smokeAdjusted, 0.05, 0.9);
         waterAdjusted = Math.Clamp(waterAdjusted, 0.04, 0.6);
         treeScale = Math.Clamp(treeScale, 0.34, 1.5);
+        hazeOpacity = Math.Clamp(hazeOpacity, 0.0, 0.6);
+        debrisOpacity = Math.Clamp(debrisOpacity, 0.0, 0.95);
+        bloomOpacity = Math.Clamp(bloomOpacity, 0.0, 0.9);
         _vehicleSceneOffset = vehicleOffset;
 
         SkyGradientTop.Color = skyTop;
@@ -329,6 +369,7 @@ public partial class ScenarioPage : ContentPage
         CityLine.Color = cityColor;
         Road.Color = roadColor;
         Vehicle.Color = vehicleColor;
+        WaterLevel.Color = waterColor;
         TreeLeftCrown.Color = treeLeftColor;
         TreeRightCrown.Color = treeRightColor;
 
@@ -344,6 +385,9 @@ public partial class ScenarioPage : ContentPage
             TreeRightCrown.Opacity = treeOpacity;
             TreeLeftTrunk.Opacity = trunkOpacity;
             TreeRightTrunk.Opacity = trunkOpacity;
+            OutcomeHaze.Opacity = hazeOpacity;
+            DebrisBand.Opacity = debrisOpacity;
+            BloomBand.Opacity = bloomOpacity;
             return;
         }
 
@@ -357,7 +401,10 @@ public partial class ScenarioPage : ContentPage
             TreeLeftCrown.FadeToAsync(treeOpacity, 420, Easing.CubicInOut),
             TreeRightCrown.FadeToAsync(treeOpacity, 420, Easing.CubicInOut),
             TreeLeftTrunk.FadeToAsync(trunkOpacity, 420, Easing.CubicInOut),
-            TreeRightTrunk.FadeToAsync(trunkOpacity, 420, Easing.CubicInOut));
+                TreeRightTrunk.FadeToAsync(trunkOpacity, 420, Easing.CubicInOut),
+                OutcomeHaze.FadeToAsync(hazeOpacity, 420, Easing.CubicInOut),
+                DebrisBand.FadeToAsync(debrisOpacity, 420, Easing.CubicInOut),
+                BloomBand.FadeToAsync(bloomOpacity, 420, Easing.CubicInOut));
     }
 
     private async void OnGoHomeClicked(object? sender, EventArgs e)

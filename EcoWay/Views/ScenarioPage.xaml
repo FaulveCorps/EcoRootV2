@@ -227,6 +227,18 @@
                                      AbsoluteLayout.LayoutBounds="0.5,0.86,0.46,0.13"
                                      AbsoluteLayout.LayoutFlags="All" />
 
+                            <BoxView x:Name="DebrisBand"
+                                     Color="#6D7156"
+                                     Opacity="0"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.84,0.72,0.08"
+                                     AbsoluteLayout.LayoutFlags="All" />
+
+                            <BoxView x:Name="BloomBand"
+                                     Color="#65B56F"
+                                     Opacity="0"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.85,0.7,0.08"
+                                     AbsoluteLayout.LayoutFlags="All" />
+
                                 <Border x:Name="RippleRingA"
                                     Stroke="#D7F2FF"
                                     StrokeThickness="2"
@@ -257,11 +269,19 @@
                                      HeightRequest="24"
                                      AbsoluteLayout.LayoutBounds="0.75,0.41,56,24"
                                      AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                            <BoxView x:Name="OutcomeHaze"
+                                     Color="#646B6E"
+                                     Opacity="0"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                                     AbsoluteLayout.LayoutFlags="All" />
                         </AbsoluteLayout>
                     </Grid>
                 </Border>
 
-                <Border Style="{StaticResource AndroidCard}"
+                <Border x:Name="LatestOutcomeCard"
+                        Style="{StaticResource AndroidCard}"
+                        BackgroundColor="{Binding LatestOutcomeCardBackground}"
                         IsVisible="{Binding HasLatestOutcome}">
                     <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
                         <Label Text="{Binding LatestOutcomeIcon}"
@@ -269,6 +289,10 @@
                                VerticalOptions="Start" />
 
                         <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="{Binding LatestOutcomeTag}"
+                                   FontSize="10"
+                                   FontFamily="OpenSansSemibold"
+                                   TextColor="{AppThemeBinding Light=#537A6A, Dark=#9FD2BC}" />
                             <Label Text="{Binding LatestOutcomeTitle}"
                                    FontSize="13"
                                    FontFamily="OpenSansSemibold"
@@ -283,12 +307,12 @@
                                 Padding="8,4"
                                 VerticalOptions="Start"
                                 StrokeThickness="0"
-                                BackgroundColor="{AppThemeBinding Light=#1F7B5A, Dark=#275D49}"
+                                BackgroundColor="{Binding LatestOutcomeChipBackground}"
                                 StrokeShape="RoundRectangle 999">
                             <Label Text="{Binding LatestImpactText}"
                                    FontSize="11"
                                    FontFamily="OpenSansSemibold"
-                                   TextColor="#E8FFF3" />
+                                   TextColor="{Binding LatestOutcomeChipTextColor}" />
                         </Border>
                     </Grid>
                 </Border>

@@ -108,6 +108,34 @@ public class ScenarioViewModel : BaseViewModel
         set => SetProperty(ref _latestImpactDelta, value);
     }
 
+    private string _latestOutcomeTag = "Outcome";
+    public string LatestOutcomeTag
+    {
+        get => _latestOutcomeTag;
+        set => SetProperty(ref _latestOutcomeTag, value);
+    }
+
+    private string _latestOutcomeCardBackground = "#EAF3EE";
+    public string LatestOutcomeCardBackground
+    {
+        get => _latestOutcomeCardBackground;
+        set => SetProperty(ref _latestOutcomeCardBackground, value);
+    }
+
+    private string _latestOutcomeChipBackground = "#1F7B5A";
+    public string LatestOutcomeChipBackground
+    {
+        get => _latestOutcomeChipBackground;
+        set => SetProperty(ref _latestOutcomeChipBackground, value);
+    }
+
+    private string _latestOutcomeChipTextColor = "#E8FFF3";
+    public string LatestOutcomeChipTextColor
+    {
+        get => _latestOutcomeChipTextColor;
+        set => SetProperty(ref _latestOutcomeChipTextColor, value);
+    }
+
     public ObservableCollection<Choice> Choices { get; } = new();
     public ObservableCollection<string> ActiveEffects { get; } = new();
 
@@ -228,7 +256,8 @@ public class ScenarioViewModel : BaseViewModel
         var resolvedVisual = ResolveOutcomeVisual(choice);
         LatestOutcomeVisual = resolvedVisual;
         LatestOutcomeTitle = BuildOutcomeTitle(resolvedVisual, choice.ImpactDelta);
-        LatestOutcomeDetail = BuildOutcomeDetail(choice.Aftermath);
+        LatestOutcomeDetail = BuildOutcomeDetail(choice.Aftermath, resolvedVisual, choice.ImpactDelta);
+        ApplyOutcomePalette(resolvedVisual, choice.ImpactDelta);
         HasLatestOutcome = true;
     }
 
@@ -288,17 +317,83 @@ public class ScenarioViewModel : BaseViewModel
         };
     }
 
-    private static string BuildOutcomeDetail(string aftermath)
+    private void ApplyOutcomePalette(string outcomeVisual, int impactDelta)
+    {
+        var isPositive = impactDelta >= 0;
+
+        LatestOutcomeTag = isPositive ? "Positive Impact" : "Negative Impact";
+
+        switch (outcomeVisual)
+        {
+            case "deforestation" when impactDelta < 0:
+                LatestOutcomeCardBackground = "#FAECE6";
+                LatestOutcomeChipBackground = "#8A4A2B";
+                LatestOutcomeChipTextColor = "#FFF3EE";
+                return;
+
+            case "emissions" when impactDelta < 0:
+            case "energy_overuse":
+                LatestOutcomeCardBackground = "#F6E8EA";
+                LatestOutcomeChipBackground = "#8A3A44";
+                LatestOutcomeChipTextColor = "#FFEFF2";
+                return;
+
+            case "waste" when impactDelta < 0:
+                LatestOutcomeCardBackground = "#F5EFE3";
+                LatestOutcomeChipBackground = "#7B5C2F";
+                LatestOutcomeChipTextColor = "#FFF8EE";
+                return;
+
+            case "clean_transport":
+            case "active_transport":
+            case "low_waste":
+            case "energy_saver":
+                LatestOutcomeCardBackground = "#E8F6EE";
+                LatestOutcomeChipBackground = "#1F7B5A";
+                LatestOutcomeChipTextColor = "#E8FFF3";
+                return;
+        }
+
+        if (isPositive)
+        {
+            LatestOutcomeCardBackground = "#EAF4F8";
+            LatestOutcomeChipBackground = "#2E6F92";
+            LatestOutcomeChipTextColor = "#EAF6FF";
+        }
+        else
+        {
+            LatestOutcomeCardBackground = "#F4EDEE";
+            LatestOutcomeChipBackground = "#6F4A4A";
+            LatestOutcomeChipTextColor = "#FFF2F2";
+        }
+    }
+
+    private static string BuildOutcomeDetail(string aftermath, string outcomeVisual, int impactDelta)
     {
         if (string.IsNullOrWhiteSpace(aftermath))
         {
             return "The simulation updated to reflect the selected outcome.";
         }
 
-        const int maxLength = 120;
+        var prefix = outcomeVisual switch
+        {
+            "deforestation" when impactDelta < 0 => "Tree cover drops:",
+            "deforestation" => "Replanting effect:",
+            "emissions" when impactDelta < 0 => "Air quality warning:",
+            "emissions" => "Air quality lift:",
+            "waste" when impactDelta < 0 => "Waste surge:",
+            "waste" => "Cleanup gain:",
+            "energy_overuse" => "Grid pressure alert:",
+            "energy_saver" => "Efficiency boost:",
+            _ when impactDelta >= 0 => "Positive shift:",
+            _ => "Stress indicator:"
+        };
+
+        const int maxLength = 138;
         var normalized = aftermath.Replace('\n', ' ').Trim();
-        return normalized.Length <= maxLength
-            ? normalized
-            : $"{normalized[..(maxLength - 1)]}…";
+        var text = $"{prefix} {normalized}";
+        return text.Length <= maxLength
+            ? text
+            : $"{text[..(maxLength - 1)]}…";
     }
 }
