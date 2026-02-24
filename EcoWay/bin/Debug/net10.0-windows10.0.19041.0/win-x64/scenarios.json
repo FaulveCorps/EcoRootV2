@@ -13,7 +13,8 @@
           "Teaser": "Lower hassle, but less direct control.",
           "TargetScenarioId": "lunch",
           "ImpactDelta": 10,
-          "Aftermath": "Street congestion eases slightly and roadside air looks clearer."
+          "Aftermath": "Street congestion eases slightly and roadside air looks clearer.",
+          "OutcomeVisual": "clean_transport"
         },
         {
           "Id": "c2",
@@ -22,7 +23,8 @@
           "Teaser": "Fast departure, higher personal convenience.",
           "TargetScenarioId": "lunch",
           "ImpactDelta": -10,
-          "Aftermath": "Traffic remains heavy and a haze lingers over the main road."
+          "Aftermath": "Traffic remains heavy and a haze lingers over the main road.",
+          "OutcomeVisual": "emissions"
         },
         {
           "Id": "c3",
@@ -31,7 +33,8 @@
           "Teaser": "Requires coordination, saves fuel-intensive distance.",
           "TargetScenarioId": "lunch",
           "ImpactDelta": 20,
-          "Aftermath": "Noise drops near the avenue and the morning scene feels calmer."
+          "Aftermath": "Noise drops near the avenue and the morning scene feels calmer.",
+          "OutcomeVisual": "active_transport"
         }
       ]
     },
@@ -48,7 +51,8 @@
           "Teaser": "Minimal wait time, heavier disposable footprint.",
           "TargetScenarioId": "evening",
           "ImpactDelta": -5,
-          "Aftermath": "Bin levels rise and cleanup crews face extra mixed waste."
+          "Aftermath": "Bin levels rise and cleanup crews face extra mixed waste.",
+          "OutcomeVisual": "waste"
         },
         {
           "Id": "c5",
@@ -57,7 +61,8 @@
           "Teaser": "Slight prep delay, potentially less waste generated.",
           "TargetScenarioId": "evening",
           "ImpactDelta": 15,
-          "Aftermath": "Lunch traffic steadies and less packaging appears around offices."
+          "Aftermath": "Lunch traffic steadies and less packaging appears around offices.",
+          "OutcomeVisual": "low_waste"
         }
       ]
     },
@@ -74,7 +79,8 @@
           "Teaser": "Maximum comfort, ongoing baseline consumption.",
           "TargetScenarioId": "end",
           "ImpactDelta": -15,
-          "Aftermath": "Power demand spikes and evening emissions rise across the block."
+          "Aftermath": "Power demand spikes and evening emissions rise across the block.",
+          "OutcomeVisual": "energy_overuse"
         },
         {
           "Id": "c7",
@@ -83,7 +89,8 @@
           "Teaser": "A bit of setup, steadier household energy use.",
           "TargetScenarioId": "end",
           "ImpactDelta": 10,
-          "Aftermath": "Neighborhood load smooths out and the night scene feels cleaner."
+          "Aftermath": "Neighborhood load smooths out and the night scene feels cleaner.",
+          "OutcomeVisual": "energy_saver"
         }
       ]
     }

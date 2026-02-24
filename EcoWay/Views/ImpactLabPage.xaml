@@ -66,58 +66,46 @@
                 </Border>
 
                 <Grid ColumnDefinitions="*,*,Auto" ColumnSpacing="8">
-                    <Border Padding="12,10"
-                            StrokeThickness="0"
+                    <Button Text="Harm"
+                            Command="{Binding SetModeCommand}"
+                            CommandParameter="harm"
+                            FontSize="13"
+                            FontFamily="OpenSansSemibold"
+                            CornerRadius="14"
                             BackgroundColor="{Binding HarmChipBackground}"
-                            StrokeShape="RoundRectangle 14">
-                        <Border.Behaviors>
+                            TextColor="#F4FFFB">
+                        <Button.Behaviors>
                             <toolkit:TouchBehavior PressedScale="0.98" PressedOpacity="0.9" />
-                        </Border.Behaviors>
-                        <Label Text="Harm"
-                               HorizontalTextAlignment="Center"
-                               FontSize="13"
-                               FontFamily="OpenSansSemibold"
-                               TextColor="#F4FFFB" />
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SetModeCommand}" CommandParameter="harm" />
-                        </Border.GestureRecognizers>
-                    </Border>
+                        </Button.Behaviors>
+                    </Button>
 
-                    <Border Grid.Column="1"
-                            Padding="12,10"
-                            StrokeThickness="0"
+                    <Button Grid.Column="1"
+                            Text="Recovery"
+                            Command="{Binding SetModeCommand}"
+                            CommandParameter="recovery"
+                            FontSize="13"
+                            FontFamily="OpenSansSemibold"
+                            CornerRadius="14"
                             BackgroundColor="{Binding RecoveryChipBackground}"
-                            StrokeShape="RoundRectangle 14">
-                        <Border.Behaviors>
+                            TextColor="#F4FFFB">
+                        <Button.Behaviors>
                             <toolkit:TouchBehavior PressedScale="0.98" PressedOpacity="0.9" />
-                        </Border.Behaviors>
-                        <Label Text="Recovery"
-                               HorizontalTextAlignment="Center"
-                               FontSize="13"
-                               FontFamily="OpenSansSemibold"
-                               TextColor="#F4FFFB" />
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SetModeCommand}" CommandParameter="recovery" />
-                        </Border.GestureRecognizers>
-                    </Border>
+                        </Button.Behaviors>
+                    </Button>
 
-                    <Border Grid.Column="2"
+                    <Button Grid.Column="2"
+                            Text="Reset"
+                            Command="{Binding ResetCommand}"
+                            FontSize="13"
+                            FontFamily="OpenSansSemibold"
+                            CornerRadius="14"
                             Padding="10,10"
-                            StrokeThickness="0"
                             BackgroundColor="{AppThemeBinding Light=#496378, Dark=#3D5569}"
-                            StrokeShape="RoundRectangle 14">
-                        <Border.Behaviors>
+                            TextColor="#F4FFFB">
+                        <Button.Behaviors>
                             <toolkit:TouchBehavior PressedScale="0.98" PressedOpacity="0.9" />
-                        </Border.Behaviors>
-                        <Label Text="Reset"
-                               HorizontalTextAlignment="Center"
-                               FontSize="13"
-                               FontFamily="OpenSansSemibold"
-                               TextColor="#F4FFFB" />
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ResetCommand}" />
-                        </Border.GestureRecognizers>
-                    </Border>
+                        </Button.Behaviors>
+                    </Button>
                 </Grid>
 
                 <Border x:Name="HealthStatusCard"
@@ -342,9 +330,6 @@
                                         Padding="11"
                                     BackgroundColor="{AppThemeBinding Light={StaticResource ModernSurfaceSubtleLight}, Dark={StaticResource ModernSurfaceSubtleDark}}"
                                         StrokeShape="RoundRectangle 14">
-                                    <Border.Behaviors>
-                                        <toolkit:TouchBehavior PressedScale="0.975" PressedOpacity="0.9" />
-                                    </Border.Behaviors>
                                     <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="2">
                                         <Label Grid.RowSpan="3"
                                                Text="{Binding Icon}"
@@ -363,22 +348,18 @@
                                                FontSize="11"
                                                TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
 
-                                        <Border Grid.Column="1"
+                                        <Button Grid.Column="1"
                                                 Grid.Row="2"
                                                 HorizontalOptions="Start"
                                                 Margin="0,4,0,0"
-                                                Padding="8,4"
-                                                StrokeThickness="0"
+                                                Padding="10,4"
+                                                FontSize="11"
+                                                CornerRadius="999"
+                                                BorderWidth="0"
                                                 BackgroundColor="{AppThemeBinding Light=#1F7B5A, Dark=#29604A}"
-                                                StrokeShape="RoundRectangle 999">
-                                            <Label Text="Apply Impact"
-                                                   FontSize="11"
-                                                   TextColor="#E9FFF6" />
-                                        </Border>
-
-                                        <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnImpactActionTapped" />
-                                        </Grid.GestureRecognizers>
+                                                TextColor="#E9FFF6"
+                                                Text="Apply Impact"
+                                                Clicked="OnImpactActionButtonClicked" />
                                     </Grid>
                                 </Border>
                             </DataTemplate>

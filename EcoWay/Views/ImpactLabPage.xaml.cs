@@ -119,15 +119,24 @@ public partial class ImpactLabPage : ContentPage
         await HealthStatusCard.ScaleToAsync(1.0, 160, Easing.CubicInOut);
     }
 
-    private async void OnImpactActionTapped(object? sender, TappedEventArgs e)
+    private async void OnImpactActionButtonClicked(object? sender, EventArgs e)
     {
         if (_isApplyingAction)
         {
             return;
         }
 
-        if (sender is not TapGestureRecognizer tapGesture || tapGesture.Parent is not Grid grid || grid.BindingContext is not ImpactAction action)
+        if (sender is not Button button)
         {
+            return;
+        }
+
+        var action = button.BindingContext as ImpactAction
+                     ?? FindAncestorBindingContext<ImpactAction>(button.Parent as Element);
+
+        if (action is null)
+        {
+            _ = UiFeedback.ShowToastAsync("Could not resolve selected action. Please try again.");
             return;
         }
 
@@ -135,17 +144,18 @@ public partial class ImpactLabPage : ContentPage
 
         try
         {
-            if (grid.Parent is Border card)
-            {
-                await card.ScaleToAsync(0.975, 90, Easing.CubicOut);
-                await card.ScaleToAsync(1.0, 140, Easing.CubicInOut);
-            }
+            await button.ScaleToAsync(0.95, 90, Easing.CubicOut);
+            await button.ScaleToAsync(1.0, 140, Easing.CubicInOut);
 
             if (_viewModel.ApplyActionCommand.CanExecute(action))
             {
                 UiFeedback.TryHaptic();
                 _ = UiFeedback.ShowToastAsync($"Applied: {TrimForToast(action.Title)}");
                 _viewModel.ApplyActionCommand.Execute(action);
+            }
+            else
+            {
+                _ = UiFeedback.ShowToastAsync("Action is temporarily unavailable.");
             }
         }
         finally
@@ -385,5 +395,21 @@ public partial class ImpactLabPage : ContentPage
         return normalized.Length <= maxLength
             ? normalized
             : $"{normalized[..(maxLength - 1)]}…";
+    }
+
+    private static T? FindAncestorBindingContext<T>(Element? element) where T : class
+    {
+        var current = element;
+        while (current is not null)
+        {
+            if (current.BindingContext is T typed)
+            {
+                return typed;
+            }
+
+            current = current.Parent;
+        }
+
+        return null;
     }
 }

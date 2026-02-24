@@ -43,7 +43,10 @@ public partial class ScenarioPage : ContentPage
 
     private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        if (e.PropertyName == nameof(ScenarioViewModel.CurrentScenario) && _isAppearing)
+        if ((e.PropertyName == nameof(ScenarioViewModel.CurrentScenario)
+            || e.PropertyName == nameof(ScenarioViewModel.LatestOutcomeVisual)
+            || e.PropertyName == nameof(ScenarioViewModel.LatestImpactDelta))
+            && _isAppearing)
         {
             MainThread.BeginInvokeOnMainThread(async () => await ApplyVisualConfigAsync(animated: true));
         }
@@ -151,8 +154,17 @@ public partial class ScenarioPage : ContentPage
             return;
         }
 
-        if (sender is not Button button || button.BindingContext is not Choice choice)
+        if (sender is not Button button)
         {
+            return;
+        }
+
+        var choice = button.BindingContext as Choice
+                     ?? FindAncestorBindingContext<Choice>(button.Parent as Element);
+
+        if (choice is null)
+        {
+            _ = UiFeedback.ShowToastAsync("Could not resolve selected choice. Please try again.");
             return;
         }
 
@@ -169,6 +181,10 @@ public partial class ScenarioPage : ContentPage
                 _ = UiFeedback.ShowToastAsync($"Choice applied: {TrimForToast(choice.Text)}");
                 _viewModel.MakeChoiceCommand.Execute(choice);
             }
+            else
+            {
+                _ = UiFeedback.ShowToastAsync("Choice is temporarily unavailable.");
+            }
         }
         finally
         {
@@ -179,6 +195,7 @@ public partial class ScenarioPage : ContentPage
     private async Task ApplyVisualConfigAsync(bool animated)
     {
         var visualConfig = _viewModel.CurrentScenario?.VisualConfig?.ToLowerInvariant() ?? string.Empty;
+        var outcomeVisual = _viewModel.LatestOutcomeVisual?.ToLowerInvariant() ?? string.Empty;
 
         var skyTop = Color.FromArgb("#8AD7FF");
         var skyBottom = Color.FromArgb("#F0FCFF");
@@ -186,6 +203,10 @@ public partial class ScenarioPage : ContentPage
         var cityColor = Color.FromArgb("#6B7D8F");
         var roadColor = Color.FromArgb("#4D5965");
         var vehicleColor = Color.FromArgb("#F4A261");
+        var treeLeftColor = Color.FromArgb("#2E8B57");
+        var treeRightColor = Color.FromArgb("#3C9A5F");
+        var treeOpacity = 1.0;
+        var trunkOpacity = 1.0;
         var smokeOpacity = 0.2;
         var waterOpacity = 0.15;
         var vehicleOffset = 0d;
@@ -229,9 +250,77 @@ public partial class ScenarioPage : ContentPage
         }
 
         var ecoFactor = Math.Clamp((_viewModel.TotalScore + 40d) / 80d, 0.0, 1.0);
+        var immediateFactor = Math.Clamp(Math.Abs(_viewModel.LatestImpactDelta) / 20d, 0.0, 1.0);
         var treeScale = 0.84 + (ecoFactor * 0.36);
         var smokeAdjusted = Math.Clamp(smokeOpacity * (1.15 - (ecoFactor * 0.6)), 0.05, 0.55);
         var waterAdjusted = Math.Clamp(waterOpacity + (ecoFactor * 0.18), 0.06, 0.45);
+
+        if (_viewModel.LatestImpactDelta < 0)
+        {
+            smokeAdjusted += 0.16 * immediateFactor;
+            waterAdjusted -= 0.12 * immediateFactor;
+            treeScale -= 0.18 * immediateFactor;
+        }
+        else if (_viewModel.LatestImpactDelta > 0)
+        {
+            smokeAdjusted -= 0.14 * immediateFactor;
+            waterAdjusted += 0.12 * immediateFactor;
+            treeScale += 0.16 * immediateFactor;
+        }
+
+        switch (outcomeVisual)
+        {
+            case "deforestation":
+                treeLeftColor = Color.FromArgb("#7D7F53");
+                treeRightColor = Color.FromArgb("#7A7A50");
+                treeOpacity = 0.42;
+                trunkOpacity = 0.58;
+                treeScale = Math.Clamp(treeScale - 0.26, 0.34, 1.4);
+                smokeAdjusted += 0.10;
+                break;
+
+            case "clean_transport":
+            case "active_transport":
+                vehicleColor = Color.FromArgb("#6CCFAE");
+                smokeAdjusted -= 0.08;
+                waterAdjusted += 0.04;
+                break;
+
+            case "emissions":
+                smokeAdjusted += 0.14;
+                cityColor = Color.FromArgb("#637485");
+                waterAdjusted -= 0.06;
+                break;
+
+            case "waste":
+                groundColor = Color.FromArgb("#748664");
+                waterAdjusted -= 0.09;
+                smokeAdjusted += 0.08;
+                break;
+
+            case "low_waste":
+                groundColor = Color.FromArgb("#6BB067");
+                waterAdjusted += 0.05;
+                smokeAdjusted -= 0.06;
+                break;
+
+            case "energy_overuse":
+                skyTop = Color.FromArgb("#5E74A5");
+                skyBottom = Color.FromArgb("#7F92B8");
+                smokeAdjusted += 0.12;
+                break;
+
+            case "energy_saver":
+                skyTop = Color.FromArgb("#5177B5");
+                skyBottom = Color.FromArgb("#9EC0E8");
+                smokeAdjusted -= 0.10;
+                waterAdjusted += 0.04;
+                break;
+        }
+
+        smokeAdjusted = Math.Clamp(smokeAdjusted, 0.05, 0.9);
+        waterAdjusted = Math.Clamp(waterAdjusted, 0.04, 0.6);
+        treeScale = Math.Clamp(treeScale, 0.34, 1.5);
         _vehicleSceneOffset = vehicleOffset;
 
         SkyGradientTop.Color = skyTop;
@@ -240,6 +329,8 @@ public partial class ScenarioPage : ContentPage
         CityLine.Color = cityColor;
         Road.Color = roadColor;
         Vehicle.Color = vehicleColor;
+        TreeLeftCrown.Color = treeLeftColor;
+        TreeRightCrown.Color = treeRightColor;
 
         if (!animated)
         {
@@ -249,6 +340,10 @@ public partial class ScenarioPage : ContentPage
             Vehicle.TranslationX = vehicleOffset;
             TreeLeftCrown.Scale = treeScale;
             TreeRightCrown.Scale = treeScale;
+            TreeLeftCrown.Opacity = treeOpacity;
+            TreeRightCrown.Opacity = treeOpacity;
+            TreeLeftTrunk.Opacity = trunkOpacity;
+            TreeRightTrunk.Opacity = trunkOpacity;
             return;
         }
 
@@ -258,7 +353,11 @@ public partial class ScenarioPage : ContentPage
             WaterLevel.FadeToAsync(waterAdjusted, 420, Easing.CubicInOut),
             Vehicle.TranslateToAsync(vehicleOffset, 0, 420, Easing.CubicOut),
             TreeLeftCrown.ScaleToAsync(treeScale, 420, Easing.CubicOut),
-            TreeRightCrown.ScaleToAsync(treeScale, 420, Easing.CubicOut));
+            TreeRightCrown.ScaleToAsync(treeScale, 420, Easing.CubicOut),
+            TreeLeftCrown.FadeToAsync(treeOpacity, 420, Easing.CubicInOut),
+            TreeRightCrown.FadeToAsync(treeOpacity, 420, Easing.CubicInOut),
+            TreeLeftTrunk.FadeToAsync(trunkOpacity, 420, Easing.CubicInOut),
+            TreeRightTrunk.FadeToAsync(trunkOpacity, 420, Easing.CubicInOut));
     }
 
     private async void OnGoHomeClicked(object? sender, EventArgs e)
@@ -297,5 +396,21 @@ public partial class ScenarioPage : ContentPage
         return normalized.Length <= maxLength
             ? normalized
             : $"{normalized[..(maxLength - 1)]}…";
+    }
+
+    private static T? FindAncestorBindingContext<T>(Element? element) where T : class
+    {
+        var current = element;
+        while (current is not null)
+        {
+            if (current.BindingContext is T typed)
+            {
+                return typed;
+            }
+
+            current = current.Parent;
+        }
+
+        return null;
     }
 }

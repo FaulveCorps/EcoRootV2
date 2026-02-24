@@ -59,6 +59,55 @@ public class ScenarioViewModel : BaseViewModel
         set => SetProperty(ref _noEffectsText, value);
     }
 
+    private bool _hasLatestOutcome;
+    public bool HasLatestOutcome
+    {
+        get => _hasLatestOutcome;
+        set => SetProperty(ref _hasLatestOutcome, value);
+    }
+
+    private string _latestOutcomeTitle = "No recent outcome yet";
+    public string LatestOutcomeTitle
+    {
+        get => _latestOutcomeTitle;
+        set => SetProperty(ref _latestOutcomeTitle, value);
+    }
+
+    private string _latestOutcomeDetail = "Pick a choice to preview immediate ecosystem impact.";
+    public string LatestOutcomeDetail
+    {
+        get => _latestOutcomeDetail;
+        set => SetProperty(ref _latestOutcomeDetail, value);
+    }
+
+    private string _latestOutcomeIcon = "🧭";
+    public string LatestOutcomeIcon
+    {
+        get => _latestOutcomeIcon;
+        set => SetProperty(ref _latestOutcomeIcon, value);
+    }
+
+    private string _latestImpactText = "±0 eco pts";
+    public string LatestImpactText
+    {
+        get => _latestImpactText;
+        set => SetProperty(ref _latestImpactText, value);
+    }
+
+    private string _latestOutcomeVisual = string.Empty;
+    public string LatestOutcomeVisual
+    {
+        get => _latestOutcomeVisual;
+        set => SetProperty(ref _latestOutcomeVisual, value);
+    }
+
+    private int _latestImpactDelta;
+    public int LatestImpactDelta
+    {
+        get => _latestImpactDelta;
+        set => SetProperty(ref _latestImpactDelta, value);
+    }
+
     public ObservableCollection<Choice> Choices { get; } = new();
     public ObservableCollection<string> ActiveEffects { get; } = new();
 
@@ -110,6 +159,7 @@ public class ScenarioViewModel : BaseViewModel
             return;
         }
 
+        UpdateLatestOutcome(choice);
         _gameStateService.RecordDecision(CurrentScenario, choice);
         AddActiveEffect(choice);
         LoadScenario(choice.TargetScenarioId);
@@ -134,13 +184,17 @@ public class ScenarioViewModel : BaseViewModel
         ProgressText = $"{clampedVisited}/{totalScenarios}";
 
         var visualKey = CurrentScenario?.VisualConfig?.ToLowerInvariant() ?? string.Empty;
-        SceneMoodText = visualKey switch
+        var baseMood = visualKey switch
         {
             "city_morning" => "Rush hour is here — cleaner transport choices reduce smog.",
             "office_lunch" => "Midday demand spikes — low-waste habits keep systems efficient.",
             "home_evening" => "Nightfall energy use matters — small actions compound over time.",
             _ => "Every decision bends the ecosystem in a new direction."
         };
+
+        SceneMoodText = HasLatestOutcome
+            ? $"{baseMood} Latest shift: {LatestOutcomeTitle.ToLowerInvariant()}."
+            : baseMood;
 
         NoEffectsText = ActiveEffects.Count == 0
             ? "Make a decision to observe environmental signals."
@@ -161,5 +215,90 @@ public class ScenarioViewModel : BaseViewModel
         }
 
         NoEffectsText = string.Empty;
+    }
+
+    private void UpdateLatestOutcome(Choice choice)
+    {
+        LatestImpactDelta = choice.ImpactDelta;
+        LatestImpactText = $"{choice.ImpactDelta:+#;-#;0} eco pts";
+        LatestOutcomeIcon = string.IsNullOrWhiteSpace(choice.Icon)
+            ? (choice.ImpactDelta >= 0 ? "🌱" : "⚠️")
+            : choice.Icon;
+
+        var resolvedVisual = ResolveOutcomeVisual(choice);
+        LatestOutcomeVisual = resolvedVisual;
+        LatestOutcomeTitle = BuildOutcomeTitle(resolvedVisual, choice.ImpactDelta);
+        LatestOutcomeDetail = BuildOutcomeDetail(choice.Aftermath);
+        HasLatestOutcome = true;
+    }
+
+    private static string ResolveOutcomeVisual(Choice choice)
+    {
+        if (!string.IsNullOrWhiteSpace(choice.OutcomeVisual))
+        {
+            return choice.OutcomeVisual.Trim().ToLowerInvariant();
+        }
+
+        var text = $"{choice.Text} {choice.Aftermath}".ToLowerInvariant();
+
+        if (text.Contains("deforest") || text.Contains("clear vegetation") || text.Contains("tree loss"))
+        {
+            return "deforestation";
+        }
+
+        if (text.Contains("waste") || text.Contains("plastic") || text.Contains("packaging"))
+        {
+            return "waste";
+        }
+
+        if (text.Contains("traffic") || text.Contains("haze") || text.Contains("smog") || text.Contains("emission"))
+        {
+            return "emissions";
+        }
+
+        if (text.Contains("energy") || text.Contains("power") || text.Contains("load"))
+        {
+            return "energy";
+        }
+
+        return choice.ImpactDelta >= 0 ? "general_positive" : "general_negative";
+    }
+
+    private static string BuildOutcomeTitle(string outcomeVisual, int impactDelta)
+    {
+        return outcomeVisual switch
+        {
+            "deforestation" when impactDelta < 0 => "Deforestation Pressure Increased",
+            "deforestation" => "Forest Recovery Accelerated",
+            "emissions" when impactDelta < 0 => "Emissions Spiked",
+            "emissions" => "Air Quality Improved",
+            "clean_transport" => "Cleaner Mobility Outcome",
+            "active_transport" => "Low-Emission Mobility Boost",
+            "waste" when impactDelta < 0 => "Waste Burden Increased",
+            "waste" => "Waste Load Reduced",
+            "low_waste" => "Low-Waste Momentum",
+            "energy_overuse" => "Energy Demand Surge",
+            "energy_saver" => "Energy Efficiency Gain",
+            "energy" when impactDelta < 0 => "Energy Strain Increased",
+            "energy" => "Energy Use Optimized",
+            "general_positive" => "Ecosystem Resilience Improved",
+            "general_negative" => "Ecosystem Stress Increased",
+            _ when impactDelta >= 0 => "Positive Environmental Shift",
+            _ => "Negative Environmental Shift"
+        };
+    }
+
+    private static string BuildOutcomeDetail(string aftermath)
+    {
+        if (string.IsNullOrWhiteSpace(aftermath))
+        {
+            return "The simulation updated to reflect the selected outcome.";
+        }
+
+        const int maxLength = 120;
+        var normalized = aftermath.Replace('\n', ' ').Trim();
+        return normalized.Length <= maxLength
+            ? normalized
+            : $"{normalized[..(maxLength - 1)]}…";
     }
 }

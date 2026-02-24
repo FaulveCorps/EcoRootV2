@@ -10,6 +10,7 @@ public class Choice
     public string Icon { get; set; } = "🌱";
     public string Teaser { get; set; } = string.Empty;
     public string Aftermath { get; set; } = string.Empty;
+    public string OutcomeVisual { get; set; } = string.Empty;
 
     public bool HasTeaser => !string.IsNullOrWhiteSpace(Teaser);
 }

@@ -261,6 +261,38 @@
                     </Grid>
                 </Border>
 
+                <Border Style="{StaticResource AndroidCard}"
+                        IsVisible="{Binding HasLatestOutcome}">
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Text="{Binding LatestOutcomeIcon}"
+                               FontSize="24"
+                               VerticalOptions="Start" />
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="{Binding LatestOutcomeTitle}"
+                                   FontSize="13"
+                                   FontFamily="OpenSansSemibold"
+                                   TextColor="{AppThemeBinding Light={StaticResource ModernTextHeadlineLight}, Dark={StaticResource ModernTextHeadlineDark}}" />
+                            <Label Text="{Binding LatestOutcomeDetail}"
+                                   FontSize="12"
+                                   LineBreakMode="WordWrap"
+                                   TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />
+                        </VerticalStackLayout>
+
+                        <Border Grid.Column="2"
+                                Padding="8,4"
+                                VerticalOptions="Start"
+                                StrokeThickness="0"
+                                BackgroundColor="{AppThemeBinding Light=#1F7B5A, Dark=#275D49}"
+                                StrokeShape="RoundRectangle 999">
+                            <Label Text="{Binding LatestImpactText}"
+                                   FontSize="11"
+                                   FontFamily="OpenSansSemibold"
+                                   TextColor="#E8FFF3" />
+                        </Border>
+                    </Grid>
+                </Border>
+
                 <Border x:Name="EffectsCard"
                         Style="{StaticResource AndroidCard}">
                     <VerticalStackLayout Spacing="8">
@@ -299,9 +331,6 @@
                                     Padding="14"
                                     BackgroundColor="{AppThemeBinding Light={StaticResource ModernSurfaceCardLight}, Dark={StaticResource ModernSurfaceCardDark}}"
                                     StrokeShape="RoundRectangle 18">
-                                <Border.Behaviors>
-                                    <toolkit:TouchBehavior PressedScale="0.975" PressedOpacity="0.9" />
-                                </Border.Behaviors>
                                 <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="3">
                                     <Label Grid.RowSpan="2"
                                            Text="{Binding Icon}"
