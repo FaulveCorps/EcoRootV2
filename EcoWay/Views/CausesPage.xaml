@@ -40,6 +40,93 @@
                 </VerticalStackLayout>
             </Border>
 
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F8FCFA"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="10">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Outcome Visualization"
+                           FontFamily="OpenSansSemibold"
+                           FontSize="14"
+                           TextColor="#244437" />
+
+                    <AbsoluteLayout HeightRequest="180">
+                        <BoxView Color="{Binding VisualSkyColor}"
+                                 AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                                 AbsoluteLayout.LayoutFlags="All" />
+
+                        <BoxView Color="#5F676A"
+                                 Opacity="{Binding VisualHazeOpacity}"
+                                 AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+                                 AbsoluteLayout.LayoutFlags="All" />
+
+                        <BoxView Color="{Binding VisualGroundColor}"
+                                 AbsoluteLayout.LayoutBounds="0.5,0.86,1,0.34"
+                                 AbsoluteLayout.LayoutFlags="All" />
+
+                        <BoxView Color="{Binding VisualWaterColor}"
+                                 Opacity="{Binding VisualWaterOpacity}"
+                                 AbsoluteLayout.LayoutBounds="0.5,0.83,0.62,0.14"
+                                 AbsoluteLayout.LayoutFlags="All" />
+
+                        <BoxView Color="#72654D"
+                                 Opacity="{Binding VisualDebrisOpacity}"
+                                 AbsoluteLayout.LayoutBounds="0.5,0.84,0.7,0.08"
+                                 AbsoluteLayout.LayoutFlags="All" />
+
+                        <BoxView Color="#6F4E37"
+                                 WidthRequest="10"
+                                 HeightRequest="42"
+                                 AbsoluteLayout.LayoutBounds="0.16,0.74,10,42"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                        <BoxView Color="#2E8B57"
+                                 Opacity="{Binding VisualTreeOpacity}"
+                                 Scale="{Binding VisualTreeScale}"
+                                 WidthRequest="38"
+                                 HeightRequest="38"
+                                 CornerRadius="19"
+                                 AbsoluteLayout.LayoutBounds="0.15,0.64,38,38"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                        <BoxView Color="#6F4E37"
+                                 WidthRequest="10"
+                                 HeightRequest="42"
+                                 AbsoluteLayout.LayoutBounds="0.84,0.74,10,42"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                        <BoxView Color="#2F9A5F"
+                                 Opacity="{Binding VisualTreeOpacity}"
+                                 Scale="{Binding VisualTreeScale}"
+                                 WidthRequest="38"
+                                 HeightRequest="38"
+                                 CornerRadius="19"
+                                 AbsoluteLayout.LayoutBounds="0.83,0.64,38,38"
+                                 AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                        <Border StrokeThickness="0"
+                                BackgroundColor="#1E2E26"
+                                Padding="8,3"
+                                StrokeShape="RoundRectangle 999"
+                                AbsoluteLayout.LayoutBounds="0.5,0.08,-1,-1"
+                                AbsoluteLayout.LayoutFlags="PositionProportional">
+                            <Label Text="{Binding EnvironmentStatus}"
+                                   FontSize="11"
+                                   TextColor="#E2FFF0" />
+                        </Border>
+                    </AbsoluteLayout>
+
+                    <Label Text="{Binding OutcomeTitle}"
+                           FontSize="13"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="#2F4E40" />
+                    <Label Text="{Binding OutcomeDetail}"
+                           FontSize="12"
+                           TextColor="#4F6F60"
+                           LineBreakMode="WordWrap" />
+                </VerticalStackLayout>
+            </Border>
+
             <CollectionView ItemsSource="{Binding Causes}" SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:CauseItem">
