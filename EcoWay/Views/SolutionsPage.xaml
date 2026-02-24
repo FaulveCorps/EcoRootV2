@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:models="clr-namespace:EcoWay.Models"
+             x:Class="EcoWay.Views.SolutionsPage"
+             x:Name="SolutionsPageRoot"
+             x:DataType="viewmodels:SolutionsViewModel"
+             Title="Solutions">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+            <Label Text="Healing the Earth"
+                   FontSize="26"
+                   FontFamily="OpenSansSemibold"
+                   TextColor="#1B2F25" />
+            <Label Text="Activate restoration methods and watch ecosystem health improve."
+                   FontSize="13"
+                   TextColor="#4A6A5B" />
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#ECF7F0"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="12">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding RestorationStatus}"
+                           FontSize="16"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="#234B3B" />
+                    <ProgressBar Progress="{Binding HealthProgress}"
+                                 HeightRequest="8"
+                                 ProgressColor="#2E8B57"
+                                 BackgroundColor="#D5E8DC" />
+                    <Label Text="{Binding HealthScore, StringFormat='Environment Health: {0}%'}"
+                           FontSize="12"
+                           TextColor="#4A6A5B" />
+                    <Label Text="{Binding ActiveMethodText}"
+                           FontSize="11"
+                           TextColor="#577466" />
+                </VerticalStackLayout>
+            </Border>
+
+            <CollectionView ItemsSource="{Binding Methods}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:SolutionItem">
+                        <Border StrokeThickness="0"
+                                BackgroundColor="#F9FCFA"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="12"
+                                Margin="0,0,0,8">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+                                <Label Text="{Binding Icon}"
+                                       FontSize="22" />
+                                <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                    <Label Text="{Binding Title}"
+                                           FontFamily="OpenSansSemibold"
+                                           FontSize="15"
+                                           TextColor="#1F3A2E" />
+                                    <Label Text="{Binding ShortDescription}"
+                                           FontSize="12"
+                                           TextColor="#537264" />
+                                </VerticalStackLayout>
+                                <Button Grid.Column="2"
+                                        Text="Toggle"
+                                        FontSize="11"
+                                        CornerRadius="999"
+                                        Padding="10,4"
+                                        BackgroundColor="#2E8B57"
+                                        TextColor="White"
+                                        Command="{Binding BindingContext.ToggleMethodCommand, Source={x:Reference SolutionsPageRoot}}"
+                                        CommandParameter="{Binding .}" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F5FBF7"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="12"
+                    IsVisible="{Binding HasSelectedMethod}">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Focused Restoration Method"
+                           FontFamily="OpenSansSemibold"
+                           FontSize="14"
+                           TextColor="#1F3A2E" />
+                    <Label Text="{Binding SelectedMethod.Title}"
+                           FontSize="13"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="#305648" />
+                    <VerticalStackLayout BindableLayout.ItemsSource="{Binding SelectedMethodBenefits}" Spacing="4">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding ., StringFormat='• {0}'}"
+                                       FontSize="12"
+                                       TextColor="#4F6F60" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#EEF9F1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="12">
+                <VerticalStackLayout Spacing="7">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Active Benefits"
+                               FontFamily="OpenSansSemibold"
+                               FontSize="14"
+                               TextColor="#234B3B" />
+                        <Button Grid.Column="1"
+                                Text="Reset"
+                                Command="{Binding ResetCommand}"
+                                FontSize="11"
+                                CornerRadius="999"
+                                Padding="10,4"
+                                BackgroundColor="#4B9B62"
+                                TextColor="White" />
+                    </Grid>
+
+                    <Label Text="{Binding EmptyBenefitsText}"
+                           FontSize="12"
+                           TextColor="#4C6E5F" />
+
+                    <VerticalStackLayout BindableLayout.ItemsSource="{Binding ActiveBenefits}" Spacing="4">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding ., StringFormat='• {0}'}"
+                                       FontSize="12"
+                                       TextColor="#3D5E50" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

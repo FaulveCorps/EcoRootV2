@@ -66,6 +66,46 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
+[C:/Users/jpfau/Desktop/Project/EcoRoot/EcoWay/Views/ActionPlanPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EcoWay.Views.ActionPlanPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ActionPlanPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ActionPlanPage.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Users/jpfau/Desktop/Project/EcoRoot/EcoWay/Views/CausesPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EcoWay.Views.CausesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\CausesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\CausesPage.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Users/jpfau/Desktop/Project/EcoRoot/EcoWay/Views/ConsequencesPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EcoWay.Views.ConsequencesPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ConsequencesPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ConsequencesPage.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Users/jpfau/Desktop/Project/EcoRoot/EcoWay/Views/HomePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EcoWay.Views.HomePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\HomePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\HomePage.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
 [C:/Users/jpfau/Desktop/Project/EcoRoot/EcoWay/Views/ImpactLabPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = EcoWay.Views.ImpactLabPage.xaml
@@ -91,6 +131,16 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = EcoWay.Views.ScenarioPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\ScenarioPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\ScenarioPage.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Users/jpfau/Desktop/Project/EcoRoot/EcoWay/Views/SolutionsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = EcoWay.Views.SolutionsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SolutionsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SolutionsPage.xaml
 build_metadata.AdditionalFiles.Inflator = Runtime
 build_metadata.AdditionalFiles.NoWarn = 
 build_metadata.AdditionalFiles.EnableDiagnostics = 

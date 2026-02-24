@@ -32,13 +32,13 @@
                        TextColor="#EAFFF5" />
             </Border>
 
-            <Label Text="EcoWay"
+                 <Label Text="EcoRoot"
                    FontFamily="OpenSansSemibold"
                    FontSize="34"
                    HorizontalTextAlignment="Center"
                    TextColor="{AppThemeBinding Light={StaticResource ModernTextHeadlineLight}, Dark={StaticResource ModernTextHeadlineDark}}" />
 
-            <Label Text="Loading your ecosystem mission..."
+                 <Label Text="Loading your soil restoration guide..."
                    FontSize="14"
                    HorizontalTextAlignment="Center"
                    TextColor="{AppThemeBinding Light={StaticResource ModernTextBodyLight}, Dark={StaticResource ModernTextBodyDark}}" />

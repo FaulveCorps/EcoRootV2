@@ -5,23 +5,33 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:EcoWay.Views"
     FlyoutBehavior="Disabled"
-    Title="EcoWay">
+    Title="EcoRoot">
 
     <TabBar>
         <ShellContent
             Title="Home"
-            ContentTemplate="{DataTemplate views:MainMenuPage}"
-            Route="MainMenuPage" />
+            ContentTemplate="{DataTemplate views:HomePage}"
+            Route="HomePage" />
 
         <ShellContent
-            Title="Story"
-            ContentTemplate="{DataTemplate views:ScenarioPage}"
-            Route="ScenarioPage" />
+            Title="Causes"
+            ContentTemplate="{DataTemplate views:CausesPage}"
+            Route="CausesPage" />
 
         <ShellContent
-            Title="Lab"
-            ContentTemplate="{DataTemplate views:ImpactLabPage}"
-            Route="ImpactLabPage" />
+            Title="Impact"
+            ContentTemplate="{DataTemplate views:ConsequencesPage}"
+            Route="ConsequencesPage" />
+
+        <ShellContent
+            Title="Solutions"
+            ContentTemplate="{DataTemplate views:SolutionsPage}"
+            Route="SolutionsPage" />
+
+        <ShellContent
+            Title="Act"
+            ContentTemplate="{DataTemplate views:ActionPlanPage}"
+            Route="ActionPlanPage" />
     </TabBar>
 
 </Shell>

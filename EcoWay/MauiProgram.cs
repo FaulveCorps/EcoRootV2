@@ -20,20 +20,24 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		builder.Services.AddSingleton<ScenarioService>();
-		builder.Services.AddSingleton<GameStateService>();
+		builder.Services.AddSingleton<EcoRootContentService>();
 
-		builder.Services.AddTransient<ScenarioViewModel>();
-		builder.Services.AddTransient<ScenarioPage>();
+		builder.Services.AddTransient<HomeViewModel>();
+		builder.Services.AddTransient<HomePage>();
 
-		builder.Services.AddTransient<MainMenuViewModel>();
-		builder.Services.AddTransient<MainMenuPage>();
+		builder.Services.AddTransient<CausesViewModel>();
+		builder.Services.AddTransient<CausesPage>();
 
-		builder.Services.AddTransient<SummaryViewModel>();
-		builder.Services.AddTransient<SummaryPage>();
+		builder.Services.AddTransient<ConsequencesViewModel>();
+		builder.Services.AddTransient<ConsequencesPage>();
 
-		builder.Services.AddTransient<ImpactLabViewModel>();
-		builder.Services.AddTransient<ImpactLabPage>();
+		builder.Services.AddTransient<SolutionsViewModel>();
+		builder.Services.AddTransient<SolutionsPage>();
+
+		builder.Services.AddTransient<ActionPlanViewModel>();
+		builder.Services.AddTransient<ActionPlanPage>();
+
+		builder.Services.AddTransient<SplashPage>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

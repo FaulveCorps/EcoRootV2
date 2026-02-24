@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:models="clr-namespace:EcoWay.Models"
+             x:Class="EcoWay.Views.HomePage"
+             x:Name="HomePageRoot"
+             x:DataType="viewmodels:HomeViewModel"
+             Title="EcoRoot">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,16,20,32" Spacing="14">
+            <Border StrokeThickness="0"
+                    BackgroundColor="#234034"
+                    StrokeShape="RoundRectangle 24"
+                    Padding="18">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="🌱 EcoRoot"
+                           FontSize="14"
+                           TextColor="#D9FBE7" />
+
+                    <Label Text="{Binding HeadlineLine1}"
+                           FontSize="34"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="#FFFFFF" />
+                    <Label Text="{Binding HeadlineLine2}"
+                           FontSize="34"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="#FFFFFF" />
+                    <Label Text="{Binding HeadlineLine3}"
+                           FontSize="34"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="#A8F1C8" />
+
+                    <Label Text="{Binding Subtitle}"
+                           Margin="0,8,0,0"
+                           FontSize="14"
+                           LineBreakMode="WordWrap"
+                           TextColor="#D4EEE1" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="Global Soil Snapshot"
+                   FontFamily="OpenSansSemibold"
+                   FontSize="18"
+                   TextColor="#1D2F27" />
+
+            <CollectionView ItemsSource="{Binding Stats}" SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="8" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:HeroStat">
+                        <Border StrokeThickness="0"
+                                BackgroundColor="#F1F8F3"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="12">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+                                <Label Text="{Binding Value}"
+                                       FontSize="26"
+                                       FontFamily="OpenSansSemibold"
+                                       TextColor="#1E7A52" />
+                                <Label Grid.Column="1"
+                                       Text="{Binding Unit}"
+                                       FontSize="16"
+                                       VerticalOptions="End"
+                                       TextColor="#2C5A45" />
+                                <Label Grid.Column="2"
+                                       Text="{Binding Label}"
+                                       FontSize="13"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="End"
+                                       TextColor="#355C4B" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F8FBF9"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="14">
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="{Binding CommunityPeople}" FontSize="20" FontFamily="OpenSansSemibold" TextColor="#275D48" />
+                        <Label Text="People Taking Action" FontSize="11" TextColor="#4D7464" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                        <Label Text="{Binding CommunityHectares}" FontSize="20" FontFamily="OpenSansSemibold" TextColor="#275D48" />
+                        <Label Text="Hectares Restored" FontSize="11" TextColor="#4D7464" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="2" Spacing="2">
+                        <Label Text="{Binding CommunityCountries}" FontSize="20" FontFamily="OpenSansSemibold" TextColor="#275D48" />
+                        <Label Text="Countries Involved" FontSize="11" TextColor="#4D7464" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Label Text="Explore"
+                   FontFamily="OpenSansSemibold"
+                   FontSize="18"
+                   TextColor="#1D2F27" />
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="8" RowSpacing="8">
+                <Button Text="Causes"
+                        Clicked="OnOpenCausesClicked"
+                        BackgroundColor="#2E8B57"
+                        TextColor="White"
+                        CornerRadius="14" />
+                <Button Grid.Column="1"
+                        Text="Impact"
+                        Clicked="OnOpenImpactClicked"
+                        BackgroundColor="#3E7CA8"
+                        TextColor="White"
+                        CornerRadius="14" />
+                <Button Grid.Row="1"
+                        Text="Solutions"
+                        Clicked="OnOpenSolutionsClicked"
+                        BackgroundColor="#4B9B62"
+                        TextColor="White"
+                        CornerRadius="14" />
+                <Button Grid.Row="1"
+                        Grid.Column="1"
+                        Text="Take Action"
+                        Clicked="OnOpenActionClicked"
+                        BackgroundColor="#6E7F4A"
+                        TextColor="White"
+                        CornerRadius="14" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

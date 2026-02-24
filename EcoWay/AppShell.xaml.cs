@@ -10,10 +10,11 @@ public partial class AppShell : Shell
 	{
 		InitializeComponent();
 		Routing.RegisterRoute("SplashPage", typeof(SplashPage));
-		Routing.RegisterRoute("MainMenuPage", typeof(MainMenuPage));
-		Routing.RegisterRoute("ScenarioPage", typeof(ScenarioPage));
-		Routing.RegisterRoute("SummaryPage", typeof(SummaryPage));
-		Routing.RegisterRoute("ImpactLabPage", typeof(ImpactLabPage));
+		Routing.RegisterRoute("HomePage", typeof(HomePage));
+		Routing.RegisterRoute("CausesPage", typeof(CausesPage));
+		Routing.RegisterRoute("ConsequencesPage", typeof(ConsequencesPage));
+		Routing.RegisterRoute("SolutionsPage", typeof(SolutionsPage));
+		Routing.RegisterRoute("ActionPlanPage", typeof(ActionPlanPage));
 	}
 
 	protected override void OnAppearing()

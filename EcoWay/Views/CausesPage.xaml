@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:models="clr-namespace:EcoWay.Models"
+             x:Class="EcoWay.Views.CausesPage"
+             x:Name="CausesPageRoot"
+             x:DataType="viewmodels:CausesViewModel"
+             Title="Causes">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+            <Label Text="What’s Poisoning Our Earth?"
+                   FontSize="26"
+                   FontFamily="OpenSansSemibold"
+                   TextColor="#1B2F25" />
+            <Label Text="Tap sources to activate or remove their impact and observe ecosystem stress."
+                   FontSize="13"
+                   TextColor="#4A6A5B" />
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#EEF7F1"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="12">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding EnvironmentStatus}"
+                           FontSize="16"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="#234B3B" />
+                    <Label Text="{Binding EnvironmentStatusDetail}"
+                           FontSize="12"
+                           TextColor="#4A6A5B" />
+                    <ProgressBar Progress="{Binding PollutionProgress}"
+                                 HeightRequest="8"
+                                 ProgressColor="#C26A40"
+                                 BackgroundColor="#D5E8DC" />
+                    <Label Text="{Binding ActiveSourceText}"
+                           FontSize="11"
+                           TextColor="#577466" />
+                </VerticalStackLayout>
+            </Border>
+
+            <CollectionView ItemsSource="{Binding Causes}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CauseItem">
+                        <Border StrokeThickness="0"
+                                BackgroundColor="#F9FCFA"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="12"
+                                Margin="0,0,0,8">
+                            <VerticalStackLayout Spacing="7">
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+                                    <Label Text="{Binding Icon}"
+                                           FontSize="22" />
+                                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                        <Label Text="{Binding Title}"
+                                               FontFamily="OpenSansSemibold"
+                                               FontSize="15"
+                                               TextColor="#1F3A2E" />
+                                        <Label Text="{Binding ShortDescription}"
+                                               FontSize="12"
+                                               TextColor="#537264" />
+                                    </VerticalStackLayout>
+                                    <Button Grid.Column="2"
+                                            Text="Toggle"
+                                            FontSize="11"
+                                            CornerRadius="999"
+                                            Padding="10,4"
+                                            BackgroundColor="#2E8B57"
+                                            TextColor="White"
+                                            Command="{Binding BindingContext.ToggleCauseCommand, Source={x:Reference CausesPageRoot}}"
+                                            CommandParameter="{Binding .}" />
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F5FBF7"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="12"
+                    IsVisible="{Binding HasSelectedCause}">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Selected Source Insights"
+                           FontFamily="OpenSansSemibold"
+                           FontSize="14"
+                           TextColor="#1F3A2E" />
+                    <Label Text="{Binding SelectedCause.Title}"
+                           FontSize="13"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="#305648" />
+                    <VerticalStackLayout BindableLayout.ItemsSource="{Binding SelectedCauseImpacts}" Spacing="4">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding ., StringFormat='• {0}'}"
+                                       FontSize="12"
+                                       TextColor="#4F6F60" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#FFF9F6"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="12">
+                <VerticalStackLayout Spacing="7">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Active Effects"
+                               FontFamily="OpenSansSemibold"
+                               FontSize="14"
+                               TextColor="#5A3A2A" />
+                        <Button Grid.Column="1"
+                                Text="Reset"
+                                Command="{Binding ResetCommand}"
+                                FontSize="11"
+                                CornerRadius="999"
+                                Padding="10,4"
+                                BackgroundColor="#C26A40"
+                                TextColor="White" />
+                    </Grid>
+
+                    <Label Text="{Binding EmptyEffectsText}"
+                           FontSize="12"
+                           TextColor="#7C5F52" />
+
+                    <VerticalStackLayout BindableLayout.ItemsSource="{Binding ActiveEffects}" Spacing="4">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding ., StringFormat='• {0}'}"
+                                       FontSize="12"
+                                       TextColor="#6E4C3A" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

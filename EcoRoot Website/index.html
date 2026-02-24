@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>EcoRoot - Understanding Soil Pollution</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-logo">
+            <span class="logo-icon">🌱</span>
+            <span class="logo-text">EcoRoot</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-link active">Home</a></li>
+            <li><a href="#causes" class="nav-link">Causes</a></li>
+            <li><a href="#consequences" class="nav-link">Impact</a></li>
+            <li><a href="#solutions" class="nav-link">Solutions</a></li>
+            <li><a href="#action" class="nav-link">Take Action</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Section 1: Hero/Introduction -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">The Ground</span>
+                <span class="title-line">Beneath Our Feet</span>
+                <span class="title-line highlight">Is Dying</span>
+            </h1>
+            <p class="hero-subtitle">Scroll to witness the transformation of our precious soil</p>
+            
+            <!-- Hero Statistics - moved inside hero-content -->
+            <div class="hero-stats visible" id="heroStats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="33">33</span>
+                    <span class="stat-unit">%</span>
+                    <span class="stat-label">of global soil is degraded</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="24">24</span>
+                    <span class="stat-unit">B</span>
+                    <span class="stat-label">tonnes of fertile soil lost yearly</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="95">95</span>
+                    <span class="stat-unit">%</span>
+                    <span class="stat-label">of our food depends on soil</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Scroll Down</p>
+        </div>
+    </section>
+
+    <!-- Section 2: Causes Exploration -->
+    <section id="causes" class="causes-section">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">What's Poisoning Our Earth?</h2>
+            <p class="section-description">Click on pollution sources to see how they devastate our soil</p>
+        </div>
+        
+        <!-- New Click-Based Interactive Layout -->
+        <div class="causes-interactive">
+            <!-- Pollution Sources Panel -->
+            <div class="pollution-sources">
+                <h3>Pollution Sources</h3>
+                <p class="sources-instruction">Click a source to see its impact on the environment</p>
+                <div class="sources-list">
+                    <div class="source-item" data-source="deforestation">
+                        <span class="source-icon">🌲</span>
+                        <div class="source-info">
+                            <div class="source-name">Deforestation</div>
+                            <div class="source-desc">Trees removed, soil exposed</div>
+                        </div>
+                    </div>
+                    <div class="source-item" data-source="mining">
+                        <span class="source-icon">⛏️</span>
+                        <div class="source-info">
+                            <div class="source-name">Mining Runoff</div>
+                            <div class="source-desc">Acid & heavy metals seep out</div>
+                        </div>
+                    </div>
+                    <div class="source-item" data-source="industrial">
+                        <span class="source-icon">🏭</span>
+                        <div class="source-info">
+                            <div class="source-name">Industrial Waste</div>
+                            <div class="source-desc">Toxic factory chemicals</div>
+                        </div>
+                    </div>
+                    <div class="source-item" data-source="pesticides">
+                        <span class="source-icon">🧪</span>
+                        <div class="source-info">
+                            <div class="source-name">Pesticides</div>
+                            <div class="source-desc">Chemicals kill soil life</div>
+                        </div>
+                    </div>
+                    <div class="source-item" data-source="waste">
+                        <span class="source-icon">🗑️</span>
+                        <div class="source-info">
+                            <div class="source-name">Improper Waste</div>
+                            <div class="source-desc">Garbage contaminates land</div>
+                        </div>
+                    </div>
+                    <div class="source-item" data-source="plastic">
+                        <span class="source-icon">🛢️</span>
+                        <div class="source-info">
+                            <div class="source-name">Plastic Waste</div>
+                            <div class="source-desc">Microplastics infiltrate soil</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="causes-reset-btn" id="resetCauses">🔄 Reset</button>
+            </div>
+            
+            <!-- Environment Visualization Canvas -->
+            <div class="environment-visualization">
+                <canvas id="environmentCanvas" class="environment-canvas"></canvas>
+                <div class="environment-status" id="envStatus">🌿 Healthy Environment</div>
+            </div>
+            
+            <!-- Effects Panel -->
+            <div class="effects-panel">
+                <h3>Active Effects</h3>
+                <div class="active-effects" id="activeEffects">
+                    <div class="no-effects">
+                        <div class="no-effects-icon">🌱</div>
+                        <p>Click a pollution source to see its environmental impact</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interactive Cause Cards -->
+        <div class="cause-cards-hint">💡 Hover over (or tap on mobile) each card to reveal detailed impacts</div>
+        <div class="cause-cards-grid">
+            <div class="cause-card" data-cause="deforestation">
+                <div class="cause-card-header">
+                    <span class="cause-icon">🌲</span>
+                    <h4>Deforestation</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Trees removed, soil exposed</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">🌳→⛏️→💨</div>
+                    <ul class="cause-impacts">
+                        <li>Rapid nutrient loss</li>
+                        <li>Risk of landslides</li>
+                        <li>Habitat destruction</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="cause-card" data-cause="mining">
+                <div class="cause-card-header">
+                    <span class="cause-icon">⛏️</span>
+                    <h4>Mining Runoff</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Acid & heavy metals seep out</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">⛰️→💧→☠️</div>
+                    <ul class="cause-impacts">
+                        <li>Centuries of acid drainage</li>
+                        <li>Heavy metal buildup</li>
+                        <li>Aquatic life destruction</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="cause-card" data-cause="industrial">
+                <div class="cause-card-header">
+                    <span class="cause-icon">🏭</span>
+                    <h4>Industrial Waste</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Toxic factory chemicals</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">🏭→🧪→💀</div>
+                    <ul class="cause-impacts">
+                        <li>800M+ children exposed to lead</li>
+                        <li>Food chain contamination</li>
+                        <li>Groundwater pollution</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="cause-card" data-cause="pesticides">
+                <div class="cause-card-header">
+                    <span class="cause-icon">🧪</span>
+                    <h4>Pesticides</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Chemicals kill soil life</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">🌾→💉→🪱</div>
+                    <ul class="cause-impacts">
+                        <li>5.6B lbs used yearly</li>
+                        <li>Chemical buildup</li>
+                        <li>Kills beneficial organisms</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="cause-card" data-cause="waste">
+                <div class="cause-card-header">
+                    <span class="cause-icon">🗑️</span>
+                    <h4>Improper Waste</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Garbage contaminates land</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">🗑️→💧→🌍</div>
+                    <ul class="cause-impacts">
+                        <li>Toxic chemical leaching</li>
+                        <li>Groundwater seepage</li>
+                        <li>Disease vector breeding</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="cause-card" data-cause="plastic">
+                <div class="cause-card-header">
+                    <span class="cause-icon">🛢️</span>
+                    <h4>Plastic Waste</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="cause-tagline">Microplastics infiltrate soil</p>
+                <div class="cause-card-content">
+                    <div class="cause-visual">🛢️→🔬→🌱</div>
+                    <ul class="cause-impacts">
+                        <li>In 90% of agricultural soils</li>
+                        <li>400+ year decomposition</li>
+                        <li>Toxic additive leaching</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Consequences Visualization -->
+    <section id="consequences" class="consequences-section">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">The Ripple Effect</h2>
+            <p class="section-description">Click on different elements to explore how soil pollution spreads through our world</p>
+        </div>
+        
+        <div class="ecosystem-hint">💡 Click on any node to learn more about its impact</div>
+        
+        <div class="ecosystem-diagram" id="ecosystemDiagram">
+            <!-- Central Soil Element -->
+            <div class="ecosystem-element central" data-element="soil" id="centralSoil">
+                <div class="element-visual">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" class="soil-circle"/>
+                        <text x="50" y="55" text-anchor="middle" class="element-icon">🌍</text>
+                    </svg>
+                </div>
+                <span class="element-label">Polluted Soil</span>
+            </div>
+            
+            <!-- Connected Elements -->
+            <div class="ecosystem-element" data-element="plants" style="--angle: 0deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">🌾</div>
+                </div>
+                <span class="element-label">Crops & Plants</span>
+                <div class="connection-line"></div>
+            </div>
+            
+            <div class="ecosystem-element" data-element="water" style="--angle: 60deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">💧</div>
+                </div>
+                <span class="element-label">Water Sources</span>
+                <div class="connection-line"></div>
+            </div>
+            
+            <div class="ecosystem-element" data-element="animals" style="--angle: 120deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">🦎</div>
+                </div>
+                <span class="element-label">Wildlife</span>
+                <div class="connection-line"></div>
+            </div>
+            
+            <div class="ecosystem-element" data-element="humans" style="--angle: 180deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">👨‍👩‍👧‍👦</div>
+                </div>
+                <span class="element-label">Human Health</span>
+                <div class="connection-line"></div>
+            </div>
+            
+            <div class="ecosystem-element" data-element="economy" style="--angle: 240deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">📉</div>
+                </div>
+                <span class="element-label">Economy</span>
+                <div class="connection-line"></div>
+            </div>
+            
+            <div class="ecosystem-element" data-element="climate" style="--angle: 300deg;">
+                <div class="element-visual">
+                    <div class="element-icon-wrapper">🌡️</div>
+                </div>
+                <span class="element-label">Climate</span>
+                <div class="connection-line"></div>
+            </div>
+        </div>
+        
+        <!-- Impact Detail Modal -->
+        <div class="impact-modal" id="impactModal">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <div class="modal-header">
+                    <span class="modal-icon" id="modalIcon"></span>
+                    <h3 class="modal-title" id="modalTitle"></h3>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Dynamic content -->
+                </div>
+                <div class="modal-visual" id="modalVisual">
+                    <!-- Animated visualization -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Visual Impact Intro -->
+        <div class="impact-visual-intro">
+            <h3 class="impact-visual-heading">A Visual Look at the Effects</h3>
+            <p class="impact-visual-sub">The animation below cycles through soil, plant, water, wildlife, air, health and economic impacts to show how degradation spreads.</p>
+        </div>
+        
+        <!-- Automated Impact Cycling Visualization -->
+        <div class="impact-cycler" id="impactCycler">
+            <div class="impact-canvas-wrapper">
+                <div class="impact-canvas-stack">
+                    <canvas id="impactCanvas" width="600" height="300"></canvas>
+                    <canvas id="impactCanvasNext"></canvas>
+                </div>
+                <div class="impact-cycle-overlay">
+                    <div class="impact-cycle-icon" id="impactCycleIcon">🌾</div>
+                    <h4 class="impact-cycle-title" id="impactCycleTitle">Effects on Plants & Crops</h4>
+                    <ul class="impact-cycle-list" id="impactCycleList"></ul>
+                    <div class="impact-cycle-progress"><div class="impact-cycle-bar" id="impactCycleBar"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Solutions Simulator -->
+    <section id="solutions" class="solutions-section">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Healing the Earth</h2>
+            <p class="section-description">Click on solutions to see how they restore the polluted soil</p>
+        </div>
+        
+        <!-- New Click-Based Interactive Layout -->
+        <div class="solutions-interactive">
+            <!-- Solution Methods Panel -->
+            <div class="solution-methods">
+                <h3>Restoration Methods</h3>
+                <p class="methods-instruction">Click a solution to see how it heals the environment</p>
+                <div class="methods-list">
+                    <div class="method-item" data-method="phytoremediation">
+                        <span class="method-icon">🌻</span>
+                        <div class="method-info">
+                            <div class="method-name">Phytoremediation</div>
+                            <div class="method-desc">Plants absorb toxins</div>
+                        </div>
+                    </div>
+                    <div class="method-item" data-method="composting">
+                        <span class="method-icon">🍂</span>
+                        <div class="method-info">
+                            <div class="method-name">Composting</div>
+                            <div class="method-desc">Organic fertilizer</div>
+                        </div>
+                    </div>
+                    <div class="method-item" data-method="bioremediation">
+                        <span class="method-icon">🦠</span>
+                        <div class="method-info">
+                            <div class="method-name">Bioremediation</div>
+                            <div class="method-desc">Microbes eat pollutants</div>
+                        </div>
+                    </div>
+                    <div class="method-item" data-method="recycling">
+                        <span class="method-icon">♻️</span>
+                        <div class="method-info">
+                            <div class="method-name">Recycling</div>
+                            <div class="method-desc">Reduce waste pollution</div>
+                        </div>
+                    </div>
+                    <div class="method-item" data-method="segregation">
+                        <span class="method-icon">🗂️</span>
+                        <div class="method-info">
+                            <div class="method-name">Waste Segregation</div>
+                            <div class="method-desc">Separate harmful waste</div>
+                        </div>
+                    </div>
+                    <div class="method-item" data-method="covercrops">
+                        <span class="method-icon">🌿</span>
+                        <div class="method-info">
+                            <div class="method-name">Cover Crops</div>
+                            <div class="method-desc">Protect & enrich soil</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="solutions-reset-btn" id="resetSolutions">🔄 Reset</button>
+            </div>
+            
+            <!-- Restoration Visualization Canvas -->
+            <div class="restoration-visualization">
+                <canvas id="restorationCanvas" class="restoration-canvas"></canvas>
+                <div class="restoration-status" id="restorationStatus">☠️ Severely Polluted</div>
+            </div>
+            
+            <!-- Benefits Panel -->
+            <div class="benefits-panel">
+                <h3>Active Benefits</h3>
+                <div class="active-benefits" id="activeBenefits">
+                    <div class="no-benefits">
+                        <div class="no-benefits-icon">🌱</div>
+                        <p>Click a solution to see how it benefits the environment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interactive Solution Cards -->
+        <div class="solution-cards-hint">💡 Hover over (or tap) each solution to discover how it helps restore soil health</div>
+        <div class="solution-cards-grid">
+            <div class="solution-card" data-solution="phytoremediation">
+                <div class="solution-card-header">
+                    <span class="solution-icon">🌻</span>
+                    <h4>Phytoremediation</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Plants absorb heavy metals and toxins</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">🌱→🧪→✨</div>
+                    <ul class="solution-benefits">
+                        <li>Plants accumulate pollutants</li>
+                        <li>Cost-effective cleanup</li>
+                        <li>Improves biodiversity</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="solution-card" data-solution="composting">
+                <div class="solution-card-header">
+                    <span class="solution-icon">🍂</span>
+                    <h4>Composting</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Organic waste becomes natural fertilizer</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">🗑️→🍂→🌱</div>
+                    <ul class="solution-benefits">
+                        <li>Reduces methane emissions</li>
+                        <li>Adds microorganisms</li>
+                        <li>Improves water retention</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="solution-card" data-solution="bioremediation">
+                <div class="solution-card-header">
+                    <span class="solution-icon">🦠</span>
+                    <h4>Bioremediation</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Microorganisms consume pollutants</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">🦠→💧→🌍</div>
+                    <ul class="solution-benefits">
+                        <li>Natural cleanup method</li>
+                        <li>Complete breakdown</li>
+                        <li>Works on oil & pesticides</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="solution-card" data-solution="recycling">
+                <div class="solution-card-header">
+                    <span class="solution-icon">♻️</span>
+                    <h4>Recycling</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Reuse materials, reduce waste</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">📦→♻️→🆕</div>
+                    <ul class="solution-benefits">
+                        <li>Prevents e-waste contamination</li>
+                        <li>Reduces raw material need</li>
+                        <li>Saves energy</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="solution-card" data-solution="segregation">
+                <div class="solution-card-header">
+                    <span class="solution-icon">🗂️</span>
+                    <h4>Waste Segregation</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Separate waste at source</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">🗑️→🗂️→✅</div>
+                    <ul class="solution-benefits">
+                        <li>Prevents toxic mixing</li>
+                        <li>Proper hazmat disposal</li>
+                        <li>Efficient recycling</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="solution-card" data-solution="covercrops">
+                <div class="solution-card-header">
+                    <span class="solution-icon">🌿</span>
+                    <h4>Cover Crops</h4>
+                    <span class="expand-icon">+</span>
+                </div>
+                <p class="solution-tagline">Protect soil between seasons</p>
+                <div class="solution-card-content">
+                    <div class="solution-visual">🌾→🛡️→🌱</div>
+                    <ul class="solution-benefits">
+                        <li>Prevents erosion</li>
+                        <li>Adds organic matter</li>
+                        <li>Reduces chemical fertilizers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Success Stories removed per request -->
+        
+        <!-- Prevention & Policy Section -->
+        <div class="prevention-section">
+            <h3>Prevention & Government Policies</h3>
+            <div class="prevention-cards-hint">💡 Hover over (or tap) each policy to see more details</div>
+            <div class="prevention-grid">
+                <div class="prevention-card">
+                    <div class="prevention-icon">📋</div>
+                    <h4>Proper Waste Management Laws</h4>
+                    <p class="prevention-tagline"><strong>Regulate waste flow → prevent soil harm</strong></p>
+                    <div class="prevention-card-content">
+                        <ul class="prevention-details">
+                            <li>Enforces proper disposal standards</li>
+                            <li>Penalties for illegal dumping</li>
+                            <li>Regular soil quality monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="prevention-card">
+                    <div class="prevention-icon">♻️</div>
+                    <h4>Recycling Programs</h4>
+                    <p class="prevention-tagline"><strong>Recycling cuts landfill & soil load</strong></p>
+                    <div class="prevention-card-content">
+                        <ul class="prevention-details">
+                            <li>Reduces hazardous waste volume</li>
+                            <li>Community collection centers</li>
+                            <li>E-waste recycling initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="prevention-card">
+                    <div class="prevention-icon">🗂️</div>
+                    <h4>Proper Waste Segregation</h4>
+                    <p class="prevention-tagline"><strong>Sort waste → block toxins</strong></p>
+                    <div class="prevention-card-content">
+                        <ul class="prevention-details">
+                            <li>Separates hazardous materials</li>
+                            <li>Prevents toxic contamination</li>
+                            <li>Improves recycling efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="prevention-card">
+                    <div class="prevention-icon">🌱</div>
+                    <h4>Composting Organic Waste</h4>
+                    <p class="prevention-tagline"><strong>Compost organics → build healthy soil</strong></p>
+                    <div class="prevention-card-content">
+                        <ul class="prevention-details">
+                            <li>Diverts waste from landfills</li>
+                            <li>Creates nutrient-rich fertilizer</li>
+                            <li>Reduces methane emissions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Action Section -->
+    <section id="action" class="action-section">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Your Turn to Act</h2>
+            <p class="section-description">Get a personalized action plan based on your situation</p>
+        </div>
+        
+        <!-- Context Selector -->
+        <div class="context-selector" id="contextSelector">
+            <h3>Tell us about yourself</h3>
+            <div class="selector-grid">
+                <div class="selector-group">
+                    <label>I am a...</label>
+                    <div class="selector-options" id="roleSelector">
+                        <button class="selector-btn" data-role="homeowner">
+                            <span class="btn-icon">🏠</span>
+                            <span class="btn-label">Homeowner</span>
+                        </button>
+                        <button class="selector-btn" data-role="farmer">
+                            <span class="btn-icon">🚜</span>
+                            <span class="btn-label">Farmer</span>
+                        </button>
+                        <button class="selector-btn" data-role="student">
+                            <span class="btn-icon">📚</span>
+                            <span class="btn-label">Student</span>
+                        </button>
+                        <button class="selector-btn" data-role="business">
+                            <span class="btn-icon">🏢</span>
+                            <span class="btn-label">Business Owner</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="selector-group">
+                    <label>I live in a...</label>
+                    <div class="selector-options" id="locationSelector">
+                        <button class="selector-btn" data-location="urban">
+                            <span class="btn-icon">🏙️</span>
+                            <span class="btn-label">Urban Area</span>
+                        </button>
+                        <button class="selector-btn" data-location="suburban">
+                            <span class="btn-icon">🏘️</span>
+                            <span class="btn-label">Suburban Area</span>
+                        </button>
+                        <button class="selector-btn" data-location="rural">
+                            <span class="btn-icon">🌾</span>
+                            <span class="btn-label">Rural Area</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button class="generate-btn" id="generatePlan" disabled>
+                <span>Generate My Action Plan</span>
+                <svg viewBox="0 0 24 24" class="arrow-icon">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Personalized Action Plan -->
+        <div class="action-plan" id="actionPlan" style="display: none;">
+            <div class="plan-header">
+                <h3 id="planTitle">Your Personalized Action Plan</h3>
+                <p id="planSubtitle"></p>
+            </div>
+            
+            <div class="plan-content">
+                <!-- Immediate Actions -->
+                <div class="action-category">
+                    <div class="category-header">
+                        <span class="category-icon">⚡</span>
+                        <h4>Immediate Actions</h4>
+                        <span class="category-tag">Start Today</span>
+                    </div>
+                    <ul class="action-list" id="immediateActions"></ul>
+                </div>
+                
+                <!-- Short-term Actions -->
+                <div class="action-category">
+                    <div class="category-header">
+                        <span class="category-icon">📅</span>
+                        <h4>Short-term Goals</h4>
+                        <span class="category-tag">This Month</span>
+                    </div>
+                    <ul class="action-list" id="shortTermActions"></ul>
+                </div>
+                
+                <!-- Long-term Actions -->
+                <div class="action-category">
+                    <div class="category-header">
+                        <span class="category-icon">🎯</span>
+                        <h4>Long-term Commitment</h4>
+                        <span class="category-tag">Ongoing</span>
+                    </div>
+                    <ul class="action-list" id="longTermActions"></ul>
+                </div>
+            </div>
+            
+            <!-- Progress Tracker -->
+            <div class="progress-tracker">
+                <h4>Track Your Progress</h4>
+                <div class="tracker-stats">
+                    <div class="tracker-stat">
+                        <span class="tracker-number" id="completedCount">0</span>
+                        <span class="tracker-label">Completed</span>
+                    </div>
+                    <div class="tracker-stat">
+                        <span class="tracker-number" id="totalCount">0</span>
+                        <span class="tracker-label">Total Actions</span>
+                    </div>
+                    <div class="tracker-stat">
+                        <span class="tracker-number" id="impactScore">0</span>
+                        <span class="tracker-label">Impact Score</span>
+                    </div>
+                </div>
+                <div class="overall-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="overallProgress"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">0% Complete</span>
+                </div>
+            </div>
+            
+            <!-- Share & Download -->
+            <div class="plan-actions">
+                <button class="action-btn secondary" id="newPlan">
+                    <span>Create New Plan</span>
+                </button>
+                <button class="action-btn primary" id="downloadPlan">
+                    <span>Download Checklist</span>
+                    <svg viewBox="0 0 24 24" class="download-icon">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Community Impact -->
+        <div class="community-impact">
+            <h3>Join the Movement</h3>
+            <div class="impact-counter">
+                <div class="counter-item">
+                    <span class="counter-number" data-target="15847">0</span>
+                    <span class="counter-label">People Taking Action</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-target="2341">0</span>
+                    <span class="counter-label">Hectares Restored</span>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" data-target="89">0</span>
+                    <span class="counter-label">Countries Involved</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Find answers to common questions about soil pollution and what you can do</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🌍</span>
+                        <span class="faq-text">What is soil pollution and why should I care?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Soil pollution occurs when harmful substances contaminate the earth's surface, making it toxic for plants, animals, and humans. You should care because soil is the foundation of our food system - 33% of global soil is already degraded, threatening food security for billions. Polluted soil affects the food you eat, the water you drink, and the air you breathe.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🏭</span>
+                        <span class="faq-text">What are the main causes of soil pollution?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The primary causes include:</p>
+                        <ul>
+                            <li><strong>Industrial waste:</strong> Toxic chemicals from factories seep into soil</li>
+                            <li><strong>Agricultural chemicals:</strong> Pesticides and fertilizers accumulate over time</li>
+                            <li><strong>Improper waste disposal:</strong> Garbage and hazardous materials contaminate land</li>
+                            <li><strong>Mining operations:</strong> Heavy metals and acid runoff damage soil structure</li>
+                            <li><strong>Plastic waste:</strong> Microplastics infiltrate soil ecosystems</li>
+                            <li><strong>Deforestation:</strong> Removes protective cover, exposing soil to erosion</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">⚠️</span>
+                        <span class="faq-text">How does soil pollution affect human health?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Soil pollution poses serious health risks through multiple pathways:</p>
+                        <ul>
+                            <li><strong>Food contamination:</strong> Crops absorb toxins from polluted soil, entering our food chain</li>
+                            <li><strong>Water contamination:</strong> Pollutants leach into groundwater, affecting drinking supplies</li>
+                            <li><strong>Air quality:</strong> Dust from contaminated soil carries harmful particles</li>
+                            <li><strong>Direct exposure:</strong> Children playing in contaminated areas face immediate risks</li>
+                        </ul>
+                        <p>Health effects include respiratory problems, skin diseases, neurological disorders, and increased cancer risk.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🌱</span>
+                        <span class="faq-text">Can polluted soil be restored?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Soil restoration is possible through several proven methods:</p>
+                        <ul>
+                            <li><strong>Phytoremediation:</strong> Using plants to absorb and break down contaminants</li>
+                            <li><strong>Bioremediation:</strong> Microorganisms naturally decompose pollutants</li>
+                            <li><strong>Soil amendments:</strong> Adding organic matter to improve soil health</li>
+                            <li><strong>Crop rotation:</strong> Alternating crops to restore nutrient balance</li>
+                            <li><strong>Cover cropping:</strong> Protecting soil and adding beneficial nutrients</li>
+                        </ul>
+                        <p>While restoration takes time (often 5-20 years), many contaminated sites have been successfully rehabilitated.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🏡</span>
+                        <span class="faq-text">What can I do as a homeowner to prevent soil pollution?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Every homeowner can make a difference:</p>
+                        <ul>
+                            <li><strong>Use organic alternatives:</strong> Replace chemical fertilizers and pesticides with natural options</li>
+                            <li><strong>Compost organic waste:</strong> Create nutrient-rich soil naturally</li>
+                            <li><strong>Proper disposal:</strong> Never dump chemicals, paint, or batteries on the ground</li>
+                            <li><strong>Test your soil:</strong> Know what's in your soil before making changes</li>
+                            <li><strong>Plant native species:</strong> They require fewer chemicals to thrive</li>
+                            <li><strong>Create buffer zones:</strong> Protect water sources with vegetation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🚜</span>
+                        <span class="faq-text">How can farmers practice sustainable agriculture?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sustainable farming practices protect soil while maintaining productivity:</p>
+                        <ul>
+                            <li><strong>Precision agriculture:</strong> Use only necessary amounts of inputs</li>
+                            <li><strong>No-till farming:</strong> Minimize soil disturbance to preserve structure</li>
+                            <li><strong>Integrated pest management:</strong> Reduce chemical pesticide dependency</li>
+                            <li><strong>Crop diversification:</strong> Rotate crops to maintain soil health</li>
+                            <li><strong>Organic certification:</strong> Follow standards that protect soil</li>
+                            <li><strong>Agroforestry:</strong> Integrate trees to prevent erosion</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🔬</span>
+                        <span class="faq-text">How do I test my soil for contamination?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Testing your soil is simple and essential:</p>
+                        <ol>
+                            <li><strong>Home test kits:</strong> Available at garden centers for basic pH and nutrient testing</li>
+                            <li><strong>Professional laboratory testing:</strong> More comprehensive analysis for heavy metals and contaminants</li>
+                            <li><strong>Extension services:</strong> Many universities offer affordable soil testing</li>
+                            <li><strong>What to test for:</strong> pH levels, heavy metals (lead, arsenic), nutrients, and organic matter</li>
+                        </ol>
+                        <p>Test especially if your property is near industrial areas, was previously farmland, or has old painted structures.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">💼</span>
+                        <span class="faq-text">What are businesses doing to reduce soil pollution?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Progressive businesses are taking multiple approaches:</p>
+                        <ul>
+                            <li><strong>Waste reduction:</strong> Minimizing industrial waste at the source</li>
+                            <li><strong>Closed-loop systems:</strong> Recycling and reusing materials to prevent disposal</li>
+                            <li><strong>Green infrastructure:</strong> Installing permeable surfaces and rain gardens</li>
+                            <li><strong>Sustainable supply chains:</strong> Sourcing from environmentally responsible suppliers</li>
+                            <li><strong>Site remediation:</strong> Cleaning up contaminated properties</li>
+                            <li><strong>ISO 14001 certification:</strong> Following environmental management standards</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">📚</span>
+                        <span class="faq-text">How can students get involved in soil conservation?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Students have powerful voices and can make real impact:</p>
+                        <ul>
+                            <li><strong>Start a school garden:</strong> Learn by doing while growing healthy food</li>
+                            <li><strong>Organize cleanup events:</strong> Remove trash before it contaminates soil</li>
+                            <li><strong>Raise awareness:</strong> Educate peers through presentations and social media</li>
+                            <li><strong>Participate in citizen science:</strong> Contribute to soil monitoring projects</li>
+                            <li><strong>Advocate for policy:</strong> Encourage schools to adopt sustainable practices</li>
+                            <li><strong>Join environmental clubs:</strong> Collaborate on conservation initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">🌎</span>
+                        <span class="faq-text">What is being done globally to address soil pollution?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>International efforts are accelerating:</p>
+                        <ul>
+                            <li><strong>UN Sustainable Development Goals:</strong> Goal 15 focuses on sustainable land management</li>
+                            <li><strong>Global Soil Partnership:</strong> 89 countries working together on soil health</li>
+                            <li><strong>International treaties:</strong> Regulations limiting harmful chemical use</li>
+                            <li><strong>Restoration projects:</strong> Over 2,341 hectares already restored worldwide</li>
+                            <li><strong>Research funding:</strong> Billions invested in soil science and remediation technology</li>
+                            <li><strong>Policy frameworks:</strong> Countries implementing stricter environmental laws</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">⏰</span>
+                        <span class="faq-text">How urgent is the soil pollution crisis?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Extremely urgent. Here's why:</p>
+                        <ul>
+                            <li><strong>33% of global soil</strong> is already degraded</li>
+                            <li><strong>95% of our food</strong> comes from soil</li>
+                            <li><strong>52 billion tons</strong> of soil are eroded annually</li>
+                            <li><strong>By 2050:</strong> Soil degradation could reduce global food production by 10%</li>
+                            <li><strong>Irreversible damage:</strong> Some contamination can last centuries without intervention</li>
+                        </ul>
+                        <p>However, the good news is that 15,847 people are already taking action, and every individual effort counts toward healing our planet.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span class="faq-icon">💡</span>
+                        <span class="faq-text">Where can I learn more or get involved?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We're here to help you take action:</p>
+                        <ul>
+                            <li><strong>Action Plan Generator:</strong> Visit our "Take Action" section for a personalized plan based on your role and location</li>
+                            <li><strong>Join our team:</strong> Contact our founders Cyrus Leyros or Jovohn through the links in the footer</li>
+                            <li><strong>Track progress:</strong> Monitor your impact score as you complete action items</li>
+                            <li><strong>Share knowledge:</strong> Use our educational resources to spread awareness</li>
+                            <li><strong>Stay updated:</strong> Follow our social media for the latest in soil conservation</li>
+                        </ul>
+                        <p>Remember: Together, we can heal our planet! 🌍</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">🌱 EcoRoot</span>
+                <p>Empowering communities to heal our planet, one action at a time.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Learn More</h4>
+                    <a href="#">Research Papers</a>
+                    <a href="#">Educational Resources</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="link-group volunteer-section">
+                    <h4>🌟 Join Our Team</h4>
+                    <p class="volunteer-tagline">Ready to make an impact?</p>
+                    <p class="volunteer-cta">Let's grow together! 🌱</p>
+                    <div class="team-cards">
+                        <div class="team-member-card">
+                            <img src="https://scontent-mnl3-1.xx.fbcdn.net/v/t39.30808-1/586534455_1392605592253920_3143913500814174581_n.jpg?stp=dst-jpg_s200x200_tt6&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeGBnk586LwGDYJXKoFhYE3-WOdmKYv4u0pY52Ypi_i7Sov53f_MSB4-b_ZwNxHCszeqVCl7ZexxpAnOPK-UhcVm&_nc_ohc=-FL07gb0FSUQ7kNvwE6Re3C&_nc_oc=AdkzskKLK7N0CANUCrJqu3anmaG0AbRpk3HWAMImbXJ508Jpnh6yvY66ZeE0pPcKarhtL6HMw4nSZlg7CZFBunvB&_nc_zt=24&_nc_ht=scontent-mnl3-1.xx&_nc_gid=Ysrjtu3T7wMPzbsp8DbFTQ&oh=00_AfhpYuJOXQEp_7UHTP-deIjJ7p47MCT_Q1SeSJQS3VHUhg&oe=692CC2EA" alt="Cyrus Leyros" class="member-avatar member-photo">
+                            <div class="member-info">
+                                <strong class="member-name">Cyrus Leyros</strong>
+                                <span class="member-role">Founder</span>
+                                <a href="https://www.facebook.com/SairusLeyros/" target="_blank" rel="noopener noreferrer" class="member-social">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                    Connect
+                                </a>
+                            </div>
+                        </div>
+                        <div class="team-member-card">
+                            <img src="https://scontent-mnl3-2.xx.fbcdn.net/v/t39.30808-6/492136314_562925340156514_8004729869268184074_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGU93ZTsQxMDS-CoxhfIWA3raMQJgJke-KtoxAmAmR74pY_u8pwBuvb8j2LwTyrkFK330oaq1Wo7dXlY2eTq8Wr&_nc_ohc=VlzeTfxxrlAQ7kNvwGSyKpI&_nc_oc=AdlR9PBjdkhvDNktn2ouBlbH9dsNN67rJ3FrJeJh1CIi06BFtcyla-L7O1WTT1SwZWI_Rb4nwgm-HiljAP5NtA7e&_nc_zt=23&_nc_ht=scontent-mnl3-2.xx&_nc_gid=Liz9U3vcJPRgqB-4E3ypsg&oh=00_AfgcgGFvsYQj3Hombldz40l6PnOhZn_WkvwnUDHdpN-W4Q&oe=692CB2E8" alt="Jovohn Faulve" class="member-avatar member-photo">
+                            <div class="member-info">                            <link rel="icon" type="image/x-icon" href="favicon.ico">
+                                <strong class="member-name">Jovohn Faulve</strong>
+                                <span class="member-role">Co-Founder & Head Developer</span>
+                                <a href="https://www.facebook.com/jpfaulveofficial/" target="_blank" rel="noopener noreferrer" class="member-social">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                    Connect
+                                </a>
+                                    <a href="https://github.com/altxxr0" target="_blank" rel="noopener noreferrer" class="member-social">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.418 2.865 8.167 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.529 2.341 1.088 2.91.833.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.099 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.337 4.695-4.566 4.944.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.744 0 .268.18.579.688.481C19.138 20.184 22 16.436 22 12.021 22 6.484 17.523 2 12 2z"/>
+                                        </svg>
+                                        GitHub
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-banner">
+                <p class="footer-company">FaulveCorps OPC</p>
+            </div>
+            <p>&copy; 2025 EcoRoot. All rights reserved.</p>
+            <p>Built with 💚 for our planet</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/causes.js"></script>
+    <script src="js/consequences.js"></script>
+    <script src="js/impactCycler.js"></script>
+    <script src="js/solutions.js"></script>
+    <script src="js/action.js"></script>
+    <script src="js/faq.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+</html>

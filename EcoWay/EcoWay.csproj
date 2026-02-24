@@ -19,7 +19,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>EcoWay</ApplicationTitle>
+		<ApplicationTitle>EcoRoot</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.group6.ecoway</ApplicationId>

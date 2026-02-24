@@ -32,7 +32,7 @@ public partial class SplashPage : ContentPage
                 return;
             }
 
-            await Shell.Current.GoToAsync("//MainMenuPage", false);
+            await Shell.Current.GoToAsync("//HomePage", false);
         }
         catch
         {

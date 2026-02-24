@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EcoWay.ViewModels"
+             xmlns:models="clr-namespace:EcoWay.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="EcoWay.Views.ActionPlanPage"
+             x:DataType="viewmodels:ActionPlanViewModel"
+             Title="Take Action">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+            <Label Text="Your Turn to Act"
+                   FontSize="26"
+                   FontFamily="OpenSansSemibold"
+                   TextColor="#1B2F25" />
+            <Label Text="Generate a personalized action checklist and track your impact."
+                   FontSize="13"
+                   TextColor="#4A6A5B" />
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F6FBF8"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="12">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="I am a..."
+                           FontFamily="OpenSansSemibold"
+                           FontSize="13"
+                           TextColor="#2D4A3E" />
+                    <Picker Title="Select role"
+                            ItemsSource="{Binding RoleOptions}"
+                            ItemDisplayBinding="{Binding Label}"
+                            SelectedItem="{Binding SelectedRole}" />
+
+                    <Label Text="I live in a..."
+                           FontFamily="OpenSansSemibold"
+                           FontSize="13"
+                           TextColor="#2D4A3E" />
+                    <Picker Title="Select location"
+                            ItemsSource="{Binding LocationOptions}"
+                            ItemDisplayBinding="{Binding Label}"
+                            SelectedItem="{Binding SelectedLocation}" />
+
+                    <HorizontalStackLayout Spacing="8">
+                        <Button Text="Generate Plan"
+                                Command="{Binding GeneratePlanCommand}"
+                                BackgroundColor="#2E8B57"
+                                TextColor="White"
+                                CornerRadius="12"
+                                HorizontalOptions="FillAndExpand" />
+                        <Button Text="Reset"
+                                Command="{Binding ResetPlanCommand}"
+                                BackgroundColor="#587564"
+                                TextColor="White"
+                                CornerRadius="12"
+                                HorizontalOptions="FillAndExpand" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#EDF8F2"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="12"
+                    IsVisible="{Binding IsPlanVisible}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding PlanTitle}"
+                           FontSize="17"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="#1F3A2E" />
+                    <Label Text="{Binding PlanSubtitle}"
+                           FontSize="12"
+                           TextColor="#4F6E60" />
+
+                    <Label Text="Immediate Actions" FontFamily="OpenSansSemibold" FontSize="14" TextColor="#2A4A3B" />
+                    <CollectionView ItemsSource="{Binding ImmediateActions}" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="viewmodels:ActionChecklistItem">
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8" Padding="0,3">
+                                    <CheckBox IsChecked="{Binding IsCompleted}" VerticalOptions="Start" />
+                                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                        <Label Text="{Binding Title}" FontSize="13" FontFamily="OpenSansSemibold" TextColor="#214236" />
+                                        <Label Text="{Binding Description}" FontSize="11" TextColor="#4A6B5B" />
+                                    </VerticalStackLayout>
+                                    <Label Grid.Column="2" Text="{Binding ImpactText}" FontSize="11" TextColor="#2B7A52" VerticalOptions="Center" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label Text="Short-term Goals" FontFamily="OpenSansSemibold" FontSize="14" TextColor="#2A4A3B" />
+                    <CollectionView ItemsSource="{Binding ShortTermActions}" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="viewmodels:ActionChecklistItem">
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8" Padding="0,3">
+                                    <CheckBox IsChecked="{Binding IsCompleted}" VerticalOptions="Start" />
+                                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                        <Label Text="{Binding Title}" FontSize="13" FontFamily="OpenSansSemibold" TextColor="#214236" />
+                                        <Label Text="{Binding Description}" FontSize="11" TextColor="#4A6B5B" />
+                                    </VerticalStackLayout>
+                                    <Label Grid.Column="2" Text="{Binding ImpactText}" FontSize="11" TextColor="#2B7A52" VerticalOptions="Center" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label Text="Long-term Commitment" FontFamily="OpenSansSemibold" FontSize="14" TextColor="#2A4A3B" />
+                    <CollectionView ItemsSource="{Binding LongTermActions}" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="viewmodels:ActionChecklistItem">
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8" Padding="0,3">
+                                    <CheckBox IsChecked="{Binding IsCompleted}" VerticalOptions="Start" />
+                                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                        <Label Text="{Binding Title}" FontSize="13" FontFamily="OpenSansSemibold" TextColor="#214236" />
+                                        <Label Text="{Binding Description}" FontSize="11" TextColor="#4A6B5B" />
+                                    </VerticalStackLayout>
+                                    <Label Grid.Column="2" Text="{Binding ImpactText}" FontSize="11" TextColor="#2B7A52" VerticalOptions="Center" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#FAFDFB"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="12"
+                    IsVisible="{Binding IsPlanVisible}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Track Your Progress"
+                           FontFamily="OpenSansSemibold"
+                           FontSize="14"
+                           TextColor="#264638" />
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding CompletedCount}" FontSize="18" FontFamily="OpenSansSemibold" TextColor="#2E8B57" />
+                            <Label Text="Completed" FontSize="11" TextColor="#577466" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="{Binding TotalCount}" FontSize="18" FontFamily="OpenSansSemibold" TextColor="#2E8B57" />
+                            <Label Text="Total" FontSize="11" TextColor="#577466" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2">
+                            <Label Text="{Binding ImpactScore}" FontSize="18" FontFamily="OpenSansSemibold" TextColor="#2E8B57" />
+                            <Label Text="Impact" FontSize="11" TextColor="#577466" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <ProgressBar Progress="{Binding ProgressRatio}"
+                                 HeightRequest="8"
+                                 ProgressColor="#2E8B57"
+                                 BackgroundColor="#D5E8DC" />
+                    <Label Text="{Binding ProgressText}" FontSize="12" TextColor="#4D7464" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F4FAF7"
+                    StrokeShape="RoundRectangle 14"
+                    Padding="12">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Community Impact"
+                           FontFamily="OpenSansSemibold"
+                           FontSize="14"
+                           TextColor="#264638" />
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding CommunityPeople}" FontSize="18" FontFamily="OpenSansSemibold" TextColor="#2E8B57" />
+                            <Label Text="People" FontSize="11" TextColor="#577466" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="{Binding CommunityHectares}" FontSize="18" FontFamily="OpenSansSemibold" TextColor="#2E8B57" />
+                            <Label Text="Hectares" FontSize="11" TextColor="#577466" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2">
+                            <Label Text="{Binding CommunityCountries}" FontSize="18" FontFamily="OpenSansSemibold" TextColor="#2E8B57" />
+                            <Label Text="Countries" FontSize="11" TextColor="#577466" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="Frequently Asked Questions"
+                   FontFamily="OpenSansSemibold"
+                   FontSize="18"
+                   TextColor="#1D2F27" />
+
+            <CollectionView ItemsSource="{Binding FaqItems}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:FaqItem">
+                        <toolkit:Expander Margin="0,0,0,8">
+                            <toolkit:Expander.Header>
+                                <Border StrokeThickness="0"
+                                        BackgroundColor="#F9FCFA"
+                                        StrokeShape="RoundRectangle 12"
+                                        Padding="12">
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Label Text="{Binding Icon}" FontSize="18" />
+                                        <Label Text="{Binding Question}"
+                                               FontSize="13"
+                                               FontFamily="OpenSansSemibold"
+                                               TextColor="#214236"
+                                               LineBreakMode="WordWrap" />
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </toolkit:Expander.Header>
+                            <Border StrokeThickness="0"
+                                    BackgroundColor="#F0F8F3"
+                                    StrokeShape="RoundRectangle 12"
+                                    Padding="12">
+                                <Label Text="{Binding Answer}"
+                                       FontSize="12"
+                                       LineBreakMode="WordWrap"
+                                       TextColor="#456555" />
+                            </Border>
+                        </toolkit:Expander>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
